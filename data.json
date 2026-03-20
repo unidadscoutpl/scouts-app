@@ -1,0 +1,3028 @@
+{
+  "educadores": [
+    {
+      "id": "ed_jazmin",
+      "nombre": "Jazmín M.",
+      "fechaIngreso": "2018-08-11",
+      "hab": "Curso de Jefes / Wood Badge",
+      "habDet": "",
+      "habNivel": "jefe_unidad",
+      "nivelacion": "Habilitada como Ayudante de Unidad e inició formación de Jefe/a de Unidad antes del cambio de esquema. N1 y N2 validados por nivelación. Para completar el N3 debe realizar únicamente: «Sistema de Equipos: Liderazgo y resolución de conflictos» y «Primeros auxilios emocionales».",
+      "notas": "",
+      "progress": {
+        "orientacion_cambio": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "trabajo_equipo": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cultura_asociativa": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "relaciones_interpersonales": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cuidado_integral": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "metodo_scout": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "sistema_equipos": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "oportunidades_aprendizaje": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "marco_simbolico": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "involucramiento_comunitario": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "aire_libre": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "progresion_personal": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        }
+      },
+      "experiencias": {
+        "basica": {
+          "Introductoria": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "A Salvo del Peligro": {
+            "realizada": true,
+            "fecha": "2024-09-25"
+          }
+        },
+        "intermedia": {
+          "Aplicación del Sistema de Equipos en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Aplicación del Marco Simbólico en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Oportunidades de aprendizaje en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Ciclo de Programa en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Aplicación del Sistema de Progresiones en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Organización de actividades al aire libre y responsabilidad ambiental": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión de proyectos en la Rama Scouts": {
+            "realizada": true,
+            "fecha": "2025-09-28"
+          },
+          "La educadora/or y su Fe I": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "avanzada": {
+          "Sistema de Equipos: Liderazgo y resolución de conflictos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Clima Educativo en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Análisis de contexto y adecuación del programa": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Emergencias: Respuesta ante eventos no deseados": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Primeros auxilios emocionales": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "La educadora/or y su Fe II": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      },
+      "expViejo": {
+        "miembro_activo": {
+          "Derechos Asociativos": {
+            "realizada": true,
+            "fecha": "11/08/2018"
+          }
+        },
+        "ayudante_unidad": {
+          "Formación Scout": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Rol del Educador": {
+            "realizada": true,
+            "fecha": "23/09/2018"
+          },
+          "Programa de Jóvenes 1": {
+            "realizada": true,
+            "fecha": "3/11/2019"
+          },
+          "Programa de Jóvenes 2": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Planificación, desarrollo y evaluación de actividades al aire libre": {
+            "realizada": true,
+            "fecha": "13/09/2022"
+          },
+          "Responsabilidades del Educador": {
+            "realizada": true,
+            "fecha": "15/05/2021"
+          },
+          "Toma de decisiones y resolución de conflicto": {
+            "realizada": true,
+            "fecha": "13/08/2022"
+          },
+          "Primeros Auxilios": {
+            "realizada": true,
+            "fecha": "08/08/2020"
+          },
+          "Educador y su Fe 1": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Clima Educativo": {
+            "realizada": true,
+            "fecha": "14/11/2020"
+          }
+        },
+        "jefe_unidad": {
+          "Involucramiento Comunitario": {
+            "realizada": true,
+            "fecha": "2/9/2023"
+          },
+          "Acompañamiento": {
+            "realizada": true,
+            "fecha": "30/09/2023"
+          },
+          "Liderazgo multiplicador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión Institucional": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Educador y su Fe 2": {
+            "realizada": true,
+            "fecha": "18/11/2023"
+          },
+          "Herramientas para la gestión del grupo scout": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "jefe_grupo": {
+          "Captación y gestión de adultos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión de SAAC": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Relaciones Institucionales": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      }
+    },
+    {
+      "id": "ed_francisco",
+      "nombre": "Francisco C.",
+      "fechaIngreso": "2022-08-27",
+      "hab": "Curso Básico (sistema anterior)",
+      "habDet": "",
+      "habNivel": "jefe_unidad",
+      "nivelacion": "Habilitado como Ayudante de Unidad. No inició formación de Jefe/a de Unidad. N1 y N2 validados por nivelación. Debe completar el N3 íntegro del nuevo esquema.",
+      "notas": "",
+      "progress": {
+        "orientacion_cambio": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "trabajo_equipo": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cultura_asociativa": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "relaciones_interpersonales": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cuidado_integral": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "metodo_scout": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "sistema_equipos": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "oportunidades_aprendizaje": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "marco_simbolico": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "involucramiento_comunitario": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "aire_libre": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "progresion_personal": {
+          "1": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "2": {
+            "estado": "Validado",
+            "fecha": "2026-03-20",
+            "comentario": "Validado por nivelación (esquema anterior)"
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        }
+      },
+      "experiencias": {
+        "basica": {
+          "Introductoria": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "A Salvo del Peligro": {
+            "realizada": true,
+            "fecha": "2024-09-14"
+          }
+        },
+        "intermedia": {
+          "Aplicación del Sistema de Equipos en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Aplicación del Marco Simbólico en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Oportunidades de aprendizaje en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Ciclo de Programa en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Aplicación del Sistema de Progresiones en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Organización de actividades al aire libre y responsabilidad ambiental": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión de proyectos en la Rama Scouts": {
+            "realizada": true,
+            "fecha": "2025-09-28"
+          },
+          "La educadora/or y su Fe I": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "avanzada": {
+          "Sistema de Equipos: Liderazgo y resolución de conflictos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Clima Educativo en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Análisis de contexto y adecuación del programa": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Emergencias: Respuesta ante eventos no deseados": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Primeros auxilios emocionales": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "La educadora/or y su Fe II": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      },
+      "expViejo": {
+        "miembro_activo": {
+          "Derechos Asociativos": {
+            "realizada": true,
+            "fecha": ""
+          }
+        },
+        "ayudante_unidad": {
+          "Formación Scout": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Rol del Educador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Programa de Jóvenes 1": {
+            "realizada": true,
+            "fecha": "3/6/2023"
+          },
+          "Programa de Jóvenes 2": {
+            "realizada": true,
+            "fecha": "10/9/2024"
+          },
+          "Planificación, desarrollo y evaluación de actividades al aire libre": {
+            "realizada": true,
+            "fecha": "1/7/2023"
+          },
+          "Responsabilidades del Educador": {
+            "realizada": true,
+            "fecha": "27/08/2022"
+          },
+          "Toma de decisiones y resolución de conflicto": {
+            "realizada": true,
+            "fecha": "23/09/2023"
+          },
+          "Primeros Auxilios": {
+            "realizada": true,
+            "fecha": "24/06/2023"
+          },
+          "Educador y su Fe 1": {
+            "realizada": true,
+            "fecha": "29/07/2023"
+          },
+          "Clima Educativo": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "jefe_unidad": {
+          "Involucramiento Comunitario": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Acompañamiento": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Liderazgo multiplicador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión Institucional": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Educador y su Fe 2": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Herramientas para la gestión del grupo scout": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "jefe_grupo": {
+          "Captación y gestión de adultos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión de SAAC": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Relaciones Institucionales": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      }
+    },
+    {
+      "id": "ed_camila",
+      "nombre": "Camila P.",
+      "fechaIngreso": "2023-08-26",
+      "hab": "Curso Básico (sistema anterior)",
+      "habDet": "",
+      "habNivel": "ayudante_unidad",
+      "nivelacion": "",
+      "notas": "",
+      "progress": {
+        "orientacion_cambio": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "trabajo_equipo": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cultura_asociativa": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "relaciones_interpersonales": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cuidado_integral": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "metodo_scout": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "sistema_equipos": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "oportunidades_aprendizaje": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "marco_simbolico": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "involucramiento_comunitario": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "aire_libre": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "progresion_personal": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        }
+      },
+      "experiencias": {
+        "basica": {
+          "Introductoria": {
+            "realizada": true,
+            "fecha": "2025-11-08"
+          },
+          "A Salvo del Peligro": {
+            "realizada": true,
+            "fecha": "2024-09-13"
+          }
+        },
+        "intermedia": {
+          "Aplicación del Sistema de Equipos en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Aplicación del Marco Simbólico en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Oportunidades de aprendizaje en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Ciclo de Programa en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Aplicación del Sistema de Progresiones en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Organización de actividades al aire libre y responsabilidad ambiental": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión de proyectos en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "La educadora/or y su Fe I": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "avanzada": {
+          "Sistema de Equipos: Liderazgo y resolución de conflictos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Clima Educativo en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Análisis de contexto y adecuación del programa": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Emergencias: Respuesta ante eventos no deseados": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Primeros auxilios emocionales": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "La educadora/or y su Fe II": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      },
+      "expViejo": {
+        "miembro_activo": {
+          "Derechos Asociativos": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "ayudante_unidad": {
+          "Formación Scout": {
+            "realizada": true,
+            "fecha": "26/8/2023"
+          },
+          "Rol del Educador": {
+            "realizada": true,
+            "fecha": "16/9/2023"
+          },
+          "Programa de Jóvenes 1": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Programa de Jóvenes 2": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Planificación, desarrollo y evaluación de actividades al aire libre": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Responsabilidades del Educador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Toma de decisiones y resolución de conflicto": {
+            "realizada": true,
+            "fecha": "25/11/2023"
+          },
+          "Primeros Auxilios": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Educador y su Fe 1": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Clima Educativo": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "jefe_unidad": {
+          "Involucramiento Comunitario": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Acompañamiento": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Liderazgo multiplicador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión Institucional": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Educador y su Fe 2": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Herramientas para la gestión del grupo scout": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "jefe_grupo": {
+          "Captación y gestión de adultos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión de SAAC": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Relaciones Institucionales": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      }
+    },
+    {
+      "id": "ed_nahuel",
+      "nombre": "Nahuel O.",
+      "fechaIngreso": "2024-09-06",
+      "hab": "",
+      "habDet": "",
+      "habNivel": "",
+      "nivelacion": "",
+      "notas": "",
+      "progress": {
+        "orientacion_cambio": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "trabajo_equipo": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cultura_asociativa": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "relaciones_interpersonales": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cuidado_integral": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "metodo_scout": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "sistema_equipos": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "oportunidades_aprendizaje": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "marco_simbolico": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "involucramiento_comunitario": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "aire_libre": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "progresion_personal": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        }
+      },
+      "experiencias": {
+        "basica": {
+          "Introductoria": {
+            "realizada": true,
+            "fecha": "2025-11-08"
+          },
+          "A Salvo del Peligro": {
+            "realizada": true,
+            "fecha": "2024-09-06"
+          }
+        },
+        "intermedia": {
+          "Aplicación del Sistema de Equipos en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Aplicación del Marco Simbólico en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Oportunidades de aprendizaje en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Ciclo de Programa en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Aplicación del Sistema de Progresiones en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Organización de actividades al aire libre y responsabilidad ambiental": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión de proyectos en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "La educadora/or y su Fe I": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "avanzada": {
+          "Sistema de Equipos: Liderazgo y resolución de conflictos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Clima Educativo en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Análisis de contexto y adecuación del programa": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Emergencias: Respuesta ante eventos no deseados": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Primeros auxilios emocionales": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "La educadora/or y su Fe II": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      },
+      "expViejo": {
+        "miembro_activo": {
+          "Derechos Asociativos": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "ayudante_unidad": {
+          "Formación Scout": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Rol del Educador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Programa de Jóvenes 1": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Programa de Jóvenes 2": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Planificación, desarrollo y evaluación de actividades al aire libre": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Responsabilidades del Educador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Toma de decisiones y resolución de conflicto": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Primeros Auxilios": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Educador y su Fe 1": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Clima Educativo": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "jefe_unidad": {
+          "Involucramiento Comunitario": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Acompañamiento": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Liderazgo multiplicador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión Institucional": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Educador y su Fe 2": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Herramientas para la gestión del grupo scout": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "jefe_grupo": {
+          "Captación y gestión de adultos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión de SAAC": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Relaciones Institucionales": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      }
+    },
+    {
+      "id": "ed_gino",
+      "nombre": "Gino D.",
+      "fechaIngreso": "2025-07-02",
+      "hab": "",
+      "habDet": "",
+      "habNivel": "",
+      "nivelacion": "",
+      "notas": "",
+      "progress": {
+        "orientacion_cambio": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "trabajo_equipo": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cultura_asociativa": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "relaciones_interpersonales": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cuidado_integral": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "metodo_scout": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "sistema_equipos": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "oportunidades_aprendizaje": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "marco_simbolico": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "involucramiento_comunitario": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "aire_libre": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "progresion_personal": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        }
+      },
+      "experiencias": {
+        "basica": {
+          "Introductoria": {
+            "realizada": true,
+            "fecha": "2025-11-22"
+          },
+          "A Salvo del Peligro": {
+            "realizada": true,
+            "fecha": "2025-07-02"
+          }
+        },
+        "intermedia": {
+          "Aplicación del Sistema de Equipos en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Aplicación del Marco Simbólico en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Oportunidades de aprendizaje en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Ciclo de Programa en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Aplicación del Sistema de Progresiones en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Organización de actividades al aire libre y responsabilidad ambiental": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión de proyectos en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "La educadora/or y su Fe I": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "avanzada": {
+          "Sistema de Equipos: Liderazgo y resolución de conflictos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Clima Educativo en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Análisis de contexto y adecuación del programa": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Emergencias: Respuesta ante eventos no deseados": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Primeros auxilios emocionales": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "La educadora/or y su Fe II": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      },
+      "expViejo": {
+        "miembro_activo": {
+          "Derechos Asociativos": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "ayudante_unidad": {
+          "Formación Scout": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Rol del Educador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Programa de Jóvenes 1": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Programa de Jóvenes 2": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Planificación, desarrollo y evaluación de actividades al aire libre": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Responsabilidades del Educador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Toma de decisiones y resolución de conflicto": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Primeros Auxilios": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Educador y su Fe 1": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Clima Educativo": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "jefe_unidad": {
+          "Involucramiento Comunitario": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Acompañamiento": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Liderazgo multiplicador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión Institucional": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Educador y su Fe 2": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Herramientas para la gestión del grupo scout": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "jefe_grupo": {
+          "Captación y gestión de adultos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión de SAAC": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Relaciones Institucionales": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      }
+    },
+    {
+      "id": "ed_matias_a",
+      "nombre": "Matías A.",
+      "fechaIngreso": "2025-07-01",
+      "hab": "",
+      "habDet": "",
+      "habNivel": "",
+      "nivelacion": "",
+      "notas": "",
+      "progress": {
+        "orientacion_cambio": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "trabajo_equipo": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cultura_asociativa": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "relaciones_interpersonales": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cuidado_integral": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "metodo_scout": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "sistema_equipos": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "oportunidades_aprendizaje": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "marco_simbolico": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "involucramiento_comunitario": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "aire_libre": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "progresion_personal": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        }
+      },
+      "experiencias": {
+        "basica": {
+          "Introductoria": {
+            "realizada": true,
+            "fecha": "2025-11-22"
+          },
+          "A Salvo del Peligro": {
+            "realizada": true,
+            "fecha": "2025-07-01"
+          }
+        },
+        "intermedia": {
+          "Aplicación del Sistema de Equipos en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Aplicación del Marco Simbólico en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Oportunidades de aprendizaje en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Ciclo de Programa en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Aplicación del Sistema de Progresiones en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Organización de actividades al aire libre y responsabilidad ambiental": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión de proyectos en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "La educadora/or y su Fe I": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "avanzada": {
+          "Sistema de Equipos: Liderazgo y resolución de conflictos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Clima Educativo en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Análisis de contexto y adecuación del programa": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Emergencias: Respuesta ante eventos no deseados": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Primeros auxilios emocionales": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "La educadora/or y su Fe II": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      },
+      "expViejo": {
+        "miembro_activo": {
+          "Derechos Asociativos": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "ayudante_unidad": {
+          "Formación Scout": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Rol del Educador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Programa de Jóvenes 1": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Programa de Jóvenes 2": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Planificación, desarrollo y evaluación de actividades al aire libre": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Responsabilidades del Educador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Toma de decisiones y resolución de conflicto": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Primeros Auxilios": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Educador y su Fe 1": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Clima Educativo": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "jefe_unidad": {
+          "Involucramiento Comunitario": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Acompañamiento": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Liderazgo multiplicador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión Institucional": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Educador y su Fe 2": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Herramientas para la gestión del grupo scout": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "jefe_grupo": {
+          "Captación y gestión de adultos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión de SAAC": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Relaciones Institucionales": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      }
+    },
+    {
+      "id": "ed_raul",
+      "nombre": "Raúl L.",
+      "fechaIngreso": "2024-01-01",
+      "hab": "",
+      "habDet": "",
+      "habNivel": "",
+      "nivelacion": "",
+      "notas": "",
+      "progress": {
+        "orientacion_cambio": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "trabajo_equipo": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cultura_asociativa": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "relaciones_interpersonales": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cuidado_integral": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "metodo_scout": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "sistema_equipos": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "oportunidades_aprendizaje": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "marco_simbolico": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "involucramiento_comunitario": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "aire_libre": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "progresion_personal": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        }
+      },
+      "experiencias": {
+        "basica": {
+          "Introductoria": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "A Salvo del Peligro": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "intermedia": {
+          "Aplicación del Sistema de Equipos en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Aplicación del Marco Simbólico en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Oportunidades de aprendizaje en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Ciclo de Programa en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Aplicación del Sistema de Progresiones en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Organización de actividades al aire libre y responsabilidad ambiental": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión de proyectos en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "La educadora/or y su Fe I": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "avanzada": {
+          "Sistema de Equipos: Liderazgo y resolución de conflictos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Clima Educativo en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Análisis de contexto y adecuación del programa": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Emergencias: Respuesta ante eventos no deseados": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Primeros auxilios emocionales": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "La educadora/or y su Fe II": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      },
+      "expViejo": {
+        "miembro_activo": {
+          "Derechos Asociativos": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "ayudante_unidad": {
+          "Formación Scout": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Rol del Educador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Programa de Jóvenes 1": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Programa de Jóvenes 2": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Planificación, desarrollo y evaluación de actividades al aire libre": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Responsabilidades del Educador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Toma de decisiones y resolución de conflicto": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Primeros Auxilios": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Educador y su Fe 1": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Clima Educativo": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "jefe_unidad": {
+          "Involucramiento Comunitario": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Acompañamiento": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Liderazgo multiplicador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión Institucional": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Educador y su Fe 2": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Herramientas para la gestión del grupo scout": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "jefe_grupo": {
+          "Captación y gestión de adultos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión de SAAC": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Relaciones Institucionales": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      }
+    },
+    {
+      "id": "ed_dylan",
+      "nombre": "Dylan",
+      "fechaIngreso": "2023-08-26",
+      "hab": "Curso Básico (sistema anterior)",
+      "habDet": "",
+      "habNivel": "ayudante_unidad",
+      "nivelacion": "",
+      "notas": "",
+      "progress": {
+        "orientacion_cambio": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "trabajo_equipo": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cultura_asociativa": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "relaciones_interpersonales": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "cuidado_integral": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "metodo_scout": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "sistema_equipos": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "oportunidades_aprendizaje": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "marco_simbolico": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "involucramiento_comunitario": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "aire_libre": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        },
+        "progresion_personal": {
+          "1": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "2": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          },
+          "3": {
+            "estado": "Sin iniciar",
+            "fecha": "",
+            "comentario": ""
+          }
+        }
+      },
+      "experiencias": {
+        "basica": {
+          "Introductoria": {
+            "realizada": true,
+            "fecha": "2025-03-04"
+          },
+          "A Salvo del Peligro": {
+            "realizada": true,
+            "fecha": "2024-09-16"
+          }
+        },
+        "intermedia": {
+          "Aplicación del Sistema de Equipos en la Rama Scouts": {
+            "realizada": true,
+            "fecha": "2025-05-04"
+          },
+          "Aplicación del Marco Simbólico en la Rama Scouts": {
+            "realizada": true,
+            "fecha": "2025-05-17"
+          },
+          "Oportunidades de aprendizaje en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Ciclo de Programa en la Rama Scouts": {
+            "realizada": true,
+            "fecha": "2025-08-23"
+          },
+          "Aplicación del Sistema de Progresiones en la Rama Scouts": {
+            "realizada": true,
+            "fecha": "2025-09-13"
+          },
+          "Organización de actividades al aire libre y responsabilidad ambiental": {
+            "realizada": false,
+            "fecha": "2025-11-08"
+          },
+          "Gestión de proyectos en la Rama Scouts": {
+            "realizada": true,
+            "fecha": "2025-09-28"
+          },
+          "La educadora/or y su Fe I": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "avanzada": {
+          "Sistema de Equipos: Liderazgo y resolución de conflictos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "El Clima Educativo en la Rama Scouts": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Análisis de contexto y adecuación del programa": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Emergencias: Respuesta ante eventos no deseados": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Primeros auxilios emocionales": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "La educadora/or y su Fe II": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      },
+      "expViejo": {
+        "miembro_activo": {
+          "Derechos Asociativos": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "ayudante_unidad": {
+          "Formación Scout": {
+            "realizada": true,
+            "fecha": "26/8/2023"
+          },
+          "Rol del Educador": {
+            "realizada": true,
+            "fecha": "16/9/2023"
+          },
+          "Programa de Jóvenes 1": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Programa de Jóvenes 2": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Planificación, desarrollo y evaluación de actividades al aire libre": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Responsabilidades del Educador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Toma de decisiones y resolución de conflicto": {
+            "realizada": true,
+            "fecha": "25/11/2023"
+          },
+          "Primeros Auxilios": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Educador y su Fe 1": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Clima Educativo": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "jefe_unidad": {
+          "Involucramiento Comunitario": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Acompañamiento": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Liderazgo multiplicador": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión Institucional": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Educador y su Fe 2": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Herramientas para la gestión del grupo scout": {
+            "realizada": false,
+            "fecha": ""
+          }
+        },
+        "jefe_grupo": {
+          "Captación y gestión de adultos": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Gestión de SAAC": {
+            "realizada": false,
+            "fecha": ""
+          },
+          "Relaciones Institucionales": {
+            "realizada": false,
+            "fecha": ""
+          }
+        }
+      }
+    }
+  ]
+}
