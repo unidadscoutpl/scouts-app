@@ -39,7 +39,7 @@ textarea.si{resize:vertical;line-height:1.6;}
 <body>
 <div id="root"></div>
 <script type="text/babel" data-presets="react">
-
+ 
 // ─── GITHUB CONFIG ────────────────────────────────────────────────────
 const GH_REPO = "unidadscoutpl/scouts-app";
 const GH_FILE = "data.json";
@@ -48,7 +48,7 @@ const GH_TOKEN_KEY = "scouts_gh_token";
 function getToken(){ return localStorage.getItem(GH_TOKEN_KEY) || ""; }
 function saveToken(t){ localStorage.setItem(GH_TOKEN_KEY, t.trim()); }
 function clearToken(){ localStorage.removeItem(GH_TOKEN_KEY); }
-
+ 
 const C = {
   v900:"#1a3a1a",v800:"#1e4d1e",v700:"#256325",v600:"#2d7a2d",
   v500:"#3a9e3a",v400:"#5ab85a",v300:"#8fd08f",v200:"#c2e8c2",
@@ -58,7 +58,7 @@ const C = {
   gt:"#5a5a52",gl:"#8a8a80",
 };
 const bdg = (color,bg,border) => ({fontSize:11,padding:"3px 10px",borderRadius:20,background:bg,color,border:`1px solid ${border}`,fontWeight:500,whiteSpace:"nowrap",display:"inline-block"});
-
+ 
 // ─── COMPETENCIAS ─────────────────────────────────────────────────────
 const COMP_ESE = [
   {id:"orientacion_cambio",        n:"Orientación al cambio"},
@@ -77,7 +77,7 @@ const COMP_ESP = [
   {id:"progresion_personal",        n:"Progresión Personal"},
 ];
 const TODAS = [...COMP_ESE, ...COMP_ESP];
-
+ 
 const EXPS = {
   basica:["Introductoria","A Salvo del Peligro"],
   intermedia:[
@@ -99,14 +99,14 @@ const EXPS = {
     "La educadora/or y su Fe II",
   ],
 };
-
+ 
 const EXPS_VIEJO = {
   miembro_activo:  ["Derechos Asociativos"],
   ayudante_unidad: ["Formación Scout","Rol del Educador","Programa de Jóvenes 1","Programa de Jóvenes 2","Planificación, desarrollo y evaluación de actividades al aire libre","Responsabilidades del Educador","Toma de decisiones y resolución de conflicto","Primeros Auxilios","Educador y su Fe 1","Clima Educativo"],
   jefe_unidad:     ["Involucramiento Comunitario","Acompañamiento","Liderazgo multiplicador","Gestión Institucional","Educador y su Fe 2","Herramientas para la gestión del grupo scout"],
   jefe_grupo:      ["Captación y gestión de adultos","Gestión de SAAC","Relaciones Institucionales"],
 };
-
+ 
 const ESTADOS = ["Sin iniciar","En progreso","Validado"];
 const ES = {
   "Sin iniciar":{color:C.gl,  bg:"#f5f5f2",border:"#d0d0c8"},
@@ -117,7 +117,7 @@ const HABS = ["Curso Básico (sistema anterior)","Curso de Jefes / Wood Badge","
 const HAB_NIVELES = [{id:"",label:"Sin habilitación previa"},{id:"miembro_activo",label:"Miembro Activo"},{id:"ayudante_unidad",label:"Ayudante de Unidad"},{id:"jefe_unidad",label:"Jefe/a de Unidad"},{id:"jefe_grupo",label:"Jefe/a de Grupo"}];
 const RECON = [{nivel:1,nombre:"Pin de Educador/a",icon:"📌"},{nivel:2,nombre:"Aro de Gilwell + Nudo Cabeza de Turco",icon:"🪢"},{nivel:3,nombre:"Collar + Pañuelo de Gilwell",icon:"🎗️"}];
 const NIVELA_N1_N2 = ["jefe_unidad","jefe_grupo"];
-
+ 
 const RUTA = {
   orientacion_cambio:{n1:"Analiza el video «Resistencia al cambio», identifica al menos 5 conceptos clave y los reflexiona con su APF. Acepta otras formas de hacer las cosas y mantiene actitud positiva ante cambios.",n2:"Propone iniciativas de mejora a partir de cambios organizacionales. Acompaña a otras/os en procesos de cambio.",n3:"Lidera procesos de cambio en la Unidad. Evalúa resultados e introduce ajustes continuamente.",r1:"Las y los voluntarios reciben asertivamente los cambios de la organización."},
   trabajo_equipo:{n1:"Lee «Rutas de Aprendizaje en la Rama Scouts», elabora su plan de formación con el APF y participa regularmente en las reuniones del Equipo de Educadoras/es.",n2:"Facilita espacios de trabajo colaborativo. Reconoce y potencia las fortalezas de cada integrante.",n3:"Diseña estrategias para mejorar la dinámica del equipo. Acompaña la incorporación de nuevas/os educadoras/es.",r1:"Las y los voluntarios participan activa y regularmente en el equipo donde se desempeñan."},
@@ -132,7 +132,7 @@ const RUTA = {
   aire_libre:{n1:"Evalúa con su APF los saberes necesarios. Adquiere técnicas de vida al aire libre. Participa al menos de un campamento con la Unidad Scout.",n2:"Participa de «Organización de actividades al aire libre». Aplica campismo de bajo impacto. Planifica al menos dos actividades de más de un día.",n3:"Realiza una Descubierta vinculada a una problemática ambiental. Diseña estrategias para revalorizar la vida al aire libre.",r1:"La Unidad Scout valora y realiza actividades al aire libre según los estándares asociativos."},
   progresion_personal:{n1:"Lee el cap. 2 «Adolescencias» y el cap. 9 «La Progresión Personal». Mira el video «La historia de Nat». Se familiariza con Mapa de Exploración, Carta de Exploración y Bitácora de Aventura.",n2:"Participa de «Aplicación del Sistema de Progresiones». Presenta las Cartas de Exploración y Bitácoras. Acompaña la evaluación de al menos una Patrulla.",n3:"Apoya la reformulación del Mapa de Exploración de cada Scout. Orienta a un/a Scout como especialista.",r1:"Las y los jóvenes utilizan la Bitácora de Aventura como instrumento de progresión en la Rama."},
 };
-
+ 
 // ─── HELPERS ─────────────────────────────────────────────────────────
 function initProg(){const p={};TODAS.forEach(c=>{p[c.id]={};[1,2,3].forEach(n=>{p[c.id][n]={estado:"Sin iniciar",fecha:"",comentario:""};});});return p;}
 function initExp(){const e={};Object.entries(EXPS).forEach(([k,arr])=>{e[k]={};arr.forEach(x=>{e[k][x]={realizada:false,fecha:""};});});return e;}
@@ -147,24 +147,24 @@ function expCount(exp){let t=0,v=0;Object.values(exp||{}).forEach(et=>Object.val
 function ini(n){return n.split(" ").slice(0,2).map(w=>w[0]).join("").toUpperCase();}
 const AVC=[[C.v100,C.v700],["#e8f4e8",C.v800],[C.acL,"#8a5a00"],[C.azB,C.az],["#f0ebe8","#7a3520"],["#eee8f4","#4a2070"]];
 function avc(id){let h=0;for(let i=0;i<id.length;i++)h=id.charCodeAt(i)+((h<<5)-h);return AVC[Math.abs(h)%AVC.length];}
-
+ 
 function mkEd(id,nombre,opts={}){
   const habNivel=opts.habNivel||"";
   const progress=NIVELA_N1_N2.includes(habNivel)?aplicarNivelacion(initProg()):initProg();
   return{id,nombre,fechaIngreso:opts.fechaIngreso||new Date().toISOString().slice(0,10),hab:opts.hab||"",habDet:opts.habDet||"",habNivel,nivelacion:opts.nivelacion||"",notas:opts.notas||"",progress,experiencias:initExp(),expViejo:initExpViejo(),plan:initPlan()};
 }
-
+ 
 // ─── DATOS INICIALES ──────────────────────────────────────────────────
 const buildExpFrom=(exps)=>{const e=initExp();(exps||[]).forEach(({etapa,nombre,fecha,realizada})=>{const MAP={basica:{"A Salvo del Peligro SAAC":"A Salvo del Peligro","Introductoria":"Introductoria"},intermedia:{"Ap. Sistema de Equipos":"Aplicación del Sistema de Equipos en la Rama Scouts","Ap. Marco Simbolico":"Aplicación del Marco Simbólico en la Rama Scouts","Oportunidades de aprendizaje":"Oportunidades de aprendizaje en la Rama Scouts","Ciclo de Programa":"El Ciclo de Programa en la Rama Scouts","Sistema de Progresiones":"Aplicación del Sistema de Progresiones en la Rama Scouts","Org. de act. al aire libre y resp. ambiental":"Organización de actividades al aire libre y responsabilidad ambiental","Gestión de proyectos":"Gestión de proyectos en la Rama Scouts"},avanzada:{"Sistema de equipos - Liderazgo y resol. conflictos":"Sistema de Equipos: Liderazgo y resolución de conflictos","Clima educativo":"El Clima Educativo en la Rama Scouts","Análisis de contexto y adecuación del programa":"Análisis de contexto y adecuación del programa","Emergencias: Respuesta ante eventos no deseados":"Emergencias: Respuesta ante eventos no deseados","Primeros Auxilios emocionales":"Primeros auxilios emocionales"}};const m=MAP[etapa]?.[nombre];if(m&&e[etapa]?.[m]!==undefined)e[etapa][m]={realizada:!!realizada,fecha:fecha||""};});return e;};
 const buildExpViejoFrom=(evs)=>{const e=initExpViejo();const VM={miembro_activo:{"Derechos Asociativos":"Derechos Asociativos"},ayudante_unidad:{"Formación Scout":"Formación Scout","Rol del Educador":"Rol del Educador","Programa de Jóvenes 1":"Programa de Jóvenes 1","Programa de Jóvenes 2":"Programa de Jóvenes 2","Planificación, desarrollo y evaluación de actividades al aire libre":"Planificación, desarrollo y evaluación de actividades al aire libre","Responsabilidades del Educador":"Responsabilidades del Educador","Toma de decisiones y resol. de conflicto":"Toma de decisiones y resolución de conflicto","Primero Auxilios":"Primeros Auxilios","Educador y su Fe 1":"Educador y su Fe 1","Clima Educativo":"Clima Educativo"},jefe_unidad:{"Involucramiento Comunitario":"Involucramiento Comunitario","Acompañamiento":"Acompañamiento","Liderazgo multiplicador":"Liderazgo multiplicador","Gestión Institucional":"Gestión Institucional","Educador y su Fe 2":"Educador y su Fe 2","Herrameintas para la gestión del grupo scout":"Herramientas para la gestión del grupo scout"},jefe_grupo:{"Captación y gestión de adultos":"Captación y gestión de adultos","Gestión de SAAC":"Gestión de SAAC","Relaciones Institucionales":"Relaciones Institucionales"}};(evs||[]).forEach(({etapa,nombre,fecha,realizada})=>{const m=VM[etapa]?.[nombre];if(m&&e[etapa]?.[m]!==undefined)e[etapa][m]={realizada:!!realizada,fecha:fecha||""};});return e;};
-
+ 
 function seedEd(id,nombre,opts={}){
   const ed=mkEd(id,nombre,opts);
   ed.experiencias=buildExpFrom(opts.exps||[]);
   ed.expViejo=buildExpViejoFrom(opts.expsViejo||[]);
   return ed;
 }
-
+ 
 const SEED=[
   seedEd("ed_jazmin","Jazmín M.",{fechaIngreso:"2018-08-11",hab:"Curso de Jefes / Wood Badge",habNivel:"jefe_unidad",nivelacion:"Habilitada como Ayudante de Unidad e inició formación de Jefe/a de Unidad antes del cambio de esquema. N1 y N2 validados por nivelación. Para completar el N3 debe realizar únicamente: «Sistema de Equipos: Liderazgo y resolución de conflictos» y «Primeros auxilios emocionales».",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-25"},{etapa:"intermedia",nombre:"Gestión de proyectos",realizada:true,fecha:"2025-09-28"}],expsViejo:[{etapa:"miembro_activo",nombre:"Derechos Asociativos",realizada:true,fecha:"11/08/2018"},{etapa:"ayudante_unidad",nombre:"Rol del Educador",realizada:true,fecha:"23/09/2018"},{etapa:"ayudante_unidad",nombre:"Programa de Jóvenes 1",realizada:true,fecha:"3/11/2019"},{etapa:"ayudante_unidad",nombre:"Planificación, desarrollo y evaluación de actividades al aire libre",realizada:true,fecha:"13/09/2022"},{etapa:"ayudante_unidad",nombre:"Responsabilidades del Educador",realizada:true,fecha:"15/05/2021"},{etapa:"ayudante_unidad",nombre:"Toma de decisiones y resol. de conflicto",realizada:true,fecha:"13/08/2022"},{etapa:"ayudante_unidad",nombre:"Primero Auxilios",realizada:true,fecha:"08/08/2020"},{etapa:"ayudante_unidad",nombre:"Clima Educativo",realizada:true,fecha:"14/11/2020"},{etapa:"jefe_unidad",nombre:"Involucramiento Comunitario",realizada:true,fecha:"2/9/2023"},{etapa:"jefe_unidad",nombre:"Acompañamiento",realizada:true,fecha:"30/09/2023"},{etapa:"jefe_unidad",nombre:"Educador y su Fe 2",realizada:true,fecha:"18/11/2023"}]}),
   seedEd("ed_francisco","Francisco C.",{fechaIngreso:"2022-08-27",hab:"Curso Básico (sistema anterior)",habNivel:"jefe_unidad",nivelacion:"Habilitado como Ayudante de Unidad. No inició formación de Jefe/a de Unidad. N1 y N2 validados por nivelación. Debe completar el N3 íntegro del nuevo esquema.",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-14"},{etapa:"intermedia",nombre:"Gestión de proyectos",realizada:true,fecha:"2025-09-28"}],expsViejo:[{etapa:"miembro_activo",nombre:"Derechos Asociativos",realizada:true,fecha:""},{etapa:"ayudante_unidad",nombre:"Programa de Jóvenes 1",realizada:true,fecha:"3/6/2023"},{etapa:"ayudante_unidad",nombre:"Programa de Jóvenes 2",realizada:true,fecha:"10/9/2024"},{etapa:"ayudante_unidad",nombre:"Planificación, desarrollo y evaluación de actividades al aire libre",realizada:true,fecha:"1/7/2023"},{etapa:"ayudante_unidad",nombre:"Responsabilidades del Educador",realizada:true,fecha:"27/08/2022"},{etapa:"ayudante_unidad",nombre:"Toma de decisiones y resol. de conflicto",realizada:true,fecha:"23/09/2023"},{etapa:"ayudante_unidad",nombre:"Primero Auxilios",realizada:true,fecha:"24/06/2023"},{etapa:"ayudante_unidad",nombre:"Educador y su Fe 1",realizada:true,fecha:"29/07/2023"}]}),
@@ -175,17 +175,17 @@ const SEED=[
   seedEd("ed_raul","Raúl L.",{fechaIngreso:"2024-01-01"}),
   seedEd("ed_dylan","Dylan",{fechaIngreso:"2023-08-26",hab:"Curso Básico (sistema anterior)",habNivel:"ayudante_unidad",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-16"},{etapa:"basica",nombre:"Introductoria",realizada:true,fecha:"2025-03-04"},{etapa:"intermedia",nombre:"Ap. Sistema de Equipos",realizada:true,fecha:"2025-05-04"},{etapa:"intermedia",nombre:"Ap. Marco Simbolico",realizada:true,fecha:"2025-05-17"},{etapa:"intermedia",nombre:"Ciclo de Programa",realizada:true,fecha:"2025-08-23"},{etapa:"intermedia",nombre:"Sistema de Progresiones",realizada:true,fecha:"2025-09-13"},{etapa:"intermedia",nombre:"Gestión de proyectos",realizada:true,fecha:"2025-09-28"},{etapa:"intermedia",nombre:"Org. de act. al aire libre y resp. ambiental",realizada:false,fecha:"2025-11-08"}],expsViejo:[{etapa:"ayudante_unidad",nombre:"Formación Scout",realizada:true,fecha:"26/8/2023"},{etapa:"ayudante_unidad",nombre:"Rol del Educador",realizada:true,fecha:"16/9/2023"},{etapa:"ayudante_unidad",nombre:"Toma de decisiones y resol. de conflicto",realizada:true,fecha:"25/11/2023"}]}),
 ];
-
+ 
 // ─── GITHUB API ───────────────────────────────────────────────────────
 let _ghSha = null;
-
+ 
 function toBase64(str){
   return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,(_,p)=>String.fromCharCode('0x'+p)));
 }
 function fromBase64(b64){
   return decodeURIComponent(atob(b64).split('').map(c=>'%'+('00'+c.charCodeAt(0).toString(16)).slice(-2)).join(''));
 }
-
+ 
 async function ghGetSha(){
   const r=await fetch(GH_API+"?t="+Date.now(),{headers:{"Authorization":"token "+getToken(),"Accept":"application/vnd.github.v3+json"}});
   if(!r.ok) throw new Error("gh_get_fail: "+r.status);
@@ -193,12 +193,12 @@ async function ghGetSha(){
   _ghSha=j.sha;
   return j;
 }
-
+ 
 async function ghLoad(){
   const j=await ghGetSha();
   return JSON.parse(fromBase64(j.content.replace(/\n/g,"")));
 }
-
+ 
 async function ghSave(data){
   try{ await ghGetSha(); }catch(e){ console.warn("SHA refresh fail:",e); }
   if(!_ghSha) throw new Error("SHA no disponible");
@@ -210,10 +210,10 @@ async function ghSave(data){
   _ghSha=j.content.sha;
   return true;
 }
-
+ 
 // ─── APP ──────────────────────────────────────────────────────────────
 const {useState,useEffect,useCallback,useRef}=React;
-
+ 
 function App(){
   const [eds,setEds]=useState(null);
   const [status,setStatus]=useState("loading");
@@ -221,11 +221,11 @@ function App(){
   const [selEd,setSelEd]=useState(null);
   const [showAdd,setShowAdd]=useState(false);
   const timerRef=useRef(null);
-
+ 
   const [tokenScreen,setTokenScreen]=useState(!getToken());
   const [tokenInput,setTokenInput]=useState("");
   const [tokenError,setTokenError]=useState("");
-
+ 
   const doLoad=async()=>{
     if(!getToken()){setTokenScreen(true);return;}
     setTokenScreen(false);setStatus("loading");
@@ -249,15 +249,15 @@ function App(){
       }
     }
   };
-
+ 
   useEffect(()=>{ doLoad(); },[]);
-
+ 
   const submitToken=async()=>{
     if(!tokenInput.trim()){setTokenError("Ingresá el token.");return;}
     saveToken(tokenInput);setTokenError("");setTokenInput("");
     await doLoad();
   };
-
+ 
   if(tokenScreen) return(
     <div style={{minHeight:"100vh",background:"#f2fbf2",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem"}}>
       <div style={{background:"white",border:"1.5px solid #c2e8c2",borderRadius:16,padding:"2rem",maxWidth:420,width:"100%",boxShadow:"0 4px 24px rgba(0,80,0,0.08)"}}>
@@ -280,7 +280,7 @@ function App(){
       </div>
     </div>
   );
-
+ 
   const persist=useCallback((newEds)=>{
     setEds(newEds);setStatus("saving");
     if(timerRef.current)clearTimeout(timerRef.current);
@@ -289,7 +289,7 @@ function App(){
       catch(e){console.error(e);setStatus("error");}
     },1200);
   },[]);
-
+ 
   if(!eds) return(
     <div style={{display:"flex",alignItems:"center",justifyContent:"center",minHeight:"100vh",flexDirection:"column",gap:12,color:C.gt}}>
       <div style={{fontSize:48}}>⚜️</div>
@@ -297,7 +297,7 @@ function App(){
       <p style={{fontSize:13,color:C.gl}}>Cargando datos…</p>
     </div>
   );
-
+ 
   return(
     <div style={{minHeight:"100vh",background:C.v50}}>
       <Hdr status={status} onHome={()=>{setSelEd(null);setView("dash");}} view={view} onChangeToken={()=>{clearToken();setTokenScreen(true);setTokenInput("");setTokenError("");}}/>
@@ -308,12 +308,12 @@ function App(){
     </div>
   );
 }
-
+ 
 function StatusPill({status}){
   const s={ok:{bg:C.v100,color:C.v700,border:C.v300,txt:"● Sincronizado con GitHub"},saving:{bg:C.azB,color:"#185fa5",border:"#85b7eb",txt:"↑ Guardando…"},error:{bg:C.roB,color:C.ro,border:"#e0a0a0",txt:"✕ Error al guardar"},loading:{bg:C.acL,color:"#8a5a00",border:C.acB,txt:"… Cargando"}}[status]||{};
   return <span style={{fontSize:11,padding:"3px 10px",borderRadius:20,background:s.bg,color:s.color,border:`1px solid ${s.border}`,fontWeight:500}}>{s.txt}</span>;
 }
-
+ 
 function Hdr({status,onHome,view,onChangeToken}){
   return(
     <div style={{background:C.v800,padding:"12px 20px",display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:8,position:"sticky",top:0,zIndex:100}}>
@@ -331,11 +331,11 @@ function Hdr({status,onHome,view,onChangeToken}){
     </div>
   );
 }
-
+ 
 function Dash({eds,onSel,persist,showAdd,setShowAdd}){
   const [fil,setFil]=useState("todos");
   const [form,setForm]=useState({nombre:"",fechaIngreso:"",hab:"",habNivel:"",nivelacion:"",notas:""});
-
+ 
   const add=()=>{
     if(!form.nombre.trim())return;
     const id="ed_"+Date.now();
@@ -347,7 +347,7 @@ function Dash({eds,onSel,persist,showAdd,setShowAdd}){
   const del=id=>{if(window.confirm("¿Eliminás a este educador/a?"))persist(eds.filter(e=>e.id!==id));};
   const tv=eds.reduce((a,ed)=>{let v=0;TODAS.forEach(c=>[1,2,3].forEach(n=>{if(ed.progress?.[c.id]?.[n]?.estado==="Validado")v++;}));return a+v;},0);
   const filtered=fil==="todos"?eds:eds.filter(e=>nivelOk(e.progress)===+fil);
-
+ 
   return(
     <div style={{padding:"1.5rem 1.25rem"}}>
       <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",marginBottom:"1.25rem",flexWrap:"wrap",gap:10}}>
@@ -357,7 +357,7 @@ function Dash({eds,onSel,persist,showAdd,setShowAdd}){
         </div>
         <button className="sb sbp" onClick={()=>setShowAdd(!showAdd)}>+ Agregar educador/a</button>
       </div>
-
+ 
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(130px,1fr))",gap:10,marginBottom:"1.5rem"}}>
         {[{l:"En formación",v:eds.length},{l:"Nivel 1 completo",v:eds.filter(e=>nivelOk(e.progress)>=1).length},{l:"Nivel 2 completo",v:eds.filter(e=>nivelOk(e.progress)>=2).length},{l:"Comp. validadas",v:tv}].map(m=>(
           <div key={m.l} className="mc">
@@ -366,7 +366,7 @@ function Dash({eds,onSel,persist,showAdd,setShowAdd}){
           </div>
         ))}
       </div>
-
+ 
       {showAdd&&(
         <div className="sc fi" style={{marginBottom:"1.25rem",borderColor:C.v400,background:C.v50}}>
           <p style={{fontSize:14,fontWeight:700,margin:"0 0 14px",color:C.v800}}>Nueva persona en formación</p>
@@ -383,7 +383,7 @@ function Dash({eds,onSel,persist,showAdd,setShowAdd}){
           <div style={{display:"flex",gap:8}}><button className="sb sbp" onClick={add}>Guardar</button><button className="sb" onClick={()=>setShowAdd(false)}>Cancelar</button></div>
         </div>
       )}
-
+ 
       <div style={{display:"flex",gap:6,marginBottom:"1rem",flexWrap:"wrap"}}>
         {["todos","0","1","2","3"].map(f=>(
           <button key={f} className="sb" onClick={()=>setFil(f)} style={{fontSize:12,background:fil===f?C.v600:"white",color:fil===f?"white":C.v700,borderColor:fil===f?C.v700:C.v300}}>
@@ -391,7 +391,7 @@ function Dash({eds,onSel,persist,showAdd,setShowAdd}){
           </button>
         ))}
       </div>
-
+ 
       {filtered.length===0?<div style={{textAlign:"center",padding:"3rem 0",color:C.gl}}>No hay educadores en este filtro.</div>
         :<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(270px,1fr))",gap:12}}>
           {filtered.map(ed=><EdCard key={ed.id} ed={ed} onClick={()=>onSel(ed)} onDel={()=>del(ed.id)}/>)}
@@ -399,7 +399,7 @@ function Dash({eds,onSel,persist,showAdd,setShowAdd}){
     </div>
   );
 }
-
+ 
 function EdCard({ed,onClick,onDel}){
   const pc=pct(ed.progress),nv=nivelOk(ed.progress);
   const pe=pctExp(ed.experiencias);const{v:ev,t:et}=expCount(ed.experiencias);
@@ -435,7 +435,7 @@ function EdCard({ed,onClick,onDel}){
     </div>
   );
 }
-
+ 
 function EdView({ed:ep,onBack,onSave}){
   const [ed,setEd]=useState(ep);
   const [tab,setTab]=useState("comp");
@@ -445,7 +445,7 @@ function EdView({ed:ep,onBack,onSave}){
   const [saved,setSaved]=useState(false);
   const [editHab,setEditHab]=useState(false);
   useEffect(()=>{setEd(ep);},[ep]);
-
+ 
   const upd=(path,val)=>{
     setEd(prev=>{const next=JSON.parse(JSON.stringify(prev));let cur=next;const parts=path.split(".");parts.slice(0,-1).forEach(p=>{if(cur[p]===undefined)cur[p]={};cur=cur[p];});cur[parts[parts.length-1]]=val;return next;});setDirty(true);
   };
@@ -457,7 +457,7 @@ function EdView({ed:ep,onBack,onSave}){
   const{v:ev,t:et}=expCount(ed.experiencias);
   const [bg,fg]=avc(ed.id);
   const TABS=[{id:"comp",l:"Competencias"},{id:"exp",l:"Nuevo esquema"},{id:"expViejo",l:"Esquema anterior"},{id:"hab",l:"Nivelación"},{id:"notas",l:"Notas"},{id:"plan",l:"Plan de Desempeño"}];
-
+ 
   return(
     <div style={{padding:"1.25rem"}} className="fi">
       <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:"1.25rem"}}>
@@ -493,18 +493,18 @@ function EdView({ed:ep,onBack,onSave}){
           </div>
         </div>
       </div>
-
+ 
       <div style={{display:"flex",borderBottom:`2px solid ${C.v100}`,marginBottom:"1.25rem",overflowX:"auto"}}>
         {TABS.map(t=><button key={t.id} className={`tab${tab===t.id?" on":""}`} onClick={()=>setTab(t.id)} style={{whiteSpace:"nowrap"}}>{t.l}</button>)}
       </div>
-
+ 
       {tab==="comp"     && <CompTab     ed={ed} nv={nv} setNv={setNv} open={open} setOpen={setOpen} upd={upd}/>}
       {tab==="exp"      && <ExpTab      ed={ed} upd={upd} exps={EXPS} campo="experiencias" etapas={[{k:"basica",l:"Etapa básica",color:C.v700,bg:C.v100},{k:"intermedia",l:"Etapa intermedia",color:C.az,bg:C.azB},{k:"avanzada",l:"Etapa avanzada",color:"#8a5a00",bg:C.acL}]}/>}
       {tab==="expViejo" && <ExpTab      ed={ed} upd={upd} exps={EXPS_VIEJO} campo="expViejo" nota="Registrá aquí las experiencias del viejo esquema de formación. Sirven como referencia para evaluar equivalencias y procesos de nivelación." etapas={[{k:"miembro_activo",l:"Miembro Activo",color:"#4a4a42",bg:"#f1efea"},{k:"ayudante_unidad",l:"Ayudante de Unidad",color:C.v700,bg:C.v100},{k:"jefe_unidad",l:"Jefe/a de Unidad",color:C.az,bg:C.azB},{k:"jefe_grupo",l:"Jefe/a de Grupo",color:"#8a5a00",bg:C.acL}]}/>}
       {tab==="hab"      && <HabTab      ed={ed} upd={upd} updHabNivel={updHabNivel} editHab={editHab} setEditHab={setEditHab}/>}
       {tab==="notas"    && <div><p style={{fontSize:12,color:C.v600,marginBottom:8,fontWeight:600}}>Notas del proceso formativo</p><textarea className="si" rows={10} value={ed.notas||""} onChange={e=>{setEd({...ed,notas:e.target.value});setDirty(true);}} placeholder="Observaciones, acuerdos, próximos pasos…"/></div>}
       {tab==="plan"     && <PlanTab ed={ed} upd={upd}/>}
-
+ 
       <div style={{marginTop:"1.5rem",display:"flex",gap:10,alignItems:"center"}}>
         <button className="sb sbp" onClick={saveNow} disabled={!dirty}>Guardar cambios</button>
         {saved&&<span style={{fontSize:13,color:C.v600,fontWeight:600}}>✓ Guardado — sincronizando con GitHub…</span>}
@@ -512,7 +512,7 @@ function EdView({ed:ep,onBack,onSave}){
     </div>
   );
 }
-
+ 
 function HabTab({ed,upd,updHabNivel,editHab,setEditHab}){
   return(
     <div style={{display:"flex",flexDirection:"column",gap:14}}>
@@ -538,7 +538,7 @@ function HabTab({ed,upd,updHabNivel,editHab,setEditHab}){
     </div>
   );
 }
-
+ 
 function CompTab({ed,nv,setNv,open,setOpen,upd}){
   const cN=n=>{let v=0,t=0;TODAS.forEach(c=>{t++;if(ed.progress?.[c.id]?.[n]?.estado==="Validado")v++;});return{v,t};};
   return(
@@ -566,7 +566,7 @@ function CompTab({ed,nv,setNv,open,setOpen,upd}){
     </div>
   );
 }
-
+ 
 function CRow({c,nv,data,isOpen,onTog,upd}){
   const es=ES[data.estado];const r=RUTA[c.id];
   const esNiv=data.comentario==="Validado por nivelación (esquema anterior)";
@@ -600,7 +600,7 @@ function CRow({c,nv,data,isOpen,onTog,upd}){
     </div>
   );
 }
-
+ 
 function ExpTab({ed,upd,exps,campo,etapas,nota}){
   return(
     <div style={{display:"flex",flexDirection:"column",gap:"1.5rem"}}>
@@ -627,266 +627,235 @@ function ExpTab({ed,upd,exps,campo,etapas,nota}){
     </div>
   );
 }
-
-
+ 
+ 
 // ─── PLAN DE DESEMPEÑO ────────────────────────────────────────────────
-
-function SectionHdr({letter, title, color}) {
-  return (
-    <div style={{background:color||"#252A4F",padding:"8px 14px",borderRadius:8,marginBottom:10,marginTop:16}}>
-      <span style={{fontWeight:700,color:"white",fontSize:13}}>{letter} {title}</span>
-    </div>
-  );
+function PlanSecHdr(props) {
+  return React.createElement('div', {
+    style:{background:props.color||"#252A4F",padding:"8px 14px",borderRadius:8,marginBottom:10,marginTop:16}
+  }, React.createElement('span', {
+    style:{fontWeight:700,color:"white",fontSize:13}
+  }, props.letter+" "+props.title));
 }
-
-function PlanTab({ed, upd}) {
-  const plan = ed.plan || {organismo:"",funcion:"",periodoDesde:"",periodoHasta:"",logrados:[{indicador:"",items:[""]}],aDesarrollar:[{indicador:"",items:[""]}],acuerdos:""};
-  const C2 = "#1a5276";
-  const C3 = "#5a3a0a";
-  const SI = {border:"1.5px solid #c2e8c2",borderRadius:8,padding:"7px 11px",fontSize:13,color:"#1a1a18",width:"100%",boxSizing:"border-box",outline:"none",background:"white"};
-  const LBL = {fontSize:11,color:"#256325",display:"block",marginBottom:4,fontWeight:600};
-
-  function updPlan(path, val) { upd("plan."+path, val); }
-
-  function cloneArr(arr) { return JSON.parse(JSON.stringify(arr||[])); }
-
-  function addLogrado() { updPlan("logrados",[...cloneArr(plan.logrados),{indicador:"",items:[""]}]); }
-  function removeLogrado(i) { const l=cloneArr(plan.logrados).filter((_,idx)=>idx!==i); updPlan("logrados",l.length?l:[{indicador:"",items:[""]}]); }
-  function updLogradoField(i,field,val) { const l=cloneArr(plan.logrados); l[i][field]=val; updPlan("logrados",l); }
-  function addLogradoItem(i) { const l=cloneArr(plan.logrados); l[i].items=[...(l[i].items||[]),""]; updPlan("logrados",l); }
-  function updLogradoItem(i,j,val) { const l=cloneArr(plan.logrados); l[i].items[j]=val; updPlan("logrados",l); }
-  function removeLogradoItem(i,j) { const l=cloneArr(plan.logrados); l[i].items=l[i].items.filter((_,idx)=>idx!==j); if(!l[i].items.length)l[i].items=[""]; updPlan("logrados",l); }
-
-  function addADes() { updPlan("aDesarrollar",[...cloneArr(plan.aDesarrollar),{indicador:"",items:[""]}]); }
-  function removeADes(i) { const a=cloneArr(plan.aDesarrollar).filter((_,idx)=>idx!==i); updPlan("aDesarrollar",a.length?a:[{indicador:"",items:[""]}]); }
-  function updADesField(i,field,val) { const a=cloneArr(plan.aDesarrollar); a[i][field]=val; updPlan("aDesarrollar",a); }
-  function addADesItem(i) { const a=cloneArr(plan.aDesarrollar); a[i].items=[...(a[i].items||[]),""]; updPlan("aDesarrollar",a); }
-  function updADesItem(i,j,val) { const a=cloneArr(plan.aDesarrollar); a[i].items[j]=val; updPlan("aDesarrollar",a); }
-  function removeADesItem(i,j) { const a=cloneArr(plan.aDesarrollar); a[i].items=a[i].items.filter((_,idx)=>idx!==j); if(!a[i].items.length)a[i].items=[""]; updPlan("aDesarrollar",a); }
-
+ 
+function PlanTab(props) {
+  var ed = props.ed;
+  var upd = props.upd;
+  var plan = ed.plan || {organismo:"",funcion:"",periodoDesde:"",periodoHasta:"",logrados:[{indicador:"",items:[""]}],aDesarrollar:[{indicador:"",items:[""]}],acuerdos:""};
+ 
+  function updP(path, val) { upd("plan."+path, val); }
+  function clone(x) { return JSON.parse(JSON.stringify(x||[])); }
+ 
+  function addLogrado() { updP("logrados", clone(plan.logrados).concat([{indicador:"",items:[""]}])); }
+  function removeLogrado(i) { var l=clone(plan.logrados).filter(function(_,idx){return idx!==i;}); updP("logrados",l.length?l:[{indicador:"",items:[""]}]); }
+  function setLogradoField(i,field,val) { var l=clone(plan.logrados); l[i][field]=val; updP("logrados",l); }
+  function addLogradoItem(i) { var l=clone(plan.logrados); l[i].items=(l[i].items||[]).concat([""]); updP("logrados",l); }
+  function setLogradoItem(i,j,val) { var l=clone(plan.logrados); l[i].items[j]=val; updP("logrados",l); }
+  function removeLogradoItem(i,j) { var l=clone(plan.logrados); l[i].items=l[i].items.filter(function(_,idx){return idx!==j;}); if(!l[i].items.length)l[i].items=[""]; updP("logrados",l); }
+ 
+  function addADes() { updP("aDesarrollar", clone(plan.aDesarrollar).concat([{indicador:"",items:[""]}])); }
+  function removeADes(i) { var a=clone(plan.aDesarrollar).filter(function(_,idx){return idx!==i;}); updP("aDesarrollar",a.length?a:[{indicador:"",items:[""]}]); }
+  function setADesField(i,field,val) { var a=clone(plan.aDesarrollar); a[i][field]=val; updP("aDesarrollar",a); }
+  function addADesItem(i) { var a=clone(plan.aDesarrollar); a[i].items=(a[i].items||[]).concat([""]); updP("aDesarrollar",a); }
+  function setADesItem(i,j,val) { var a=clone(plan.aDesarrollar); a[i].items[j]=val; updP("aDesarrollar",a); }
+  function removeADesItem(i,j) { var a=clone(plan.aDesarrollar); a[i].items=a[i].items.filter(function(_,idx){return idx!==j;}); if(!a[i].items.length)a[i].items=[""]; updP("aDesarrollar",a); }
+ 
   function downloadDocx() {
+    var d = window.docx;
+    if (!d) { alert("La librería de Word aún está cargando. Esperá unos segundos e intentá de nuevo."); return; }
     try {
-      const d = window.docx;
-      if (!d) { alert("La librería de Word aún está cargando. Intentá en unos segundos."); return; }
-      const {Document,Packer,Paragraph,TextRun,Table,TableRow,TableCell,BorderStyle,WidthType,ShadingType,AlignmentType,VerticalAlign} = d;
-      const W=9360, HALF=Math.floor(W/2), THIRD=Math.floor(W/3);
-      const brd = {style:BorderStyle.SINGLE,size:4,color:"252A4F"};
-      const brdL = {style:BorderStyle.SINGLE,size:1,color:"BBBBBB"};
-      const brdN = {style:BorderStyle.NONE,size:0,color:"FFFFFF"};
-      const mkBorders = (b) => ({top:b,bottom:b,left:b,right:b});
-
-      function mkCell(text, w, opts) {
-        opts = opts || {};
+      var Document=d.Document, Packer=d.Packer, Paragraph=d.Paragraph, TextRun=d.TextRun;
+      var Table=d.Table, TableRow=d.TableRow, TableCell=d.TableCell;
+      var BorderStyle=d.BorderStyle, WidthType=d.WidthType, ShadingType=d.ShadingType;
+      var AlignmentType=d.AlignmentType, VerticalAlign=d.VerticalAlign;
+      var W=9360, HALF=4680, THIRD=3120;
+      var brdMain = {style:BorderStyle.SINGLE,size:4,color:"2D7A2D"};
+      var brdLight = {style:BorderStyle.SINGLE,size:1,color:"BBBBBB"};
+      function mkBrd(b){return{top:b,bottom:b,left:b,right:b};}
+      function mkCell(text,w,fill,bold,center,brd){
         return new TableCell({
-          borders: mkBorders(opts.brd||brdL),
-          width: {size:w,type:WidthType.DXA},
-          shading: {fill:opts.fill||"FFFFFF",type:ShadingType.CLEAR},
-          verticalAlign: VerticalAlign.CENTER,
-          margins: {top:100,bottom:100,left:140,right:140},
-          columnSpan: opts.span||1,
+          borders:mkBrd(brd||brdLight), width:{size:w,type:WidthType.DXA},
+          shading:{fill:fill||"FFFFFF",type:ShadingType.CLEAR},
+          verticalAlign:VerticalAlign.CENTER,
+          margins:{top:100,bottom:100,left:140,right:140},
           children:[new Paragraph({
-            alignment: opts.center ? AlignmentType.CENTER : AlignmentType.LEFT,
-            children:[new TextRun({text:text||"",font:"Calibri",size:opts.size||22,bold:!!opts.bold,italics:!!opts.italic,color:opts.color||"000000"})]
+            alignment:center?AlignmentType.CENTER:AlignmentType.LEFT,
+            children:[new TextRun({text:text||"",font:"Calibri",size:22,bold:!!bold,color:"000000"})]
           })]
         });
       }
-
-      function sectionHdr(letter, title, fill) {
-        return new Table({width:{size:W,type:WidthType.DXA},columnWidths:[W],rows:[
-          new TableRow({children:[new TableCell({
-            borders:mkBorders(brd),width:{size:W,type:WidthType.DXA},
-            shading:{fill:fill||"252A4F",type:ShadingType.CLEAR},
-            margins:{top:100,bottom:100,left:140,right:140},
+      function mkHdr(letter,title,fill){
+        return new Table({width:{size:W,type:WidthType.DXA},columnWidths:[W],rows:[new TableRow({children:[
+          new TableCell({borders:mkBrd(brdMain),width:{size:W,type:WidthType.DXA},
+            shading:{fill:fill||"252A4F",type:ShadingType.CLEAR},margins:{top:100,bottom:100,left:140,right:140},
             children:[new Paragraph({children:[new TextRun({text:letter+"  "+title,font:"Calibri",size:22,bold:true,color:"FFFFFF"})]})]
-          })]})
-        ]});
+          })
+        ]})]});
       }
-
-      function buildItems(entries) {
-        var rows = [];
-        (entries||[]).forEach(function(entry) {
-          if (entry.indicador) {
-            rows.push(new TableRow({children:[new TableCell({
-              borders:mkBorders(brdL),width:{size:W,type:WidthType.DXA},
-              shading:{fill:"F5F5F5",type:ShadingType.CLEAR},
-              margins:{top:80,bottom:80,left:140,right:140},
+      function mkItems(entries){
+        var rows=[];
+        (entries||[]).forEach(function(entry){
+          if(entry.indicador){
+            rows.push(new TableRow({children:[new TableCell({borders:mkBrd(brdLight),width:{size:W,type:WidthType.DXA},
+              shading:{fill:"F5F5F5",type:ShadingType.CLEAR},margins:{top:80,bottom:80,left:140,right:140},
               children:[new Paragraph({children:[new TextRun({text:entry.indicador,font:"Calibri",size:22,bold:true,italics:true})]})]
             })]}));
           }
-          (entry.items||[]).forEach(function(item) {
-            if (item) {
-              rows.push(new TableRow({children:[new TableCell({
-                borders:mkBorders(brdL),width:{size:W,type:WidthType.DXA},
-                shading:{fill:"FFFFFF",type:ShadingType.CLEAR},
-                margins:{top:60,bottom:60,left:300,right:140},
-                children:[new Paragraph({children:[new TextRun({text:"• "+item,font:"Calibri",size:22,italics:true})]})]
-              })]}));
-            }
+          (entry.items||[]).forEach(function(item){
+            if(item) rows.push(new TableRow({children:[new TableCell({borders:mkBrd(brdLight),width:{size:W,type:WidthType.DXA},
+              shading:{fill:"FFFFFF",type:ShadingType.CLEAR},margins:{top:60,bottom:60,left:300,right:140},
+              children:[new Paragraph({children:[new TextRun({text:"• "+item,font:"Calibri",size:22,italics:true})]})]
+            })]}));
           });
         });
-        if (!rows.length) {
-          rows.push(new TableRow({height:{value:600,rule:"exact"},children:[new TableCell({
-            borders:mkBorders(brdL),width:{size:W,type:WidthType.DXA},
-            shading:{fill:"FFFFFF",type:ShadingType.CLEAR},
-            margins:{top:60,bottom:60,left:140,right:140},
-            children:[new Paragraph({children:[new TextRun({text:"",size:22})]})]
-          })]}));
-        }
+        if(!rows.length) rows.push(new TableRow({height:{value:500,rule:"exact"},children:[new TableCell({
+          borders:mkBrd(brdLight),width:{size:W,type:WidthType.DXA},shading:{fill:"FFFFFF",type:ShadingType.CLEAR},
+          margins:{top:60,bottom:60,left:140,right:140},children:[new Paragraph({children:[new TextRun({text:"",size:22})]})]})]
+        }));
         return new Table({width:{size:W,type:WidthType.DXA},columnWidths:[W],rows:rows});
       }
-
       var sp = new Paragraph({children:[new TextRun({text:"",size:14})]});
-      var periodo = (plan.periodoDesde && plan.periodoHasta) ? ("Desde "+plan.periodoDesde+" hasta "+plan.periodoHasta) : "";
-
+      var periodo = (plan.periodoDesde&&plan.periodoHasta) ? "Desde "+plan.periodoDesde+" hasta "+plan.periodoHasta : "";
       var doc = new Document({
         styles:{default:{document:{run:{font:"Calibri",size:22}}}},
         sections:[{
           properties:{page:{size:{width:11906,height:16838},margin:{top:1000,right:1000,bottom:1000,left:1000}}},
           children:[
             new Table({width:{size:W,type:WidthType.DXA},columnWidths:[W],rows:[new TableRow({children:[
-              new TableCell({borders:mkBorders(brd),width:{size:W,type:WidthType.DXA},
+              new TableCell({borders:mkBrd(brdMain),width:{size:W,type:WidthType.DXA},
                 shading:{fill:"252A4F",type:ShadingType.CLEAR},margins:{top:160,bottom:160,left:140,right:140},
-                children:[new Paragraph({alignment:AlignmentType.CENTER,children:[new TextRun({text:"PLAN DE DESEMPEÑO",font:"Calibri",size:28,bold:true,color:"FFFFFF"})]})
-              ]})
+                children:[new Paragraph({alignment:AlignmentType.CENTER,children:[new TextRun({text:"PLAN DE DESEMPEÑO",font:"Calibri",size:28,bold:true,color:"FFFFFF"})]})]
+              })
             ]}])}),
             sp,
             new Table({width:{size:W,type:WidthType.DXA},columnWidths:[HALF,HALF],rows:[
-              new TableRow({children:[mkCell("NOMBRE Y APELLIDO",HALF,{bold:true,fill:"E8F4E8",brd:brd}),mkCell(ed.nombre||"",HALF,{brd:brd})]}),
-              new TableRow({children:[mkCell("ORGANISMO",HALF,{bold:true,fill:"E8F4E8",brd:brd}),mkCell(plan.organismo||"",HALF,{brd:brd})]}),
-              new TableRow({children:[mkCell("FUNCIÓN",HALF,{bold:true,fill:"E8F4E8",brd:brd}),mkCell(plan.funcion||"",HALF,{brd:brd})]}),
-              new TableRow({children:[mkCell("PERÍODO",HALF,{bold:true,fill:"E8F4E8",brd:brd}),mkCell(periodo,HALF,{brd:brd})]}),
+              new TableRow({children:[mkCell("NOMBRE Y APELLIDO",HALF,"E8F4E8",true,false,brdMain),mkCell(ed.nombre||"",HALF,"FFFFFF",false,false,brdMain)]}),
+              new TableRow({children:[mkCell("ORGANISMO",HALF,"E8F4E8",true,false,brdMain),mkCell(plan.organismo||"",HALF,"FFFFFF",false,false,brdMain)]}),
+              new TableRow({children:[mkCell("FUNCIÓN",HALF,"E8F4E8",true,false,brdMain),mkCell(plan.funcion||"",HALF,"FFFFFF",false,false,brdMain)]}),
+              new TableRow({children:[mkCell("PERÍODO",HALF,"E8F4E8",true,false,brdMain),mkCell(periodo,HALF,"FFFFFF",false,false,brdMain)]}),
             ]}),
             sp,
-            sectionHdr("A)","LOGRADO — Indicadores de competencias adquiridos y evidenciados","2D7A2D"),
-            buildItems(plan.logrados),
+            mkHdr("A)","LOGRADO — Indicadores de competencias adquiridos y evidenciados","2D7A2D"),
+            mkItems(plan.logrados),
             sp,
-            sectionHdr("B)","A DESARROLLAR — Plan de Formación y acciones concretas","1A5276"),
-            buildItems(plan.aDesarrollar),
+            mkHdr("B)","A DESARROLLAR — Plan de Formación y acciones concretas","1A5276"),
+            mkItems(plan.aDesarrollar),
             sp,
-            sectionHdr("C)","ACUERDOS PARTICULARES","5A3A0A"),
-            new Table({width:{size:W,type:WidthType.DXA},columnWidths:[W],rows:[
-              new TableRow({height:{value:1200,rule:"exact"},children:[new TableCell({
-                borders:mkBorders(brdL),width:{size:W,type:WidthType.DXA},
-                shading:{fill:"FFFFFF",type:ShadingType.CLEAR},margins:{top:100,bottom:100,left:140,right:140},
-                children:[new Paragraph({children:[new TextRun({text:plan.acuerdos||"",font:"Calibri",size:22})]})]
-              })]})
-            ]}),
+            mkHdr("C)","ACUERDOS PARTICULARES","5A3A0A"),
+            new Table({width:{size:W,type:WidthType.DXA},columnWidths:[W],rows:[new TableRow({height:{value:1200,rule:"exact"},children:[
+              new TableCell({borders:mkBrd(brdLight),width:{size:W,type:WidthType.DXA},shading:{fill:"FFFFFF",type:ShadingType.CLEAR},
+                margins:{top:100,bottom:100,left:140,right:140},
+                children:[new Paragraph({children:[new TextRun({text:plan.acuerdos||"",font:"Calibri",size:22})]})]})]
+            })]}) ,
             sp,
             new Table({width:{size:W,type:WidthType.DXA},columnWidths:[THIRD,THIRD,THIRD],rows:[
               new TableRow({children:[
-                mkCell("Firma del/la Acompañado/a",THIRD,{bold:true,fill:"E8F4E8",brd:brd,center:true}),
-                mkCell("Firma del/la Acompañante",THIRD,{bold:true,fill:"E8F4E8",brd:brd,center:true}),
-                mkCell("Firma del/la Facilitador/a de Grupo",THIRD,{bold:true,fill:"E8F4E8",brd:brd,center:true}),
+                mkCell("Firma del/la Acompañado/a",THIRD,"E8F4E8",true,true,brdMain),
+                mkCell("Firma del/la Acompañante",THIRD,"E8F4E8",true,true,brdMain),
+                mkCell("Firma del/la Facilitador/a de Grupo",THIRD,"E8F4E8",true,true,brdMain),
               ]}),
               new TableRow({height:{value:1400,rule:"exact"},children:[
-                new TableCell({borders:mkBorders(brdL),width:{size:THIRD,type:WidthType.DXA},shading:{fill:"FFFFFF",type:ShadingType.CLEAR},children:[new Paragraph({children:[new TextRun({text:"",size:22})]})]  }),
-                new TableCell({borders:mkBorders(brdL),width:{size:THIRD,type:WidthType.DXA},shading:{fill:"FFFFFF",type:ShadingType.CLEAR},children:[new Paragraph({children:[new TextRun({text:"",size:22})]})]  }),
-                new TableCell({borders:mkBorders(brdL),width:{size:THIRD,type:WidthType.DXA},shading:{fill:"FFFFFF",type:ShadingType.CLEAR},children:[new Paragraph({children:[new TextRun({text:"",size:22})]})]  }),
+                new TableCell({borders:mkBrd(brdLight),width:{size:THIRD,type:WidthType.DXA},shading:{fill:"FFFFFF",type:ShadingType.CLEAR},children:[new Paragraph({children:[new TextRun({text:"",size:22})]})]  }),
+                new TableCell({borders:mkBrd(brdLight),width:{size:THIRD,type:WidthType.DXA},shading:{fill:"FFFFFF",type:ShadingType.CLEAR},children:[new Paragraph({children:[new TextRun({text:"",size:22})]})]  }),
+                new TableCell({borders:mkBrd(brdLight),width:{size:THIRD,type:WidthType.DXA},shading:{fill:"FFFFFF",type:ShadingType.CLEAR},children:[new Paragraph({children:[new TextRun({text:"",size:22})]})]  }),
               ]})
             ]})
           ]
         }]
       });
-
-      Packer.toBlob(doc).then(function(blob) {
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement("a");
-        a.href = url;
-        a.download = "Plan_Desempeno_" + (ed.nombre||"educador").replace(/\s+/g,"_") + ".docx";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+      Packer.toBlob(doc).then(function(blob){
+        var url=URL.createObjectURL(blob);
+        var a=document.createElement("a");
+        a.href=url;
+        a.download="Plan_Desempeno_"+(ed.nombre||"educador").replace(/\s+/g,"_")+".docx";
+        document.body.appendChild(a);a.click();document.body.removeChild(a);
         URL.revokeObjectURL(url);
       });
     } catch(err) {
-      console.error("Error generando docx:", err);
-      alert("Error al generar el documento: " + err.message);
+      console.error("Error docx:",err);
+      alert("Error al generar: "+err.message);
     }
   }
-
+ 
+  var SI = {border:"1.5px solid #c2e8c2",borderRadius:8,padding:"7px 11px",fontSize:13,color:"#1a1a18",width:"100%",boxSizing:"border-box",outline:"none",background:"white"};
+  var LBL = {fontSize:11,color:"#256325",display:"block",marginBottom:4,fontWeight:600};
+  var LBL2 = {fontSize:11,color:"#1a5276",display:"block",marginBottom:4,fontWeight:600};
+ 
   return (
     <div>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
-        <p style={{fontSize:13,color:"#256325",fontWeight:600,margin:0}}>Plan de Desempeño del Educador/a</p>
+        <p style={{fontSize:13,color:"#256325",fontWeight:600,margin:0}}>Plan de Desempeño</p>
         <button className="sb sbp" onClick={downloadDocx} style={{fontSize:12}}>⬇ Descargar .docx</button>
       </div>
-
-      <div style={{background:"#f2fbf2",border:"1.5px solid #c2e8c2",borderRadius:10,padding:14,marginBottom:4}}>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:10}}>
-          <div><label style={LBL}>Organismo</label><input className="si" value={plan.organismo||""} onChange={function(e){updPlan("organismo",e.target.value);}} placeholder="N° - Nombre del organismo"/></div>
-          <div><label style={LBL}>Función</label><input className="si" value={plan.funcion||""} onChange={function(e){updPlan("funcion",e.target.value);}} placeholder="Ayudante de Unidad / Jefe de Unidad…"/></div>
-          <div><label style={LBL}>Período desde</label><input type="date" className="si" value={plan.periodoDesde||""} onChange={function(e){updPlan("periodoDesde",e.target.value);}}/></div>
-          <div><label style={LBL}>Período hasta</label><input type="date" className="si" value={plan.periodoHasta||""} onChange={function(e){updPlan("periodoHasta",e.target.value);}}/></div>
+ 
+      <div style={{background:"#f2fbf2",border:"1.5px solid #c2e8c2",borderRadius:10,padding:"14px",marginBottom:8}}>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
+          <div><label style={LBL}>Organismo</label><input className="si" value={plan.organismo||""} onChange={function(e){updP("organismo",e.target.value);}} placeholder="N° - Nombre del organismo"/></div>
+          <div><label style={LBL}>Función</label><input className="si" value={plan.funcion||""} onChange={function(e){updP("funcion",e.target.value);}} placeholder="Ej: Ayudante de Unidad"/></div>
+          <div><label style={LBL}>Período desde</label><input type="date" className="si" value={plan.periodoDesde||""} onChange={function(e){updP("periodoDesde",e.target.value);}}/></div>
+          <div><label style={LBL}>Período hasta</label><input type="date" className="si" value={plan.periodoHasta||""} onChange={function(e){updP("periodoHasta",e.target.value);}}/></div>
         </div>
       </div>
-
-      <SectionHdr letter="A)" title="LOGRADO — Indicadores de competencias adquiridos y evidenciados" color="#2d7a2d"/>
+ 
+      <PlanSecHdr letter="A)" title="LOGRADO — Indicadores de competencias adquiridos y evidenciados" color="#2d7a2d"/>
       <p style={{fontSize:11,color:"#5a5a52",marginBottom:10,fontStyle:"italic"}}>Describí cada indicador alcanzado con sus evidencias concretas.</p>
-      {(plan.logrados||[]).map(function(entry,i){
-        return (
-          <div key={i} style={{background:"white",border:"1.5px solid #c2e8c2",borderRadius:8,padding:12,marginBottom:8}}>
-            <div style={{display:"flex",gap:8,marginBottom:8,alignItems:"flex-start"}}>
-              <div style={{flex:1}}>
-                <label style={LBL}>Indicador de competencia alcanzado</label>
-                <input className="si" value={entry.indicador||""} onChange={function(e){updLogradoField(i,"indicador",e.target.value);}} placeholder="Ej: Conoce los elementos del Método Scout…"/>
-              </div>
-              {(plan.logrados||[]).length>1 && <button onClick={function(){removeLogrado(i);}} style={{background:"transparent",border:"none",cursor:"pointer",color:"#c0392b",fontSize:16,paddingTop:20}}>✕</button>}
+      {(plan.logrados||[]).map(function(entry,i){return(
+        <div key={i} style={{background:"white",border:"1.5px solid #c2e8c2",borderRadius:8,padding:"12px",marginBottom:8}}>
+          <div style={{display:"flex",gap:8,marginBottom:8,alignItems:"flex-start"}}>
+            <div style={{flex:1}}>
+              <label style={LBL}>Indicador de competencia alcanzado</label>
+              <input className="si" value={entry.indicador||""} onChange={function(e){setLogradoField(i,"indicador",e.target.value);}} placeholder="Ej: Conoce los elementos del Método Scout…"/>
             </div>
-            <label style={LBL}>Logros y evidencias</label>
-            {(entry.items||[]).map(function(item,j){
-              return (
-                <div key={j} style={{display:"flex",gap:6,marginBottom:5,alignItems:"center"}}>
-                  <span style={{color:"#256325",fontWeight:700,flexShrink:0}}>•</span>
-                  <input className="si" style={{flex:1}} value={item} onChange={function(e){updLogradoItem(i,j,e.target.value);}} placeholder="Logro puntual y evidencia…"/>
-                  {(entry.items||[]).length>1 && <button onClick={function(){removeLogradoItem(i,j);}} style={{background:"transparent",border:"none",cursor:"pointer",color:"#8a8a80",fontSize:14}}>✕</button>}
-                </div>
-              );
-            })}
-            <button onClick={function(){addLogradoItem(i);}} style={{fontSize:11,color:"#256325",background:"transparent",border:"1px dashed #8fd08f",borderRadius:6,padding:"3px 10px",cursor:"pointer",marginTop:4}}>+ Evidencia</button>
+            {(plan.logrados||[]).length>1&&<button onClick={function(){removeLogrado(i);}} style={{background:"transparent",border:"none",cursor:"pointer",color:"#c0392b",fontSize:18,marginTop:18}}>✕</button>}
           </div>
-        );
-      })}
-      <button onClick={addLogrado} style={{fontSize:12,color:"#256325",background:"transparent",border:"1.5px dashed #8fd08f",borderRadius:8,padding:"6px 14px",cursor:"pointer",width:"100%",marginBottom:4}}>+ Indicador logrado</button>
-
-      <SectionHdr letter="B)" title="A DESARROLLAR — Plan de Formación y acciones concretas" color="#1a5276"/>
+          <label style={LBL}>Logros y evidencias</label>
+          {(entry.items||[]).map(function(item,j){return(
+            <div key={j} style={{display:"flex",gap:6,marginBottom:5,alignItems:"center"}}>
+              <span style={{color:"#256325",fontWeight:700,flexShrink:0}}>•</span>
+              <input className="si" style={{flex:1}} value={item} onChange={function(e){setLogradoItem(i,j,e.target.value);}} placeholder="Logro puntual y evidencia…"/>
+              {(entry.items||[]).length>1&&<button onClick={function(){removeLogradoItem(i,j);}} style={{background:"transparent",border:"none",cursor:"pointer",color:"#aaa",fontSize:14}}>✕</button>}
+            </div>
+          );})}
+          <button onClick={function(){addLogradoItem(i);}} style={{fontSize:11,color:"#256325",background:"transparent",border:"1px dashed #8fd08f",borderRadius:6,padding:"3px 10px",cursor:"pointer",marginTop:4}}>+ Evidencia</button>
+        </div>
+      );})}
+      <button onClick={addLogrado} style={{fontSize:12,color:"#256325",background:"transparent",border:"1.5px dashed #8fd08f",borderRadius:8,padding:"6px 14px",cursor:"pointer",width:"100%",marginBottom:8}}>+ Indicador logrado</button>
+ 
+      <PlanSecHdr letter="B)" title="A DESARROLLAR — Plan de Formación y acciones concretas" color="#1a5276"/>
       <p style={{fontSize:11,color:"#5a5a52",marginBottom:10,fontStyle:"italic"}}>Describí cada indicador a desarrollar con la situación actual y acciones concretas.</p>
-      {(plan.aDesarrollar||[]).map(function(entry,i){
-        return (
-          <div key={i} style={{background:"white",border:"1.5px solid #d0e4f0",borderRadius:8,padding:12,marginBottom:8}}>
-            <div style={{display:"flex",gap:8,marginBottom:8,alignItems:"flex-start"}}>
-              <div style={{flex:1}}>
-                <label style={{...LBL,color:"#1a5276"}}>Indicador de competencia a desarrollar</label>
-                <input className="si" value={entry.indicador||""} onChange={function(e){updADesField(i,"indicador",e.target.value);}} placeholder="Ej: Aplica el Ciclo de Programa…"/>
-              </div>
-              {(plan.aDesarrollar||[]).length>1 && <button onClick={function(){removeADes(i);}} style={{background:"transparent",border:"none",cursor:"pointer",color:"#c0392b",fontSize:16,paddingTop:20}}>✕</button>}
+      {(plan.aDesarrollar||[]).map(function(entry,i){return(
+        <div key={i} style={{background:"white",border:"1.5px solid #d0e4f0",borderRadius:8,padding:"12px",marginBottom:8}}>
+          <div style={{display:"flex",gap:8,marginBottom:8,alignItems:"flex-start"}}>
+            <div style={{flex:1}}>
+              <label style={LBL2}>Indicador de competencia a desarrollar</label>
+              <input className="si" value={entry.indicador||""} onChange={function(e){setADesField(i,"indicador",e.target.value);}} placeholder="Ej: Aplica el Ciclo de Programa…"/>
             </div>
-            <label style={{...LBL,color:"#1a5276"}}>Situación actual / acciones concretas</label>
-            {(entry.items||[]).map(function(item,j){
-              return (
-                <div key={j} style={{display:"flex",gap:6,marginBottom:5,alignItems:"center"}}>
-                  <span style={{color:"#1a5276",fontWeight:700,flexShrink:0}}>•</span>
-                  <input className="si" style={{flex:1}} value={item} onChange={function(e){updADesItem(i,j,e.target.value);}} placeholder="Situación / acción concreta / plazo…"/>
-                  {(entry.items||[]).length>1 && <button onClick={function(){removeADesItem(i,j);}} style={{background:"transparent",border:"none",cursor:"pointer",color:"#8a8a80",fontSize:14}}>✕</button>}
-                </div>
-              );
-            })}
-            <button onClick={function(){addADesItem(i);}} style={{fontSize:11,color:"#1a5276",background:"transparent",border:"1px dashed #85b7eb",borderRadius:6,padding:"3px 10px",cursor:"pointer",marginTop:4}}>+ Acción</button>
+            {(plan.aDesarrollar||[]).length>1&&<button onClick={function(){removeADes(i);}} style={{background:"transparent",border:"none",cursor:"pointer",color:"#c0392b",fontSize:18,marginTop:18}}>✕</button>}
           </div>
-        );
-      })}
-      <button onClick={addADesarrollar} style={{fontSize:12,color:"#1a5276",background:"transparent",border:"1.5px dashed #85b7eb",borderRadius:8,padding:"6px 14px",cursor:"pointer",width:"100%",marginBottom:4}}>+ Indicador a desarrollar</button>
-
-      <SectionHdr letter="C)" title="ACUERDOS PARTICULARES" color="#5a3a0a"/>
+          <label style={LBL2}>Situación actual / acciones concretas</label>
+          {(entry.items||[]).map(function(item,j){return(
+            <div key={j} style={{display:"flex",gap:6,marginBottom:5,alignItems:"center"}}>
+              <span style={{color:"#1a5276",fontWeight:700,flexShrink:0}}>•</span>
+              <input className="si" style={{flex:1}} value={item} onChange={function(e){setADesItem(i,j,e.target.value);}} placeholder="Situación / acción concreta / plazo…"/>
+              {(entry.items||[]).length>1&&<button onClick={function(){removeADesItem(i,j);}} style={{background:"transparent",border:"none",cursor:"pointer",color:"#aaa",fontSize:14}}>✕</button>}
+            </div>
+          );})}
+          <button onClick={function(){addADesItem(i);}} style={{fontSize:11,color:"#1a5276",background:"transparent",border:"1px dashed #85b7eb",borderRadius:6,padding:"3px 10px",cursor:"pointer",marginTop:4}}>+ Acción</button>
+        </div>
+      );})}
+      <button onClick={addADesarrollar} style={{fontSize:12,color:"#1a5276",background:"transparent",border:"1.5px dashed #85b7eb",borderRadius:8,padding:"6px 14px",cursor:"pointer",width:"100%",marginBottom:8}}>+ Indicador a desarrollar</button>
+ 
+      <PlanSecHdr letter="C)" title="ACUERDOS PARTICULARES" color="#5a3a0a"/>
       <p style={{fontSize:11,color:"#5a5a52",marginBottom:8,fontStyle:"italic"}}>Tiempos disponibles, fechas de seguimiento, medios de comunicación, etc.</p>
-      <textarea className="si" rows={5} value={plan.acuerdos||""} onChange={function(e){updPlan("acuerdos",e.target.value);}} placeholder="Ej: Reuniones los sábados. Revisiones: 16 de mayo, 1 de agosto, 14 de noviembre…"/>
-
+      <textarea className="si" rows={5} value={plan.acuerdos||""} onChange={function(e){updP("acuerdos",e.target.value);}} placeholder="Ej: Reuniones los sábados. Revisiones: 16 de mayo, 1 de agosto…"/>
+ 
       <div style={{marginTop:14,padding:"10px 14px",background:"#f2fbf2",border:"1px solid #c2e8c2",borderRadius:8,fontSize:11,color:"#256325"}}>
-        Recordá hacer clic en <b>Guardar cambios</b> para registrar el plan. Luego descargalo con ⬇ Descargar .docx.
+        Recordá hacer clic en <b>Guardar cambios</b> para registrar el plan antes de descargarlo.
       </div>
     </div>
   );
 }
-
+ 
 ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
 </script>
 </body>
