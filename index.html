@@ -38,6 +38,813 @@ textarea.si{resize:vertical;line-height:1.6;}
 </head>
 <body>
 <div id="root"></div>
+<script>
+window._downloadPlanDocx = function(ed, plan) {
+  var d = window.docx;
+  if (!d) { alert("La librería de Word aún está cargando. Esperá unos segundos e intentá de nuevo."); return; }
+  try {
+    var Document=d.Document,Packer=d.Packer,Paragraph=d.Paragraph,TextRun=d.TextRun;
+    var Table=d.Table,TableRow=d.TableRow,TableCell=d.TableCell;
+    var BorderStyle=d.BorderStyle,WidthType=d.WidthType,ShadingType=d.ShadingType;
+    var AlignmentType=d.AlignmentType,VerticalAlign=d.VerticalAlign;
+    var W=9360,HALF=4680,THIRD=3120;
+    var bM={style:BorderStyle.SINGLE,size:4,color:"2D7A2D"};
+    var bL={style:BorderStyle.SINGLE,size:1,color:"BBBBBB"};
+    function B(b){return{top:b,bottom:b,left:b,right:b};}
+    function MC(text,w,fill,bold,center,brd){
+      return new TableCell({borders:B(brd||bL),width:{size:w,type:WidthType.DXA},
+        shading:{fill:fill||"FFFFFF",type:ShadingType.CLEAR},
+        verticalAlign:VerticalAlign.CENTER,
+        margins:{top:100,bottom:100,left:140,right:140},
+        children:[new Paragraph({alignment:center?AlignmentType.CENTER:AlignmentType.LEFT,
+          children:[new TextRun({text:text||"",font:"Calibri",size:22,bold:!!bold,color:"000000"})]})]
+      });
+    }
+    function MH(letter,title,fill){
+      return new Table({width:{size:W,type:WidthType.DXA},columnWidths:[W],rows:[new TableRow({children:[
+        new TableCell({borders:B(bM),width:{size:W,type:WidthType.DXA},
+          shading:{fill:fill||"252A4F",type:ShadingType.CLEAR},margins:{top:100,bottom:100,left:140,right:140},
+          children:[new Paragraph({children:[new TextRun({text:letter+"  "+title,font:"Calibri",size:22,bold:true,color:"FFFFFF"})]})]
+        })
+      ]})]});
+    }
+    function MI(entries){
+      var rows=[];
+      (entries||[]).forEach(function(entry){
+        if(entry.indicador) rows.push(new TableRow({children:[new TableCell({borders:B(bL),width:{size:W,type:WidthType.DXA},
+          shading:{fill:"F5F5F5",type:ShadingType.CLEAR},margins:{top:80,bottom:80,left:140,right:140},
+          children:[new Paragraph({children:[new TextRun({text:entry.indicador,font:"Calibri",size:22,bold:true,italics:true})]})
+        ]})]}));
+        (entry.items||[]).forEach(function(item){
+          if(item) rows.push(new TableRow({children:[new TableCell({borders:B(bL),width:{size:W,type:WidthType.DXA},
+            shading:{fill:"FFFFFF",type:ShadingType.CLEAR},margins:{top:60,bottom:60,left:300,right:140},
+            children:[new Paragraph({children:[new TextRun({text:"• "+item,font:"Calibri",size:22,italics:true})]})
+          ]})]}));
+        });
+      });
+      if(!rows.length) rows.push(new TableRow({height:{value:500,rule:"exact"},children:[new TableCell({
+        borders:B(bL),width:{size:W,type:WidthType.DXA},shading:{fill:"FFFFFF",type:ShadingType.CLEAR},
+        margins:{top:60,bottom:60,left:140,right:140},
+        children:[new Paragraph({children:[new TextRun({text:"",size:22})]})
+      ]})]}));
+      return new Table({width:{size:W,type:WidthType.DXA},columnWidths:[W],rows:rows});
+    }
+    var sp=new Paragraph({children:[new TextRun({text:"",size:14})]});
+    var periodo=(plan.periodoDesde&&plan.periodoHasta)?"Desde "+plan.periodoDesde+" hasta "+plan.periodoHasta:"";
+    var doc=new Document({
+      styles:{default:{document:{run:{font:"Calibri",size:22}}}},
+      sections:[{
+        properties:{page:{size:{width:11906,height:16838},margin:{top:1000,right:1000,bottom:1000,left:1000}}},
+        children:[
+          new Table({width:{size:W,type:WidthType.DXA},columnWidths:[W],rows:[new TableRow({children:[new TableCell({borders:B(bM),width:{size:W,type:WidthType.DXA},shading:{fill:"252A4F",type:ShadingType.CLEAR},margins:{top:160,bottom:160,left:140,right:140},children:[new Paragraph({alignment:AlignmentType.CENTER,children:[new TextRun({text:"PLAN DE DESEMPEÑO",font:"Calibri",size:28,bold:true,color:"FFFFFF"})]})]})]}])}),
+          sp,
+          new Table({width:{size:W,type:WidthType.DXA},columnWidths:[HALF,HALF],rows:[new TableRow({children:[MC("NOMBRE Y APELLIDO",HALF,"E8F4E8",true,false,bM),MC(ed.nombre||"",HALF,"FFFFFF",false,false,bM)]}),new TableRow({children:[MC("ORGANISMO",HALF,"E8F4E8",true,false,bM),MC(plan.organismo||"",HALF,"FFFFFF",false,false,bM)]}),new TableRow({children:[MC("FUNCIÓN",HALF,"E8F4E8",true,false,bM),MC(plan.funcion||"",HALF,"FFFFFF",false,false,bM)]}),new TableRow({children:[MC("PERÍODO",HALF,"E8F4E8",true,false,bM),MC(periodo,HALF,"FFFFFF",false,false,bM)]})]}),
+          sp,MH("A)","LOGRADO — Indicadores de competencias adquiridos y evidenciados","2D7A2D"),MI(plan.logrados),
+          sp,MH("B)","A DESARROLLAR — Plan de Formación y acciones concretas","1A5276"),MI(plan.aDesarrollar),
+          sp,MH("C)","ACUERDOS PARTICULARES","5A3A0A"),
+          new Table({width:{size:W,type:WidthType.DXA},columnWidths:[W],rows:[new TableRow({height:{value:1200,rule:"exact"},children:[new TableCell({borders:B(bL),width:{size:W,type:WidthType.DXA},shading:{fill:"FFFFFF",type:ShadingType.CLEAR},margins:{top:100,bottom:100,left:140,right:140},children:[new Paragraph({children:[new TextRun({text:plan.acuerdos||"",font:"Calibri",size:22})]})]})]})]}),
+          sp,
+          new Table({width:{size:W,type:WidthType.DXA},columnWidths:[THIRD,THIRD,THIRD],rows:[new TableRow({children:[MC("Firma del/la Acompañado/a",THIRD,"E8F4E8",true,true,bM),MC("Firma del/la Acompañante",THIRD,"E8F4E8",true,true,bM),MC("Firma del/la Facilitador/a de Grupo",THIRD,"E8F4E8",true,true,bM)]}),new TableRow({height:{value:1400,rule:"exact"},children:[new TableCell({borders:B(bL),width:{size:THIRD,type:WidthType.DXA},shading:{fill:"FFFFFF",type:ShadingType.CLEAR},children:[new Paragraph({children:[new TextRun({text:"",size:22})]})]}),new TableCell({borders:B(bL),width:{size:THIRD,type:WidthType.DXA},shading:{fill:"FFFFFF",type:ShadingType.CLEAR},children:[new Paragraph({children:[new TextRun({text:"",size:22})]})]}),new TableCell({borders:B(bL),width:{size:THIRD,type:WidthType.DXA},shading:{fill:"FFFFFF",type:ShadingType.CLEAR},children:[new Paragraph({children:[new TextRun({text:"",size:22})]})]})]})]})
+        ]
+      }]
+    });
+    Packer.toBlob(doc).then(function(blob){
+      var url=URL.createObjectURL(blob);
+      var a=document.createElement("a");
+      a.href=url; a.download="Plan_Desempeno_"+(ed.nombre||"educador").replace(/\s+/g,"_")+".docx";
+      document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+    });
+  } catch(err){ console.error(err); alert("Error al generar: "+err.message); }
+};
+</script>
+<script type="text/babel" data-presets="react">
+
+// ─── GITHUB CONFIG ────────────────────────────────────────────────────
+const GH_REPO = "unidadscoutpl/scouts-app";
+const GH_FILE = "data.json";
+const GH_API  = `https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`;
+const GH_TOKEN_KEY = "scouts_gh_token";
+function getToken(){ return localStorage.getItem(GH_TOKEN_KEY) || ""; }
+function saveToken(t){ localStorage.setItem(GH_TOKEN_KEY, t.trim()); }
+function clearToken(){ localStorage.removeItem(GH_TOKEN_KEY); }
+
+const C = {
+  v900:"#1a3a1a",v800:"#1e4d1e",v700:"#256325",v600:"#2d7a2d",
+  v500:"#3a9e3a",v400:"#5ab85a",v300:"#8fd08f",v200:"#c2e8c2",
+  v100:"#e0f4e0",v50:"#f2fbf2",
+  ac:"#f5a623",acL:"#fef3dc",acB:"#f0c060",
+  ro:"#c0392b",roB:"#fdf0ee",az:"#1a5276",azB:"#eaf2fb",
+  gt:"#5a5a52",gl:"#8a8a80",
+};
+const bdg = (color,bg,border) => ({fontSize:11,padding:"3px 10px",borderRadius:20,background:bg,color,border:`1px solid ${border}`,fontWeight:500,whiteSpace:"nowrap",display:"inline-block"});
+
+// ─── COMPETENCIAS ─────────────────────────────────────────────────────
+const COMP_ESE = [
+  {id:"orientacion_cambio",        n:"Orientación al cambio"},
+  {id:"trabajo_equipo",            n:"Trabajo en equipo"},
+  {id:"cultura_asociativa",        n:"Cultura asociativa"},
+  {id:"relaciones_interpersonales",n:"Relaciones interpersonales"},
+  {id:"cuidado_integral",          n:"Cuidado integral de las personas"},
+  {id:"metodo_scout",              n:"Método Scout"},
+];
+const COMP_ESP = [
+  {id:"sistema_equipos",            n:"Sistema de Equipos"},
+  {id:"oportunidades_aprendizaje",  n:"Oportunidades de Aprendizaje"},
+  {id:"marco_simbolico",            n:"Marco Simbólico"},
+  {id:"involucramiento_comunitario",n:"Involucramiento Comunitario"},
+  {id:"aire_libre",                 n:"Aire libre y responsabilidad ambiental"},
+  {id:"progresion_personal",        n:"Progresión Personal"},
+];
+const TODAS = [...COMP_ESE, ...COMP_ESP];
+
+const EXPS = {
+  basica:["Introductoria","A Salvo del Peligro"],
+  intermedia:[
+    "Aplicación del Sistema de Equipos en la Rama Scouts",
+    "Aplicación del Marco Simbólico en la Rama Scouts",
+    "Oportunidades de aprendizaje en la Rama Scouts",
+    "El Ciclo de Programa en la Rama Scouts",
+    "Aplicación del Sistema de Progresiones en la Rama Scouts",
+    "Organización de actividades al aire libre y responsabilidad ambiental",
+    "Gestión de proyectos en la Rama Scouts",
+    "La educadora/or y su Fe I",
+  ],
+  avanzada:[
+    "Sistema de Equipos: Liderazgo y resolución de conflictos",
+    "El Clima Educativo en la Rama Scouts",
+    "Análisis de contexto y adecuación del programa",
+    "Emergencias: Respuesta ante eventos no deseados",
+    "Primeros auxilios emocionales",
+    "La educadora/or y su Fe II",
+  ],
+};
+
+const EXPS_VIEJO = {
+  miembro_activo:  ["Derechos Asociativos"],
+  ayudante_unidad: ["Formación Scout","Rol del Educador","Programa de Jóvenes 1","Programa de Jóvenes 2","Planificación, desarrollo y evaluación de actividades al aire libre","Responsabilidades del Educador","Toma de decisiones y resolución de conflicto","Primeros Auxilios","Educador y su Fe 1","Clima Educativo"],
+  jefe_unidad:     ["Involucramiento Comunitario","Acompañamiento","Liderazgo multiplicador","Gestión Institucional","Educador y su Fe 2","Herramientas para la gestión del grupo scout"],
+  jefe_grupo:      ["Captación y gestión de adultos","Gestión de SAAC","Relaciones Institucionales"],
+};
+
+const ESTADOS = ["Sin iniciar","En progreso","Validado"];
+const ES = {
+  "Sin iniciar":{color:C.gl,  bg:"#f5f5f2",border:"#d0d0c8"},
+  "En progreso":{color:"#185fa5",bg:C.azB,  border:"#85b7eb"},
+  "Validado":   {color:C.v700,bg:C.v100,    border:C.v300},
+};
+const HABS = ["Curso Básico (sistema anterior)","Curso de Jefes / Wood Badge","Gilwell (sistema anterior)","Formación equivalente en otra asociación scout","Otra formación previa reconocida"];
+const HAB_NIVELES = [{id:"",label:"Sin habilitación previa"},{id:"miembro_activo",label:"Miembro Activo"},{id:"ayudante_unidad",label:"Ayudante de Unidad"},{id:"jefe_unidad",label:"Jefe/a de Unidad"},{id:"jefe_grupo",label:"Jefe/a de Grupo"}];
+const RECON = [{nivel:1,nombre:"Pin de Educador/a",icon:"📌"},{nivel:2,nombre:"Aro de Gilwell + Nudo Cabeza de Turco",icon:"🪢"},{nivel:3,nombre:"Collar + Pañuelo de Gilwell",icon:"🎗️"}];
+const NIVELA_N1_N2 = ["jefe_unidad","jefe_grupo"];
+
+const RUTA = {
+  orientacion_cambio:{n1:"Analiza el video «Resistencia al cambio», identifica al menos 5 conceptos clave y los reflexiona con su APF. Acepta otras formas de hacer las cosas y mantiene actitud positiva ante cambios.",n2:"Propone iniciativas de mejora a partir de cambios organizacionales. Acompaña a otras/os en procesos de cambio.",n3:"Lidera procesos de cambio en la Unidad. Evalúa resultados e introduce ajustes continuamente.",r1:"Las y los voluntarios reciben asertivamente los cambios de la organización."},
+  trabajo_equipo:{n1:"Lee «Rutas de Aprendizaje en la Rama Scouts», elabora su plan de formación con el APF y participa regularmente en las reuniones del Equipo de Educadoras/es.",n2:"Facilita espacios de trabajo colaborativo. Reconoce y potencia las fortalezas de cada integrante.",n3:"Diseña estrategias para mejorar la dinámica del equipo. Acompaña la incorporación de nuevas/os educadoras/es.",r1:"Las y los voluntarios participan activa y regularmente en el equipo donde se desempeñan."},
+  cultura_asociativa:{n1:"Participa de la Experiencia Introductoria. Lee las características esenciales del Movimiento Scout, los cap. II y III del Reglamento General, y los artículos 17 y 18 del Estatuto.",n2:"Profundiza en la historia y valores del Movimiento. Representa a la organización en espacios externos.",n3:"Fomenta la identidad scout en la Unidad. Articula la misión con la realidad local.",r1:"Las y los voluntarios conocen la estructura del nivel en el que actúan y sus competencias."},
+  relaciones_interpersonales:{n1:"Analiza los videos «Motivación, tolerancia y trabajo en equipo» y «Tu lado positivo», identifica 5 conceptos clave y los reflexiona con su APF.",n2:"Gestiona situaciones de conflicto con asertividad. Promueve un clima positivo en el equipo.",n3:"Desarrolla habilidades de comunicación no violenta. Acompaña a otras/os en la resolución de conflictos.",r1:"Las y los voluntarios son respetuosos con los demás, generando un clima positivo."},
+  cuidado_integral:{n1:"Lee el cap. 10 «El Equipo de Educadoras y Educadores». Participa de «A Salvo del Peligro» (virtual). Conoce el Seguro Asociativo. Reconoce a NNAyJ como sujetos de derechos.",n2:"Lee el «Documento de participación juvenil» y «Lineamiento de Foros». Desarrolla estrategias para la promoción y garantía de derechos.",n3:"Participa de «Primeros auxilios emocionales» y «Emergencias». Evalúa prácticas de seguridad integral biopsicosocial.",r1:"Las y los voluntarios son promotores y garantes de derechos."},
+  metodo_scout:{n1:"Participa de la Experiencia Introductoria. Ve el video «Elementos del Método Scout», relaciona escenas con los elementos y los analiza con su APF.",n2:"Lee el cap. 3 «El Método Scout en la Rama Scouts». Aplica la herramienta Grados de Implementación y propone acciones de mejora.",n3:"Participa de «Análisis de contexto y adecuación del Método». Aplica la herramienta de Evaluación de Clima Educativo.",r1:"Las y los voluntarios conocen los elementos del Método Scout y los observan en la actividad de la Unidad."},
+  sistema_equipos:{n1:"Lee el cap. 4 «El Sistema de Equipos». Participa de un Consejo de Unidad y una Asamblea de Unidad. Lee herramientas de acompañamiento del Consejo de Patrulla.",n2:"Participa de «Aplicación del Sistema de Equipos». Promueve y facilita Consejos de Patrulla. Garantiza la participación joven en órganos de gobierno.",n3:"Participa de «Liderazgo y resolución de conflictos». Diseña estrategias de mejora para el Sistema de Equipos.",r1:"Los Consejos de Patrulla, Consejo de Unidad y Asamblea de Unidad son espacios democráticos con adecuada intervención de los educadores."},
+  oportunidades_aprendizaje:{n1:"Lee el cap. 7 «Oportunidades de Aprendizaje». Organiza juegos, danzas, canciones y técnicas grupales. Observa un día de actividad en otra Unidad Scout.",n2:"Participa del «Ciclo de Programa» y organiza al menos uno. Desarrolla OA D.U.R.A.S.I.L. Facilita Descubiertas y Proyectos.",n3:"Participa de «Gestión de Proyectos». Diseña propuestas innovadoras y evalúa OA junto al equipo.",r1:"Los nuevos integrantes colaboran en elaborar y animar actividades. La Unidad maneja adecuadamente los tiempos de reunión."},
+  marco_simbolico:{n1:"Lee el cap. 5 «El Marco Simbólico». Ayuda a organizar una celebración propia. Participa en una entrega de insignias de etapa o especiales.",n2:"Participa de «Aplicación del Marco Simbólico». Identifica y discute con su APF los elementos del MS. Organiza celebraciones junto a los jóvenes.",n3:"Escucha el podcast sobre problemas en la aplicación del MS. Impulsa reflexión crítica. Diseña actividades de educación en valores.",r1:"La vida de la Unidad Scout se inspira en el Marco Simbólico de la rama."},
+  involucramiento_comunitario:{n1:"Lee «Etapas de la Descubierta» del cap. 7. Participa de una Descubierta junto a una Patrulla y/o Unidad.",n2:"Participa de «Gestión de Proyectos». Organiza una Descubierta en el campo Solidaridad. Orienta y acompaña la realización de un Proyecto.",n3:"Evalúa junto a los jóvenes las acciones de Descubiertas y Proyectos. Promueve actitud ciudadana crítica.",r1:"Las y los jóvenes realizan Descubiertas en su comunidad."},
+  aire_libre:{n1:"Evalúa con su APF los saberes necesarios. Adquiere técnicas de vida al aire libre. Participa al menos de un campamento con la Unidad Scout.",n2:"Participa de «Organización de actividades al aire libre». Aplica campismo de bajo impacto. Planifica al menos dos actividades de más de un día.",n3:"Realiza una Descubierta vinculada a una problemática ambiental. Diseña estrategias para revalorizar la vida al aire libre.",r1:"La Unidad Scout valora y realiza actividades al aire libre según los estándares asociativos."},
+  progresion_personal:{n1:"Lee el cap. 2 «Adolescencias» y el cap. 9 «La Progresión Personal». Mira el video «La historia de Nat». Se familiariza con Mapa de Exploración, Carta de Exploración y Bitácora de Aventura.",n2:"Participa de «Aplicación del Sistema de Progresiones». Presenta las Cartas de Exploración y Bitácoras. Acompaña la evaluación de al menos una Patrulla.",n3:"Apoya la reformulación del Mapa de Exploración de cada Scout. Orienta a un/a Scout como especialista.",r1:"Las y los jóvenes utilizan la Bitácora de Aventura como instrumento de progresión en la Rama."},
+};
+
+// ─── HELPERS ─────────────────────────────────────────────────────────
+function initProg(){const p={};TODAS.forEach(c=>{p[c.id]={};[1,2,3].forEach(n=>{p[c.id][n]={estado:"Sin iniciar",fecha:"",comentario:""};});});return p;}
+function initExp(){const e={};Object.entries(EXPS).forEach(([k,arr])=>{e[k]={};arr.forEach(x=>{e[k][x]={realizada:false,fecha:""};});});return e;}
+function initExpViejo(){const e={};Object.entries(EXPS_VIEJO).forEach(([k,arr])=>{e[k]={};arr.forEach(x=>{e[k][x]={realizada:false,fecha:""};});});return e;}
+function aplicarNivelacion(p){const r=JSON.parse(JSON.stringify(p));TODAS.forEach(c=>[1,2].forEach(n=>{r[c.id][n]={estado:"Validado",fecha:new Date().toISOString().slice(0,10),comentario:"Validado por nivelación (esquema anterior)"};} ));return r;}
+function revertirNivelacion(p){const r=JSON.parse(JSON.stringify(p));TODAS.forEach(c=>[1,2].forEach(n=>{if(r[c.id][n].comentario==="Validado por nivelación (esquema anterior)")r[c.id][n]={estado:"Sin iniciar",fecha:"",comentario:""};} ));return r;}
+function pct(prog){let t=0,v=0;TODAS.forEach(c=>[1,2,3].forEach(n=>{t++;if(prog?.[c.id]?.[n]?.estado==="Validado")v++;}));return t?Math.round((v/t)*100):0;}
+function nivelOk(prog){const ok=n=>TODAS.every(c=>prog?.[c.id]?.[n]?.estado==="Validado");if(ok(3))return 3;if(ok(2))return 2;if(ok(1))return 1;return 0;}
+function pctExp(exp){let t=0,v=0;Object.values(exp||{}).forEach(et=>Object.values(et).forEach(x=>{t++;if(x.realizada)v++;}));return t?Math.round((v/t)*100):0;}
+function expCount(exp){let t=0,v=0;Object.values(exp||{}).forEach(et=>Object.values(et).forEach(x=>{t++;if(x.realizada)v++;}));return{v,t};}
+function ini(n){return n.split(" ").slice(0,2).map(w=>w[0]).join("").toUpperCase();}
+const AVC=[[C.v100,C.v700],["#e8f4e8",C.v800],[C.acL,"#8a5a00"],[C.azB,C.az],["#f0ebe8","#7a3520"],["#eee8f4","#4a2070"]];
+function avc(id){let h=0;for(let i=0;i<id.length;i++)h=id.charCodeAt(i)+((h<<5)-h);return AVC[Math.abs(h)%AVC.length];}
+
+function mkEd(id,nombre,opts={}){
+  const habNivel=opts.habNivel||"";
+  const progress=NIVELA_N1_N2.includes(habNivel)?aplicarNivelacion(initProg()):initProg();
+  return{id,nombre,fechaIngreso:opts.fechaIngreso||new Date().toISOString().slice(0,10),hab:opts.hab||"",habDet:opts.habDet||"",habNivel,nivelacion:opts.nivelacion||"",notas:opts.notas||"",progress,experiencias:initExp(),expViejo:initExpViejo(),plan:initPlan()};
+}
+
+// ─── DATOS INICIALES ──────────────────────────────────────────────────
+const buildExpFrom=(exps)=>{const e=initExp();(exps||[]).forEach(({etapa,nombre,fecha,realizada})=>{const MAP={basica:{"A Salvo del Peligro SAAC":"A Salvo del Peligro","Introductoria":"Introductoria"},intermedia:{"Ap. Sistema de Equipos":"Aplicación del Sistema de Equipos en la Rama Scouts","Ap. Marco Simbolico":"Aplicación del Marco Simbólico en la Rama Scouts","Oportunidades de aprendizaje":"Oportunidades de aprendizaje en la Rama Scouts","Ciclo de Programa":"El Ciclo de Programa en la Rama Scouts","Sistema de Progresiones":"Aplicación del Sistema de Progresiones en la Rama Scouts","Org. de act. al aire libre y resp. ambiental":"Organización de actividades al aire libre y responsabilidad ambiental","Gestión de proyectos":"Gestión de proyectos en la Rama Scouts"},avanzada:{"Sistema de equipos - Liderazgo y resol. conflictos":"Sistema de Equipos: Liderazgo y resolución de conflictos","Clima educativo":"El Clima Educativo en la Rama Scouts","Análisis de contexto y adecuación del programa":"Análisis de contexto y adecuación del programa","Emergencias: Respuesta ante eventos no deseados":"Emergencias: Respuesta ante eventos no deseados","Primeros Auxilios emocionales":"Primeros auxilios emocionales"}};const m=MAP[etapa]?.[nombre];if(m&&e[etapa]?.[m]!==undefined)e[etapa][m]={realizada:!!realizada,fecha:fecha||""};});return e;};
+const buildExpViejoFrom=(evs)=>{const e=initExpViejo();const VM={miembro_activo:{"Derechos Asociativos":"Derechos Asociativos"},ayudante_unidad:{"Formación Scout":"Formación Scout","Rol del Educador":"Rol del Educador","Programa de Jóvenes 1":"Programa de Jóvenes 1","Programa de Jóvenes 2":"Programa de Jóvenes 2","Planificación, desarrollo y evaluación de actividades al aire libre":"Planificación, desarrollo y evaluación de actividades al aire libre","Responsabilidades del Educador":"Responsabilidades del Educador","Toma de decisiones y resol. de conflicto":"Toma de decisiones y resolución de conflicto","Primero Auxilios":"Primeros Auxilios","Educador y su Fe 1":"Educador y su Fe 1","Clima Educativo":"Clima Educativo"},jefe_unidad:{"Involucramiento Comunitario":"Involucramiento Comunitario","Acompañamiento":"Acompañamiento","Liderazgo multiplicador":"Liderazgo multiplicador","Gestión Institucional":"Gestión Institucional","Educador y su Fe 2":"Educador y su Fe 2","Herrameintas para la gestión del grupo scout":"Herramientas para la gestión del grupo scout"},jefe_grupo:{"Captación y gestión de adultos":"Captación y gestión de adultos","Gestión de SAAC":"Gestión de SAAC","Relaciones Institucionales":"Relaciones Institucionales"}};(evs||[]).forEach(({etapa,nombre,fecha,realizada})=>{const m=VM[etapa]?.[nombre];if(m&&e[etapa]?.[m]!==undefined)e[etapa][m]={realizada:!!realizada,fecha:fecha||""};});return e;};
+
+function seedEd(id,nombre,opts={}){
+  const ed=mkEd(id,nombre,opts);
+  ed.experiencias=buildExpFrom(opts.exps||[]);
+  ed.expViejo=buildExpViejoFrom(opts.expsViejo||[]);
+  return ed;
+}
+
+const SEED=[
+  seedEd("ed_jazmin","Jazmín M.",{fechaIngreso:"2018-08-11",hab:"Curso de Jefes / Wood Badge",habNivel:"jefe_unidad",nivelacion:"Habilitada como Ayudante de Unidad e inició formación de Jefe/a de Unidad antes del cambio de esquema. N1 y N2 validados por nivelación. Para completar el N3 debe realizar únicamente: «Sistema de Equipos: Liderazgo y resolución de conflictos» y «Primeros auxilios emocionales».",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-25"},{etapa:"intermedia",nombre:"Gestión de proyectos",realizada:true,fecha:"2025-09-28"}],expsViejo:[{etapa:"miembro_activo",nombre:"Derechos Asociativos",realizada:true,fecha:"11/08/2018"},{etapa:"ayudante_unidad",nombre:"Rol del Educador",realizada:true,fecha:"23/09/2018"},{etapa:"ayudante_unidad",nombre:"Programa de Jóvenes 1",realizada:true,fecha:"3/11/2019"},{etapa:"ayudante_unidad",nombre:"Planificación, desarrollo y evaluación de actividades al aire libre",realizada:true,fecha:"13/09/2022"},{etapa:"ayudante_unidad",nombre:"Responsabilidades del Educador",realizada:true,fecha:"15/05/2021"},{etapa:"ayudante_unidad",nombre:"Toma de decisiones y resol. de conflicto",realizada:true,fecha:"13/08/2022"},{etapa:"ayudante_unidad",nombre:"Primero Auxilios",realizada:true,fecha:"08/08/2020"},{etapa:"ayudante_unidad",nombre:"Clima Educativo",realizada:true,fecha:"14/11/2020"},{etapa:"jefe_unidad",nombre:"Involucramiento Comunitario",realizada:true,fecha:"2/9/2023"},{etapa:"jefe_unidad",nombre:"Acompañamiento",realizada:true,fecha:"30/09/2023"},{etapa:"jefe_unidad",nombre:"Educador y su Fe 2",realizada:true,fecha:"18/11/2023"}]}),
+  seedEd("ed_francisco","Francisco C.",{fechaIngreso:"2022-08-27",hab:"Curso Básico (sistema anterior)",habNivel:"jefe_unidad",nivelacion:"Habilitado como Ayudante de Unidad. No inició formación de Jefe/a de Unidad. N1 y N2 validados por nivelación. Debe completar el N3 íntegro del nuevo esquema.",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-14"},{etapa:"intermedia",nombre:"Gestión de proyectos",realizada:true,fecha:"2025-09-28"}],expsViejo:[{etapa:"miembro_activo",nombre:"Derechos Asociativos",realizada:true,fecha:""},{etapa:"ayudante_unidad",nombre:"Programa de Jóvenes 1",realizada:true,fecha:"3/6/2023"},{etapa:"ayudante_unidad",nombre:"Programa de Jóvenes 2",realizada:true,fecha:"10/9/2024"},{etapa:"ayudante_unidad",nombre:"Planificación, desarrollo y evaluación de actividades al aire libre",realizada:true,fecha:"1/7/2023"},{etapa:"ayudante_unidad",nombre:"Responsabilidades del Educador",realizada:true,fecha:"27/08/2022"},{etapa:"ayudante_unidad",nombre:"Toma de decisiones y resol. de conflicto",realizada:true,fecha:"23/09/2023"},{etapa:"ayudante_unidad",nombre:"Primero Auxilios",realizada:true,fecha:"24/06/2023"},{etapa:"ayudante_unidad",nombre:"Educador y su Fe 1",realizada:true,fecha:"29/07/2023"}]}),
+  seedEd("ed_camila","Camila P.",{fechaIngreso:"2023-08-26",hab:"Curso Básico (sistema anterior)",habNivel:"ayudante_unidad",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-13"},{etapa:"basica",nombre:"Introductoria",realizada:true,fecha:"2025-11-08"}],expsViejo:[{etapa:"ayudante_unidad",nombre:"Formación Scout",realizada:true,fecha:"26/8/2023"},{etapa:"ayudante_unidad",nombre:"Rol del Educador",realizada:true,fecha:"16/9/2023"},{etapa:"ayudante_unidad",nombre:"Toma de decisiones y resol. de conflicto",realizada:true,fecha:"25/11/2023"}]}),
+  seedEd("ed_nahuel","Nahuel O.",{fechaIngreso:"2024-09-06",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-06"},{etapa:"basica",nombre:"Introductoria",realizada:true,fecha:"2025-11-08"}]}),
+  seedEd("ed_gino","Gino D.",{fechaIngreso:"2025-07-02",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2025-07-02"},{etapa:"basica",nombre:"Introductoria",realizada:true,fecha:"2025-11-22"}]}),
+  seedEd("ed_matias_a","Matías A.",{fechaIngreso:"2025-07-01",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2025-07-01"},{etapa:"basica",nombre:"Introductoria",realizada:true,fecha:"2025-11-22"}]}),
+  seedEd("ed_raul","Raúl L.",{fechaIngreso:"2024-01-01"}),
+  seedEd("ed_dylan","Dylan",{fechaIngreso:"2023-08-26",hab:"Curso Básico (sistema anterior)",habNivel:"ayudante_unidad",exps:[{etapa:"basica",nombre:"A Salvo del Peligro SAAC",realizada:true,fecha:"2024-09-16"},{etapa:"basica",nombre:"Introductoria",realizada:true,fecha:"2025-03-04"},{etapa:"intermedia",nombre:"Ap. Sistema de Equipos",realizada:true,fecha:"2025-05-04"},{etapa:"intermedia",nombre:"Ap. Marco Simbolico",realizada:true,fecha:"2025-05-17"},{etapa:"intermedia",nombre:"Ciclo de Programa",realizada:true,fecha:"2025-08-23"},{etapa:"intermedia",nombre:"Sistema de Progresiones",realizada:true,fecha:"2025-09-13"},{etapa:"intermedia",nombre:"Gestión de proyectos",realizada:true,fecha:"2025-09-28"},{etapa:"intermedia",nombre:"Org. de act. al aire libre y resp. ambiental",realizada:false,fecha:"2025-11-08"}],expsViejo:[{etapa:"ayudante_unidad",nombre:"Formación Scout",realizada:true,fecha:"26/8/2023"},{etapa:"ayudante_unidad",nombre:"Rol del Educador",realizada:true,fecha:"16/9/2023"},{etapa:"ayudante_unidad",nombre:"Toma de decisiones y resol. de conflicto",realizada:true,fecha:"25/11/2023"}]}),
+];
+
+// ─── GITHUB API ───────────────────────────────────────────────────────
+let _ghSha = null;
+
+function toBase64(str){
+  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,(_,p)=>String.fromCharCode('0x'+p)));
+}
+function fromBase64(b64){
+  return decodeURIComponent(atob(b64).split('').map(c=>'%'+('00'+c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+}
+
+async function ghGetSha(){
+  const r=await fetch(GH_API+"?t="+Date.now(),{headers:{"Authorization":"token "+getToken(),"Accept":"application/vnd.github.v3+json"}});
+  if(!r.ok) throw new Error("gh_get_fail: "+r.status);
+  const j=await r.json();
+  _ghSha=j.sha;
+  return j;
+}
+
+async function ghLoad(){
+  const j=await ghGetSha();
+  return JSON.parse(fromBase64(j.content.replace(/\n/g,"")));
+}
+
+async function ghSave(data){
+  try{ await ghGetSha(); }catch(e){ console.warn("SHA refresh fail:",e); }
+  if(!_ghSha) throw new Error("SHA no disponible");
+  const content=toBase64(JSON.stringify(data,null,0));
+  const body={message:"Actualizacion "+new Date().toISOString(),content,sha:_ghSha};
+  const res=await fetch(GH_API,{method:"PUT",headers:{"Authorization":"token "+getToken(),"Accept":"application/vnd.github.v3+json","Content-Type":"application/json"},body:JSON.stringify(body)});
+  if(!res.ok){const e=await res.text();throw new Error("gh_save_fail: "+e);}
+  const j=await res.json();
+  _ghSha=j.content.sha;
+  return true;
+}
+
+// ─── APP ──────────────────────────────────────────────────────────────
+const {useState,useEffect,useCallback,useRef}=React;
+
+function App(){
+  const [eds,setEds]=useState(null);
+  const [status,setStatus]=useState("loading");
+  const [view,setView]=useState("dash");
+  const [selEd,setSelEd]=useState(null);
+  const [showAdd,setShowAdd]=useState(false);
+  const timerRef=useRef(null);
+
+  const [tokenScreen,setTokenScreen]=useState(!getToken());
+  const [tokenInput,setTokenInput]=useState("");
+  const [tokenError,setTokenError]=useState("");
+
+  const doLoad=async()=>{
+    if(!getToken()){setTokenScreen(true);return;}
+    setTokenScreen(false);setStatus("loading");
+    try{
+      const data=await ghLoad();
+      if(data?.educadores?.length>0){
+        setEds(data.educadores.map(ed=>({...ed,expViejo:ed.expViejo||initExpViejo(),habNivel:ed.habNivel||"",nivelacion:ed.nivelacion||"",plan:ed.plan||initPlan()})));
+      } else {
+        setEds(SEED);
+        await ghSave({educadores:SEED});
+      }
+      setStatus("ok");
+    }catch(e){
+      console.error("Load error:",e);
+      const msg=e.message||"";
+      if(msg.includes("401")||msg.includes("403")){
+        clearToken();setTokenScreen(true);setTokenError("Token inválido o expirado.");
+      } else {
+        setStatus("error");
+        if(!eds)setEds(SEED);
+      }
+    }
+  };
+
+  useEffect(()=>{ doLoad(); },[]);
+
+  const submitToken=async()=>{
+    if(!tokenInput.trim()){setTokenError("Ingresá el token.");return;}
+    saveToken(tokenInput);setTokenError("");setTokenInput("");
+    await doLoad();
+  };
+
+  if(tokenScreen) return(
+    <div style={{minHeight:"100vh",background:"#f2fbf2",display:"flex",alignItems:"center",justifyContent:"center",padding:"1rem"}}>
+      <div style={{background:"white",border:"1.5px solid #c2e8c2",borderRadius:16,padding:"2rem",maxWidth:420,width:"100%",boxShadow:"0 4px 24px rgba(0,80,0,0.08)"}}>
+        <div style={{textAlign:"center",marginBottom:"1.5rem"}}>
+          <div style={{fontSize:40,marginBottom:8}}>⚜️</div>
+          <h2 style={{fontSize:18,fontWeight:800,color:"#1a3a1a",marginBottom:6,fontFamily:"Nunito,sans-serif"}}>Formación Scouts</h2>
+          <p style={{fontSize:13,color:"#5a5a52",margin:0}}>Ingresá el token de acceso para continuar.</p>
+        </div>
+        <div style={{marginBottom:14}}>
+          <label style={{fontSize:12,color:"#256325",display:"block",marginBottom:5,fontWeight:600}}>Token de GitHub</label>
+          <input style={{border:"1.5px solid #c2e8c2",borderRadius:8,padding:"8px 11px",fontSize:13,width:"100%",boxSizing:"border-box",outline:"none",fontFamily:"monospace"}} type="password" value={tokenInput} onChange={e=>setTokenInput(e.target.value)} placeholder="ghp_..." onKeyDown={e=>e.key==="Enter"&&submitToken()} autoFocus/>
+          <p style={{fontSize:11,color:"#8a8a80",margin:"5px 0 0"}}>Se guarda solo en este navegador. Nunca se sube al repositorio.</p>
+        </div>
+        {tokenError&&<p style={{fontSize:12,color:"#c0392b",marginBottom:10}}>{tokenError}</p>}
+        <button style={{background:"#2d7a2d",color:"white",border:"none",borderRadius:8,padding:"9px",fontSize:14,width:"100%",cursor:"pointer",fontWeight:600}} onClick={submitToken}>Ingresar</button>
+        <div style={{marginTop:14,padding:"10px 12px",background:"#f2fbf2",borderRadius:8,fontSize:12,color:"#5a5a52",lineHeight:1.6}}>
+          <b style={{color:"#256325"}}>¿Dónde obtengo el token?</b><br/>
+          GitHub → foto de perfil → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token → tildá <b>repo</b> → Generate.
+        </div>
+      </div>
+    </div>
+  );
+
+  const persist=useCallback((newEds)=>{
+    setEds(newEds);setStatus("saving");
+    if(timerRef.current)clearTimeout(timerRef.current);
+    timerRef.current=setTimeout(async()=>{
+      try{await ghSave({educadores:newEds});setStatus("ok");}
+      catch(e){console.error(e);setStatus("error");}
+    },1200);
+  },[]);
+
+  if(!eds) return(
+    <div style={{display:"flex",alignItems:"center",justifyContent:"center",minHeight:"100vh",flexDirection:"column",gap:12,color:C.gt}}>
+      <div style={{fontSize:48}}>⚜️</div>
+      <p style={{fontSize:16,fontWeight:700,fontFamily:"'Nunito',sans-serif",color:C.v800}}>Formación Scouts</p>
+      <p style={{fontSize:13,color:C.gl}}>Cargando datos…</p>
+    </div>
+  );
+
+  return(
+    <div style={{minHeight:"100vh",background:C.v50}}>
+      <Hdr status={status} onHome={()=>{setSelEd(null);setView("dash");}} view={view} onChangeToken={()=>{clearToken();setTokenScreen(true);setTokenInput("");setTokenError("");}}/>
+      <div style={{maxWidth:960,margin:"0 auto",padding:"0 0 2rem"}}>
+        {view==="dash"   && <Dash eds={eds} onSel={ed=>{setSelEd(ed);setView("perfil");}} persist={persist} showAdd={showAdd} setShowAdd={setShowAdd}/>}
+        {view==="perfil" && selEd && <EdView ed={selEd} onBack={()=>{setSelEd(null);setView("dash");}} onSave={upd=>{const nl=eds.map(e=>e.id===upd.id?upd:e);persist(nl);setSelEd(upd);}}/>}
+      </div>
+    </div>
+  );
+}
+
+function StatusPill({status}){
+  const s={ok:{bg:C.v100,color:C.v700,border:C.v300,txt:"● Sincronizado con GitHub"},saving:{bg:C.azB,color:"#185fa5",border:"#85b7eb",txt:"↑ Guardando…"},error:{bg:C.roB,color:C.ro,border:"#e0a0a0",txt:"✕ Error al guardar"},loading:{bg:C.acL,color:"#8a5a00",border:C.acB,txt:"… Cargando"}}[status]||{};
+  return <span style={{fontSize:11,padding:"3px 10px",borderRadius:20,background:s.bg,color:s.color,border:`1px solid ${s.border}`,fontWeight:500}}>{s.txt}</span>;
+}
+
+function Hdr({status,onHome,view,onChangeToken}){
+  return(
+    <div style={{background:C.v800,padding:"12px 20px",display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:8,position:"sticky",top:0,zIndex:100}}>
+      <div style={{display:"flex",alignItems:"center",gap:10,cursor:"pointer"}} onClick={onHome}>
+        <span style={{fontSize:22}}>⚜️</span>
+        <div>
+          <div style={{fontSize:15,fontWeight:800,color:"white",fontFamily:"'Nunito',sans-serif"}}>Formación Scouts — Rama Scouts</div>
+          {view!=="dash"&&<div style={{fontSize:11,color:C.v300}}>Perfil de educador/a</div>}
+        </div>
+      </div>
+      <div style={{display:"flex",alignItems:"center",gap:8}}>
+        <StatusPill status={status}/>
+        <button onClick={onChangeToken} title="Cambiar token de acceso" style={{fontSize:11,padding:"3px 8px",borderRadius:12,background:"rgba(255,255,255,0.12)",color:"white",border:"1px solid rgba(255,255,255,0.2)",cursor:"pointer"}}>🔑</button>
+      </div>
+    </div>
+  );
+}
+
+function Dash({eds,onSel,persist,showAdd,setShowAdd}){
+  const [fil,setFil]=useState("todos");
+  const [form,setForm]=useState({nombre:"",fechaIngreso:"",hab:"",habNivel:"",nivelacion:"",notas:""});
+
+  const add=()=>{
+    if(!form.nombre.trim())return;
+    const id="ed_"+Date.now();
+    const baseP=initProg();
+    const progress=NIVELA_N1_N2.includes(form.habNivel)?aplicarNivelacion(baseP):baseP;
+    persist([...eds,{id,nombre:form.nombre.trim(),fechaIngreso:form.fechaIngreso||new Date().toISOString().slice(0,10),hab:form.hab,habNivel:form.habNivel,habDet:"",nivelacion:form.nivelacion,notas:form.notas,progress,experiencias:initExp(),expViejo:initExpViejo(),plan:initPlan()}]);
+    setForm({nombre:"",fechaIngreso:"",hab:"",habNivel:"",nivelacion:"",notas:""});setShowAdd(false);
+  };
+  const del=id=>{if(window.confirm("¿Eliminás a este educador/a?"))persist(eds.filter(e=>e.id!==id));};
+  const tv=eds.reduce((a,ed)=>{let v=0;TODAS.forEach(c=>[1,2,3].forEach(n=>{if(ed.progress?.[c.id]?.[n]?.estado==="Validado")v++;}));return a+v;},0);
+  const filtered=fil==="todos"?eds:eds.filter(e=>nivelOk(e.progress)===+fil);
+
+  return(
+    <div style={{padding:"1.5rem 1.25rem"}}>
+      <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",marginBottom:"1.25rem",flexWrap:"wrap",gap:10}}>
+        <div>
+          <h2 style={{fontSize:20,fontWeight:800,margin:"0 0 3px",color:C.v900}}>Equipo en formación</h2>
+          <p style={{fontSize:13,color:C.gt,margin:0}}>{eds.length} educadoras/es · Asesor US: Matías Porral</p>
+        </div>
+        <button className="sb sbp" onClick={()=>setShowAdd(!showAdd)}>+ Agregar educador/a</button>
+      </div>
+
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(130px,1fr))",gap:10,marginBottom:"1.5rem"}}>
+        {[{l:"En formación",v:eds.length},{l:"Nivel 1 completo",v:eds.filter(e=>nivelOk(e.progress)>=1).length},{l:"Nivel 2 completo",v:eds.filter(e=>nivelOk(e.progress)>=2).length},{l:"Comp. validadas",v:tv}].map(m=>(
+          <div key={m.l} className="mc">
+            <p style={{fontSize:10,color:C.v600,margin:"0 0 4px",fontWeight:700,textTransform:"uppercase",letterSpacing:".05em"}}>{m.l}</p>
+            <p style={{fontSize:26,fontWeight:800,margin:0,color:C.v800,fontFamily:"'Nunito',sans-serif"}}>{m.v}</p>
+          </div>
+        ))}
+      </div>
+
+      {showAdd&&(
+        <div className="sc fi" style={{marginBottom:"1.25rem",borderColor:C.v400,background:C.v50}}>
+          <p style={{fontSize:14,fontWeight:700,margin:"0 0 14px",color:C.v800}}>Nueva persona en formación</p>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:10}}>
+            <div><label style={{fontSize:11,color:C.v700,display:"block",marginBottom:4,fontWeight:600}}>Nombre completo *</label><input className="si" value={form.nombre} onChange={e=>setForm({...form,nombre:e.target.value})} placeholder="Ej: Ana García"/></div>
+            <div><label style={{fontSize:11,color:C.v700,display:"block",marginBottom:4,fontWeight:600}}>Fecha de ingreso</label><input type="date" className="si" value={form.fechaIngreso} onChange={e=>setForm({...form,fechaIngreso:e.target.value})}/></div>
+            <div><label style={{fontSize:11,color:C.v700,display:"block",marginBottom:4,fontWeight:600}}>Habilitación previa</label>
+              <select className="si" value={form.hab} onChange={e=>setForm({...form,hab:e.target.value})}><option value="">Sin habilitación previa</option>{HABS.map(h=><option key={h}>{h}</option>)}</select></div>
+            <div><label style={{fontSize:11,color:C.v700,display:"block",marginBottom:4,fontWeight:600}}>Nivel alcanzado</label>
+              <select className="si" value={form.habNivel} onChange={e=>setForm({...form,habNivel:e.target.value})}>{HAB_NIVELES.map(h=><option key={h.id} value={h.id}>{h.label}</option>)}</select></div>
+          </div>
+          {NIVELA_N1_N2.includes(form.habNivel)&&<div style={{marginBottom:10,padding:"8px 10px",background:"#fff3cd",border:"1px solid #ffc107",borderRadius:8,fontSize:12,color:"#664d03"}}>⚠ N1 y N2 se marcarán automáticamente como validados por nivelación.</div>}
+          <div style={{marginBottom:10}}><label style={{fontSize:11,color:C.v700,display:"block",marginBottom:4,fontWeight:600}}>Nota de nivelación</label><textarea className="si" rows={2} value={form.nivelacion} onChange={e=>setForm({...form,nivelacion:e.target.value})} placeholder="Qué experiencias debe completar…"/></div>
+          <div style={{display:"flex",gap:8}}><button className="sb sbp" onClick={add}>Guardar</button><button className="sb" onClick={()=>setShowAdd(false)}>Cancelar</button></div>
+        </div>
+      )}
+
+      <div style={{display:"flex",gap:6,marginBottom:"1rem",flexWrap:"wrap"}}>
+        {["todos","0","1","2","3"].map(f=>(
+          <button key={f} className="sb" onClick={()=>setFil(f)} style={{fontSize:12,background:fil===f?C.v600:"white",color:fil===f?"white":C.v700,borderColor:fil===f?C.v700:C.v300}}>
+            {f==="todos"?"Todos":f==="0"?"Sin nivel":`Nivel ${f}`}
+          </button>
+        ))}
+      </div>
+
+      {filtered.length===0?<div style={{textAlign:"center",padding:"3rem 0",color:C.gl}}>No hay educadores en este filtro.</div>
+        :<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(270px,1fr))",gap:12}}>
+          {filtered.map(ed=><EdCard key={ed.id} ed={ed} onClick={()=>onSel(ed)} onDel={()=>del(ed.id)}/>)}
+        </div>}
+    </div>
+  );
+}
+
+function EdCard({ed,onClick,onDel}){
+  const pc=pct(ed.progress),nv=nivelOk(ed.progress);
+  const pe=pctExp(ed.experiencias);const{v:ev,t:et}=expCount(ed.experiencias);
+  const [bg,fg]=avc(ed.id);
+  return(
+    <div className="sc" style={{cursor:"pointer",transition:"all .15s",position:"relative"}}
+      onMouseEnter={e=>{e.currentTarget.style.borderColor=C.v400;e.currentTarget.style.boxShadow=`0 4px 14px ${C.v100}`;}}
+      onMouseLeave={e=>{e.currentTarget.style.borderColor=C.v200;e.currentTarget.style.boxShadow="none";}}>
+      <div onClick={onClick}>
+        <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:10}}>
+          <div style={{width:42,height:42,borderRadius:"50%",background:bg,color:fg,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:800,fontSize:14,flexShrink:0}}>{ini(ed.nombre)}</div>
+          <div style={{flex:1,minWidth:0}}>
+            <p style={{fontWeight:700,fontSize:14,margin:"0 0 2px",color:C.v900,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>{ed.nombre}</p>
+            <div style={{display:"flex",gap:6,alignItems:"center"}}>
+              <span style={{fontSize:11,color:C.gt}}>{nv===0?"Sin nivel":`Nivel ${nv} completo`}</span>
+              {NIVELA_N1_N2.includes(ed.habNivel)&&<span style={{fontSize:10,padding:"1px 6px",borderRadius:10,background:"#fff3cd",color:"#664d03",border:"1px solid #ffc107",fontWeight:600}}>nivelado</span>}
+            </div>
+          </div>
+        </div>
+        {ed.hab&&<div style={{marginBottom:8,padding:"3px 9px",background:C.acL,border:`1px solid ${C.acB}`,borderRadius:6,fontSize:11,color:"#7a5000",fontWeight:500}}>🏅 {ed.hab}{ed.habNivel?" — "+HAB_NIVELES.find(h=>h.id===ed.habNivel)?.label:""}</div>}
+        {ed.nivelacion&&<div style={{marginBottom:8,padding:"3px 9px",background:"#fff3cd",border:"1px solid #ffc107",borderRadius:6,fontSize:11,color:"#664d03",fontWeight:500}}>⚠ Nivelación activa</div>}
+        <div style={{marginBottom:6}}>
+          <div style={{display:"flex",justifyContent:"space-between",fontSize:10,color:C.gl,marginBottom:3}}><span style={{fontWeight:600,color:C.v600}}>Competencias</span><span>{pc}%</span></div>
+          <div className="pb"><div className="pf" style={{width:`${pc}%`,background:pc===100?C.v500:pc>50?C.v400:C.ac}}/></div>
+        </div>
+        <div>
+          <div style={{display:"flex",justifyContent:"space-between",fontSize:10,color:C.gl,marginBottom:3}}><span style={{fontWeight:600,color:"#1a5276"}}>Experiencias</span><span>{ev}/{et}</span></div>
+          <div style={{height:5,borderRadius:3,background:"#d0e4f0",overflow:"hidden"}}><div style={{height:"100%",width:`${pe}%`,background:pe===100?C.v500:"#6db3d4",borderRadius:3,transition:"width .4s"}}/></div>
+        </div>
+        <div style={{textAlign:"right",fontSize:10,color:C.gl,marginTop:5}}>{ed.fechaIngreso?`Desde ${ed.fechaIngreso}`:""}</div>
+      </div>
+      <button onClick={e=>{e.stopPropagation();onDel();}} style={{position:"absolute",top:10,right:10,background:"transparent",border:"none",cursor:"pointer",fontSize:14,color:C.gl,padding:4}} title="Eliminar">✕</button>
+    </div>
+  );
+}
+
+function EdView({ed:ep,onBack,onSave}){
+  const [ed,setEd]=useState(ep);
+  const [tab,setTab]=useState("comp");
+  const [nv,setNv]=useState(()=>{const n=nivelOk(ep.progress);return n===3?3:n+1||1;});
+  const [open,setOpen]=useState(null);
+  const [dirty,setDirty]=useState(false);
+  const [saved,setSaved]=useState(false);
+  const [editHab,setEditHab]=useState(false);
+  useEffect(()=>{setEd(ep);},[ep]);
+
+  const upd=(path,val)=>{
+    setEd(prev=>{const next=JSON.parse(JSON.stringify(prev));let cur=next;const parts=path.split(".");parts.slice(0,-1).forEach(p=>{if(cur[p]===undefined)cur[p]={};cur=cur[p];});cur[parts[parts.length-1]]=val;return next;});setDirty(true);
+  };
+  const updHabNivel=nv=>{
+    setEd(prev=>{const next=JSON.parse(JSON.stringify(prev));const era=NIVELA_N1_N2.includes(prev.habNivel),sera=NIVELA_N1_N2.includes(nv);next.habNivel=nv;if(!era&&sera)next.progress=aplicarNivelacion(next.progress);if(era&&!sera)next.progress=revertirNivelacion(next.progress);return next;});setDirty(true);
+  };
+  const saveNow=()=>{onSave(ed);setSaved(true);setDirty(false);setTimeout(()=>setSaved(false),2500);};
+  const nivel=nivelOk(ed.progress),pc=pct(ed.progress),pe=pctExp(ed.experiencias);
+  const{v:ev,t:et}=expCount(ed.experiencias);
+  const [bg,fg]=avc(ed.id);
+  const TABS=[{id:"comp",l:"Competencias"},{id:"exp",l:"Nuevo esquema"},{id:"expViejo",l:"Esquema anterior"},{id:"hab",l:"Nivelación"},{id:"notas",l:"Notas"},{id:"plan",l:"Plan de Desempeño"}];
+
+  return(
+    <div style={{padding:"1.25rem"}} className="fi">
+      <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:"1.25rem"}}>
+        <button className="sb" onClick={onBack}>← Volver</button>
+      </div>
+      <div className="sc" style={{marginBottom:"1.25rem",borderColor:C.v300,background:`linear-gradient(135deg,${C.v50} 0%,white 100%)`}}>
+        <div style={{display:"flex",alignItems:"flex-start",gap:14,flexWrap:"wrap"}}>
+          <div style={{width:54,height:54,borderRadius:"50%",background:bg,color:fg,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:800,fontSize:18,flexShrink:0,border:`2.5px solid ${C.v300}`}}>{ini(ed.nombre)}</div>
+          <div style={{flex:1}}>
+            <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:4,flexWrap:"wrap"}}>
+              <h2 style={{fontSize:18,fontWeight:800,margin:0,color:C.v900}}>{ed.nombre}</h2>
+              <span style={{fontSize:12,color:C.gl}}>Asesor US: Matías Porral</span>
+            </div>
+            <div style={{display:"flex",gap:8,flexWrap:"wrap",marginBottom:6}}>
+              <span style={bdg(C.v700,C.v100,C.v300)}>{nivel===0?"Sin nivel completado":`Nivel ${nivel} completo`}</span>
+              {RECON.filter(r=>r.nivel<=nivel).map(r=><span key={r.nivel} style={bdg("#7a5000",C.acL,C.acB)}>{r.icon} {r.nombre}</span>)}
+              {NIVELA_N1_N2.includes(ed.habNivel)&&<span style={bdg("#664d03","#fff3cd","#ffc107")}>⚠ Nivelado</span>}
+            </div>
+            {ed.hab&&<div style={{marginBottom:4}}><span style={bdg("#7a5000",C.acL,C.acB)}>🏅 {ed.hab}{ed.habNivel?" — "+HAB_NIVELES.find(h=>h.id===ed.habNivel)?.label:""}</span></div>}
+            {ed.nivelacion&&<div style={{marginTop:6,padding:"6px 10px",background:"#fff3cd",border:"1px solid #ffc107",borderRadius:8,fontSize:12,color:"#664d03",lineHeight:1.5}}><b>⚠ </b>{ed.nivelacion}</div>}
+          </div>
+          <div style={{textAlign:"right",flexShrink:0,minWidth:90}}>
+            <div style={{marginBottom:8}}>
+              <p style={{fontSize:10,color:C.v600,margin:"0 0 2px",fontWeight:700,textTransform:"uppercase"}}>Competencias</p>
+              <p style={{fontSize:22,fontWeight:800,margin:"0 0 2px",color:C.v700}}>{pc}%</p>
+              <div className="pb" style={{width:80}}><div className="pf" style={{width:`${pc}%`,background:C.v400}}/></div>
+            </div>
+            <div>
+              <p style={{fontSize:10,color:"#1a5276",margin:"0 0 2px",fontWeight:700,textTransform:"uppercase"}}>Experiencias</p>
+              <p style={{fontSize:18,fontWeight:800,margin:"0 0 2px",color:"#1a5276"}}>{ev}/{et}</p>
+              <div style={{height:4,borderRadius:2,background:"#d0e4f0",width:80,overflow:"hidden"}}><div style={{height:"100%",width:`${pe}%`,background:"#6db3d4"}}/></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style={{display:"flex",borderBottom:`2px solid ${C.v100}`,marginBottom:"1.25rem",overflowX:"auto"}}>
+        {TABS.map(t=><button key={t.id} className={`tab${tab===t.id?" on":""}`} onClick={()=>setTab(t.id)} style={{whiteSpace:"nowrap"}}>{t.l}</button>)}
+      </div>
+
+      {tab==="comp"     && <CompTab     ed={ed} nv={nv} setNv={setNv} open={open} setOpen={setOpen} upd={upd}/>}
+      {tab==="exp"      && <ExpTab      ed={ed} upd={upd} exps={EXPS} campo="experiencias" etapas={[{k:"basica",l:"Etapa básica",color:C.v700,bg:C.v100},{k:"intermedia",l:"Etapa intermedia",color:C.az,bg:C.azB},{k:"avanzada",l:"Etapa avanzada",color:"#8a5a00",bg:C.acL}]}/>}
+      {tab==="expViejo" && <ExpTab      ed={ed} upd={upd} exps={EXPS_VIEJO} campo="expViejo" nota="Registrá aquí las experiencias del viejo esquema de formación. Sirven como referencia para evaluar equivalencias y procesos de nivelación." etapas={[{k:"miembro_activo",l:"Miembro Activo",color:"#4a4a42",bg:"#f1efea"},{k:"ayudante_unidad",l:"Ayudante de Unidad",color:C.v700,bg:C.v100},{k:"jefe_unidad",l:"Jefe/a de Unidad",color:C.az,bg:C.azB},{k:"jefe_grupo",l:"Jefe/a de Grupo",color:"#8a5a00",bg:C.acL}]}/>}
+      {tab==="hab"      && <HabTab      ed={ed} upd={upd} updHabNivel={updHabNivel} editHab={editHab} setEditHab={setEditHab}/>}
+      {tab==="notas"    && <div><p style={{fontSize:12,color:C.v600,marginBottom:8,fontWeight:600}}>Notas del proceso formativo</p><textarea className="si" rows={10} value={ed.notas||""} onChange={e=>{setEd({...ed,notas:e.target.value});setDirty(true);}} placeholder="Observaciones, acuerdos, próximos pasos…"/></div>}
+      {tab==="plan"     && <PlanTab ed={ed} upd={upd}/>}
+
+      <div style={{marginTop:"1.5rem",display:"flex",gap:10,alignItems:"center"}}>
+        <button className="sb sbp" onClick={saveNow} disabled={!dirty}>Guardar cambios</button>
+        {saved&&<span style={{fontSize:13,color:C.v600,fontWeight:600}}>✓ Guardado — sincronizando con GitHub…</span>}
+      </div>
+    </div>
+  );
+}
+
+function HabTab({ed,upd,updHabNivel,editHab,setEditHab}){
+  return(
+    <div style={{display:"flex",flexDirection:"column",gap:14}}>
+      {ed.nivelacion&&<div style={{padding:"10px 14px",background:"#fff3cd",border:"1px solid #ffc107",borderRadius:10,fontSize:13,color:"#664d03",lineHeight:1.65}}><p style={{fontWeight:700,margin:"0 0 4px",fontSize:12,textTransform:"uppercase"}}>⚠ Proceso de nivelación</p><p style={{margin:0}}>{ed.nivelacion}</p></div>}
+      <div className="sc" style={{borderColor:C.acB,background:C.acL}}>
+        <p style={{fontSize:12,fontWeight:700,color:"#8a5a00",margin:"0 0 10px",textTransform:"uppercase"}}>🏅 Habilitación del sistema anterior</p>
+        {ed.hab?<div>
+          <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:8,flexWrap:"wrap"}}>
+            <span style={bdg("#7a5000",C.acL,C.acB)}>{ed.hab}</span>
+            {ed.habNivel&&<span style={bdg("#7a5000",C.acL,C.acB)}>{HAB_NIVELES.find(h=>h.id===ed.habNivel)?.label}</span>}
+            <button className="sb" style={{fontSize:11,padding:"2px 8px"}} onClick={()=>setEditHab(!editHab)}>✏️ Editar</button>
+          </div>
+          {ed.habDet&&<p style={{fontSize:12,color:"#7a5000",margin:"8px 0 0",lineHeight:1.7}}>{ed.habDet}</p>}
+        </div>:<button className="sb" style={{fontSize:12}} onClick={()=>setEditHab(!editHab)}>+ Registrar habilitación previa</button>}
+        {editHab&&<div style={{marginTop:12,display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
+          <div><label style={{fontSize:11,color:"#8a5a00",display:"block",marginBottom:4,fontWeight:600}}>Tipo</label><select className="si" value={ed.hab||""} onChange={e=>upd("hab",e.target.value)}><option value="">Sin habilitación</option>{HABS.map(h=><option key={h}>{h}</option>)}</select></div>
+          <div><label style={{fontSize:11,color:"#8a5a00",display:"block",marginBottom:4,fontWeight:600}}>Nivel alcanzado</label><select className="si" value={ed.habNivel||""} onChange={e=>updHabNivel(e.target.value)}>{HAB_NIVELES.map(h=><option key={h.id} value={h.id}>{h.label}</option>)}</select></div>
+          {NIVELA_N1_N2.includes(ed.habNivel)&&<div style={{gridColumn:"1/-1",padding:"6px 10px",background:"#fff3cd",border:"1px solid #ffc107",borderRadius:8,fontSize:12,color:"#664d03"}}>⚠ Nivel Jefe/a de Unidad o superior → N1 y N2 marcados como validados por nivelación.</div>}
+          <div style={{gridColumn:"1/-1"}}><label style={{fontSize:11,color:"#8a5a00",display:"block",marginBottom:4,fontWeight:600}}>Nota de nivelación</label><textarea className="si" rows={3} value={ed.nivelacion||""} onChange={e=>upd("nivelacion",e.target.value)} placeholder="Qué experiencias del nuevo esquema le corresponde hacer…"/></div>
+        </div>}
+      </div>
+      <p style={{fontSize:12,color:C.gl,fontStyle:"italic"}}>Al asignar Jefe/a de Unidad o superior, el sistema aplica automáticamente la nivelación validando N1 y N2.</p>
+    </div>
+  );
+}
+
+function CompTab({ed,nv,setNv,open,setOpen,upd}){
+  const cN=n=>{let v=0,t=0;TODAS.forEach(c=>{t++;if(ed.progress?.[c.id]?.[n]?.estado==="Validado")v++;});return{v,t};};
+  return(
+    <div>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:8,marginBottom:"1.25rem"}}>
+        {[{n:1,l:"Nivel 1 — Básico",s:"Etapa básica"},{n:2,l:"Nivel 2 — Intermedio",s:"Etapa intermedia"},{n:3,l:"Nivel 3 — Avanzado",s:"Etapa avanzada"}].map(({n,l,s})=>{
+          const{v,t}=cN(n);const act=nv===n,comp=v===t;
+          return<button key={n} onClick={()=>setNv(n)} style={{padding:"10px 8px",border:`2px solid ${act?C.v600:comp?C.v400:C.v200}`,borderRadius:10,background:act?C.v600:comp?C.v50:"white",cursor:"pointer",textAlign:"left",transition:"all .15s",outline:"none"}}>
+            <p style={{fontSize:12,fontWeight:700,margin:"0 0 1px",color:act?"white":C.v800}}>{l}{comp&&!act?" ✓":""}</p>
+            <p style={{fontSize:11,margin:"0 0 6px",color:act?C.v200:C.gl}}>{s}</p>
+            <div style={{height:3,borderRadius:2,background:act?"rgba(255,255,255,.25)":C.v100,overflow:"hidden"}}><div style={{height:"100%",width:`${Math.round((v/t)*100)}%`,background:act?C.ac:C.v400}}/></div>
+            <p style={{fontSize:11,margin:"4px 0 0",color:act?C.v200:C.gl}}>{v}/{t} validadas</p>
+          </button>;
+        })}
+      </div>
+      {[["esenciales",COMP_ESE],["especificas",COMP_ESP]].map(([tipo,comps])=>(
+        <div key={tipo} style={{marginBottom:"1.5rem"}}>
+          <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:10}}>
+            <div style={{height:2,width:18,background:tipo==="esenciales"?C.v600:C.ac,borderRadius:1}}/>
+            <p style={{fontSize:11,fontWeight:700,color:tipo==="esenciales"?C.v700:"#8a5a00",textTransform:"uppercase",letterSpacing:".06em",margin:0}}>{tipo==="esenciales"?"Competencias esenciales":"Competencias específicas"}</p>
+          </div>
+          {comps.map(c=><CRow key={c.id} c={c} nv={nv} data={ed.progress?.[c.id]?.[nv]||{estado:"Sin iniciar",fecha:"",comentario:""}} isOpen={open===`${c.id}-${nv}`} onTog={()=>setOpen(open===`${c.id}-${nv}`?null:`${c.id}-${nv}`)} upd={(f,v)=>upd(`progress.${c.id}.${nv}.${f}`,v)}/>)}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function CRow({c,nv,data,isOpen,onTog,upd}){
+  const es=ES[data.estado];const r=RUTA[c.id];
+  const esNiv=data.comentario==="Validado por nivelación (esquema anterior)";
+  return(
+    <div className="crow" style={{borderColor:isOpen?C.v400:data.estado==="Validado"?C.v300:C.v200}}>
+      <div style={{display:"flex",alignItems:"center",gap:10,padding:"11px 14px",cursor:"pointer"}} onClick={onTog}>
+        <div style={{flex:1}}>
+          <p style={{fontSize:14,fontWeight:600,margin:"0 0 2px",color:C.v900}}>{c.n}</p>
+          {data.fecha&&<p style={{fontSize:11,color:C.gl,margin:0}}>{esNiv?"Nivelación":"Actualizado"}: {data.fecha}</p>}
+        </div>
+        <div style={{display:"flex",gap:6,alignItems:"center"}}>
+          {esNiv&&<span style={bdg("#664d03","#fff3cd","#ffc107")}>nivelado</span>}
+          <span style={bdg(es.color,es.bg,es.border)}>{data.estado}</span>
+        </div>
+        <span style={{fontSize:12,color:C.v500,marginLeft:4,flexShrink:0}}>{isOpen?"▲":"▼"}</span>
+      </div>
+      {isOpen&&(
+        <div style={{borderTop:`1px solid ${C.v100}`,padding:"12px 14px",background:C.v50}} className="fi">
+          {r?.[`n${nv}`]&&<div style={{background:C.v100,border:`1px solid ${C.v200}`,borderRadius:8,padding:"10px 12px",marginBottom:12}}>
+            <p style={{fontSize:11,fontWeight:700,color:C.v700,margin:"0 0 5px",textTransform:"uppercase"}}>📋 Propuesta de aprendizaje — Nivel {nv}</p>
+            <p style={{fontSize:13,color:C.v900,margin:0,lineHeight:1.65}}>{r[`n${nv}`]}</p>
+            {r.r1&&<div style={{marginTop:8,paddingTop:8,borderTop:`1px solid ${C.v200}`}}><p style={{fontSize:11,fontWeight:700,color:C.v600,margin:"0 0 2px"}}>Resultado esperado</p><p style={{fontSize:12,color:C.gt,margin:0,fontStyle:"italic"}}>{r.r1}</p></div>}
+          </div>}
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:10}}>
+            <div><label style={{fontSize:11,color:C.v700,display:"block",marginBottom:4,fontWeight:600}}>Estado</label><select className="si" value={data.estado} onChange={e=>upd("estado",e.target.value)}>{ESTADOS.map(s=><option key={s}>{s}</option>)}</select></div>
+            <div><label style={{fontSize:11,color:C.v700,display:"block",marginBottom:4,fontWeight:600}}>Fecha</label><input type="date" className="si" value={data.fecha} onChange={e=>upd("fecha",e.target.value)}/></div>
+          </div>
+          <div><label style={{fontSize:11,color:C.v700,display:"block",marginBottom:4,fontWeight:600}}>Comentario</label><textarea className="si" rows={2} value={data.comentario} onChange={e=>upd("comentario",e.target.value)} placeholder="Acuerdos, próximos pasos…"/></div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ExpTab({ed,upd,exps,campo,etapas,nota}){
+  return(
+    <div style={{display:"flex",flexDirection:"column",gap:"1.5rem"}}>
+      {nota&&<div style={{padding:"8px 12px",background:"#f1efea",border:"1px solid #d0d0c8",borderRadius:8,fontSize:12,color:C.gt}}>{nota}</div>}
+      {etapas.map(({k,l,color,bg})=>{
+        const arr=exps[k];const done=arr.filter(x=>ed[campo]?.[k]?.[x]?.realizada).length;
+        return<div key={k}>
+          <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:10}}>
+            <div style={{display:"inline-flex",alignItems:"center",background:bg,color,padding:"4px 12px",borderRadius:20,fontSize:12,fontWeight:700,border:`1px solid ${color}40`}}>{l}</div>
+            <span style={{fontSize:12,color:C.gl}}>{done}/{arr.length} realizadas</span>
+          </div>
+          <div style={{display:"flex",flexDirection:"column",gap:6}}>
+            {arr.map(exp=>{
+              const d=ed[campo]?.[k]?.[exp]||{realizada:false,fecha:""};
+              return<div key={exp} style={{background:"white",border:`1.5px solid ${d.realizada?C.v300:C.v200}`,borderRadius:8,padding:"10px 14px",display:"flex",alignItems:"center",gap:12}}>
+                <input type="checkbox" checked={!!d.realizada} onChange={e=>upd(`${campo}.${k}.${exp}.realizada`,e.target.checked)} style={{width:16,height:16,accentColor:C.v600,flexShrink:0,cursor:"pointer"}}/>
+                <span style={{flex:1,fontSize:13,color:d.realizada?C.v800:C.gt,fontWeight:d.realizada?600:400}}>{exp}</span>
+                <input type="date" className="si" value={d.fecha||""} style={{width:140,fontSize:12}} onChange={e=>upd(`${campo}.${k}.${exp}.fecha`,e.target.value)}/>
+              </div>;
+            })}
+          </div>
+        </div>;
+      })}
+    </div>
+  );
+}
+
+
+function initPlan(){return{organismo:"",funcion:"",periodoDesde:"",periodoHasta:"",logrados:[{indicador:"",items:[""]}],aDesarrollar:[{indicador:"",items:[""]}],acuerdos:""}}
+
+function PlanSecHdr({letter, title, color}) {
+  return <div style={{background:color||"#252A4F",padding:"8px 14px",borderRadius:8,marginBottom:10,marginTop:16}}>
+    <span style={{fontWeight:700,color:"white",fontSize:13}}>{letter} {title}</span>
+  </div>
+}
+
+function PlanTab({ed, upd}) {
+  const plan = ed.plan || initPlan()
+  const updP = (path, val) => upd("plan."+path, val)
+  const clone = x => JSON.parse(JSON.stringify(x||[]))
+  const addLogrado = () => updP("logrados", [...clone(plan.logrados), {indicador:"",items:[""]}])
+  const remLogrado = i => { const l=clone(plan.logrados).filter((_,idx)=>idx!==i); updP("logrados",l.length?l:[{indicador:"",items:[""]}]) }
+  const setLF = (i,f,v) => { const l=clone(plan.logrados); l[i][f]=v; updP("logrados",l) }
+  const addLI = i => { const l=clone(plan.logrados); l[i].items=[...(l[i].items||[]),""]; updP("logrados",l) }
+  const setLI = (i,j,v) => { const l=clone(plan.logrados); l[i].items[j]=v; updP("logrados",l) }
+  const remLI = (i,j) => { const l=clone(plan.logrados); l[i].items=l[i].items.filter((_,idx)=>idx!==j); if(!l[i].items.length)l[i].items=[""]; updP("logrados",l) }
+  const addAD = () => updP("aDesarrollar", [...clone(plan.aDesarrollar), {indicador:"",items:[""]}])
+  const remAD = i => { const a=clone(plan.aDesarrollar).filter((_,idx)=>idx!==i); updP("aDesarrollar",a.length?a:[{indicador:"",items:[""]}]) }
+  const setAF = (i,f,v) => { const a=clone(plan.aDesarrollar); a[i][f]=v; updP("aDesarrollar",a) }
+  const addAI = i => { const a=clone(plan.aDesarrollar); a[i].items=[...(a[i].items||[]),""]; updP("aDesarrollar",a) }
+  const setAI = (i,j,v) => { const a=clone(plan.aDesarrollar); a[i].items[j]=v; updP("aDesarrollar",a) }
+  const remAI = (i,j) => { const a=clone(plan.aDesarrollar); a[i].items=a[i].items.filter((_,idx)=>idx!==j); if(!a[i].items.length)a[i].items=[""]; updP("aDesarrollar",a) }
+  const SI = {border:"1.5px solid #c2e8c2",borderRadius:8,padding:"7px 11px",fontSize:13,color:"#1a1a18",width:"100%",boxSizing:"border-box",outline:"none",background:"white"}
+  const LG = {fontSize:11,color:"#256325",display:"block",marginBottom:4,fontWeight:600}
+  const LA = {fontSize:11,color:"#1a5276",display:"block",marginBottom:4,fontWeight:600}
+  return (
+    <div>
+      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14}}>
+        <p style={{fontSize:13,color:"#256325",fontWeight:600,margin:0}}>Plan de Desempeño</p>
+        <button className="sb sbp" onClick={()=>window._downloadPlanDocx(ed,plan)} style={{fontSize:12}}>⬇ Descargar .docx</button>
+      </div>
+      <div style={{background:"#f2fbf2",border:"1.5px solid #c2e8c2",borderRadius:10,padding:"14px",marginBottom:8}}>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
+          <div><label style={LG}>Organismo</label><input className="si" value={plan.organismo||""} onChange={e=>updP("organismo",e.target.value)} placeholder="N° - Nombre del organismo"/></div>
+          <div><label style={LG}>Función</label><input className="si" value={plan.funcion||""} onChange={e=>updP("funcion",e.target.value)} placeholder="Ej: Ayudante de Unidad"/></div>
+          <div><label style={LG}>Período desde</label><input type="date" className="si" value={plan.periodoDesde||""} onChange={e=>updP("periodoDesde",e.target.value)}/></div>
+          <div><label style={LG}>Período hasta</label><input type="date" className="si" value={plan.periodoHasta||""} onChange={e=>updP("periodoHasta",e.target.value)}/></div>
+        </div>
+      </div>
+      <PlanSecHdr letter="A)" title="LOGRADO — Indicadores de competencias adquiridos y evidenciados" color="#2d7a2d"/>
+      <p style={{fontSize:11,color:"#5a5a52",marginBottom:10,fontStyle:"italic"}}>Describí cada indicador alcanzado con sus evidencias concretas.</p>
+      {(plan.logrados||[]).map((entry,i) =>
+        <div key={i} style={{background:"white",border:"1.5px solid #c2e8c2",borderRadius:8,padding:"12px",marginBottom:8}}>
+          <div style={{display:"flex",gap:8,marginBottom:8,alignItems:"flex-start"}}>
+            <div style={{flex:1}}><label style={LG}>Indicador alcanzado</label>
+              <input className="si" value={entry.indicador||""} onChange={e=>setLF(i,"indicador",e.target.value)} placeholder="Ej: Conoce los elementos del Método Scout…"/>
+            </div>
+            {(plan.logrados||[]).length>1 && <button onClick={()=>remLogrado(i)} style={{background:"transparent",border:"none",cursor:"pointer",color:"#c0392b",fontSize:18,marginTop:18}}>✕</button>}
+          </div>
+          <label style={LG}>Logros y evidencias</label>
+          {(entry.items||[]).map((item,j) =>
+            <div key={j} style={{display:"flex",gap:6,marginBottom:5,alignItems:"center"}}>
+              <span style={{color:"#256325",fontWeight:700,flexShrink:0}}>•</span>
+              <input className="si" style={{flex:1}} value={item} onChange={e=>setLI(i,j,e.target.value)} placeholder="Logro puntual y evidencia…"/>
+              {(entry.items||[]).length>1 && <button onClick={()=>remLI(i,j)} style={{background:"transparent",border:"none",cursor:"pointer",color:"#aaa",fontSize:14}}>✕</button>}
+            </div>
+          )}
+          <button onClick={()=>addLI(i)} style={{fontSize:11,color:"#256325",background:"transparent",border:"1px dashed #8fd08f",borderRadius:6,padding:"3px 10px",cursor:"pointer",marginTop:4}}>+ Evidencia</button>
+        </div>
+      )}
+      <button onClick={addLogrado} style={{fontSize:12,color:"#256325",background:"transparent",border:"1.5px dashed #8fd08f",borderRadius:8,padding:"6px 14px",cursor:"pointer",width:"100%",marginBottom:8}}>+ Indicador logrado</button>
+      <PlanSecHdr letter="B)" title="A DESARROLLAR — Plan de Formación y acciones concretas" color="#1a5276"/>
+      <p style={{fontSize:11,color:"#5a5a52",marginBottom:10,fontStyle:"italic"}}>Describí cada indicador a desarrollar con la situación actual y acciones concretas.</p>
+      {(plan.aDesarrollar||[]).map((entry,i) =>
+        <div key={i} style={{background:"white",border:"1.5px solid #d0e4f0",borderRadius:8,padding:"12px",marginBottom:8}}>
+          <div style={{display:"flex",gap:8,marginBottom:8,alignItems:"flex-start"}}>
+            <div style={{flex:1}}><label style={LA}>Indicador a desarrollar</label>
+              <input className="si" value={entry.indicador||""} onChange={e=>setAF(i,"indicador",e.target.value)} placeholder="Ej: Aplica el Ciclo de Programa…"/>
+            </div>
+            {(plan.aDesarrollar||[]).length>1 && <button onClick={()=>remAD(i)} style={{background:"transparent",border:"none",cursor:"pointer",color:"#c0392b",fontSize:18,marginTop:18}}>✕</button>}
+          </div>
+          <label style={LA}>Situación actual / acciones concretas</label>
+          {(entry.items||[]).map((item,j) =>
+            <div key={j} style={{display:"flex",gap:6,marginBottom:5,alignItems:"center"}}>
+              <span style={{color:"#1a5276",fontWeight:700,flexShrink:0}}>•</span>
+              <input className="si" style={{flex:1}} value={item} onChange={e=>setAI(i,j,e.target.value)} placeholder="Situación / acción concreta / plazo…"/>
+              {(entry.items||[]).length>1 && <button onClick={()=>remAI(i,j)} style={{background:"transparent",border:"none",cursor:"pointer",color:"#aaa",fontSize:14}}>✕</button>}
+            </div>
+          )}
+          <button onClick={()=>addAI(i)} style={{fontSize:11,color:"#1a5276",background:"transparent",border:"1px dashed #85b7eb",borderRadius:6,padding:"3px 10px",cursor:"pointer",marginTop:4}}>+ Acción</button>
+        </div>
+      )}
+      <button onClick={addAD} style={{fontSize:12,color:"#1a5276",background:"transparent",border:"1.5px dashed #85b7eb",borderRadius:8,padding:"6px 14px",cursor:"pointer",width:"100%",marginBottom:8}}>+ Indicador a desarrollar</button>
+      <PlanSecHdr letter="C)" title="ACUERDOS PARTICULARES" color="#5a3a0a"/>
+      <p style={{fontSize:11,color:"#5a5a52",marginBottom:8,fontStyle:"italic"}}>Tiempos disponibles, fechas de seguimiento, medios de comunicación, etc.</p>
+      <textarea className="si" rows={5} value={plan.acuerdos||""} onChange={e=>updP("acuerdos",e.target.value)} placeholder="Ej: Reuniones los sábados. Revisiones: 16 de mayo, 1 de agosto…"/>
+      <div style={{marginTop:14,padding:"10px 14px",background:"#f2fbf2",border:"1px solid #c2e8c2",borderRadius:8,fontSize:11,color:"#256325"}}>
+        Recordá hacer clic en <b>Guardar cambios</b> antes de descargar el .docx.
+      </div>
+    </div>
+  )
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Formación Scouts — Rama Scouts</title>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/docx@8.5.0/build/index.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Source Sans 3',sans-serif;background:#f2fbf2;min-height:100vh;}
+h1,h2,h3{font-family:'Nunito',sans-serif;}
+.si{border:1.5px solid #c2e8c2;border-radius:8px;padding:7px 11px;font-size:13px;color:#1a1a18;width:100%;outline:none;transition:border-color .15s;font-family:'Source Sans 3',sans-serif;background:white;}
+.si:focus{border-color:#3a9e3a;box-shadow:0 0 0 3px #e0f4e0;}
+.sb{background:white;border:1.5px solid #8fd08f;border-radius:8px;padding:6px 14px;font-size:13px;color:#1e4d1e;cursor:pointer;transition:all .15s;font-weight:600;font-family:'Source Sans 3',sans-serif;}
+.sb:hover{background:#f2fbf2;border-color:#3a9e3a;}
+.sb:active{transform:scale(.98);}
+.sbp{background:#2d7a2d;color:white;border-color:#1e4d1e;}
+.sbp:hover{background:#1e4d1e;color:white;}
+.sbp:disabled{opacity:.5;cursor:default;transform:none;}
+.sc{background:white;border:1.5px solid #c2e8c2;border-radius:12px;padding:1rem 1.25rem;}
+.pb{height:6px;border-radius:3px;background:#c2e8c2;overflow:hidden;}
+.pf{height:100%;border-radius:3px;transition:width .4s ease;}
+.tab{padding:8px 16px;font-size:13px;border:none;background:transparent;cursor:pointer;color:#8a8a80;font-weight:600;border-bottom:2.5px solid transparent;transition:all .15s;font-family:'Nunito',sans-serif;}
+.tab.on{color:#256325;border-bottom-color:#2d7a2d;}
+.crow{background:white;border:1.5px solid #c2e8c2;border-radius:10px;overflow:hidden;transition:border-color .15s;margin-bottom:6px;}
+.crow:hover{border-color:#5ab85a;}
+.mc{background:#f2fbf2;border:1.5px solid #c2e8c2;border-radius:10px;padding:12px 16px;}
+@keyframes fi{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
+.fi{animation:fi .18s ease;}
+select.si{cursor:pointer;}
+textarea.si{resize:vertical;line-height:1.6;}
+</style>
+</head>
+<body>
+<div id="root"></div>
 <script type="text/babel" data-presets="react">
  
 // ─── GITHUB CONFIG ────────────────────────────────────────────────────
