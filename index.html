@@ -233,7 +233,39 @@ function mkEd(id,nombre,opts={}){
 }
 
 // ─── DATOS INICIALES ──────────────────────────────────────────────────
-const buildExpFrom=(exps)=>{const e=initExp();(exps||[]).forEach(({etapa,nombre,fecha,realizada})=>{const MAP={basica:{"A Salvo del Peligro SAAC":"A Salvo del Peligro","Introductoria":"Introductoria"},intermedia:{"Ap. Sistema de Equipos":"Aplicación del Sistema de Equipos en la Rama Scouts","Ap. Marco Simbolico":"Aplicación del Marco Simbólico en la Rama Scouts","Oportunidades de aprendizaje":"Oportunidades de aprendizaje en la Rama Scouts","Ciclo de Programa":"El Ciclo de Programa en la Rama Scouts","Sistema de Progresiones":"Aplicación del Sistema de Progresiones en la Rama Scouts","Org. de act. al aire libre y resp. ambiental":"Organización de actividades al aire libre y responsabilidad ambiental","Gestión de proyectos":"Gestión de proyectos en la Rama Scouts"},avanzada:{"Sistema de equipos - Liderazgo y resol. conflictos":"Sistema de Equipos: Liderazgo y resolución de conflictos","Clima educativo":"El Clima Educativo en la Rama Scouts","Análisis de contexto y adecuación del programa":"Análisis de contexto y adecuación del programa","Emergencias: Respuesta ante eventos no deseados":"Emergencias: Respuesta ante eventos no deseados","Primeros Auxilios emocionales":"Primeros auxilios emocionales"}};const m=MAP[etapa]?.[nombre];if(m&&e[etapa]?.[m]!==undefined)e[etapa][m]={realizada:!!realizada,fecha:fecha||""};});return e;};
+const EXP_MAP = {
+  basica: {
+    "A Salvo del Peligro SAAC": "A Salvo del Peligro",
+    "Introductoria": "Introductoria"
+  },
+  intermedia: {
+    "Ap. Sistema de Equipos": "Aplicación del Sistema de Equipos en la Rama Scouts",
+    "Ap. Marco Simbolico": "Aplicación del Marco Simbólico en la Rama Scouts",
+    "Oportunidades de aprendizaje": "Oportunidades de aprendizaje en la Rama Scouts",
+    "Ciclo de Programa": "El Ciclo de Programa en la Rama Scouts",
+    "Sistema de Progresiones": "Aplicación del Sistema de Progresiones en la Rama Scouts",
+    "Org. de act. al aire libre y resp. ambiental": "Organización de actividades al aire libre y responsabilidad ambiental",
+    "Gestión de proyectos": "Gestión de proyectos en la Rama Scouts"
+  },
+  avanzada: {
+    "Sistema de equipos - Liderazgo y resol. conflictos": "Sistema de Equipos: Liderazgo y resolución de conflictos",
+    "Clima educativo": "El Clima Educativo en la Rama Scouts",
+    "Análisis de contexto y adecuación del programa": "Análisis de contexto y adecuación del programa",
+    "Emergencias: Respuesta ante eventos no deseados": "Emergencias: Respuesta ante eventos no deseados",
+    "Primeros Auxilios emocionales": "Primeros auxilios emocionales"
+  }
+};
+
+const buildExpFrom = (exps) => {
+  const e = initExp();
+  (exps || []).forEach(({ etapa, nombre, fecha, realizada }) => {
+    const m = EXP_MAP[etapa]?.[nombre];
+    if (m && e[etapa]?.[m] !== undefined) {
+      e[etapa][m] = { realizada: !!realizada, fecha: fecha || "" };
+    }
+  });
+  return e;
+};
 const buildExpViejoFrom=(evs)=>{const e=initExpViejo();const VM={miembro_activo:{"Derechos Asociativos":"Derechos Asociativos"},ayudante_unidad:{"Formación Scout":"Formación Scout","Rol del Educador":"Rol del Educador","Programa de Jóvenes 1":"Programa de Jóvenes 1","Programa de Jóvenes 2":"Programa de Jóvenes 2","Planificación, desarrollo y evaluación de actividades al aire libre":"Planificación, desarrollo y evaluación de actividades al aire libre","Responsabilidades del Educador":"Responsabilidades del Educador","Toma de decisiones y resol. de conflicto":"Toma de decisiones y resolución de conflicto","Primero Auxilios":"Primeros Auxilios","Educador y su Fe 1":"Educador y su Fe 1","Clima Educativo":"Clima Educativo"},jefe_unidad:{"Involucramiento Comunitario":"Involucramiento Comunitario","Acompañamiento":"Acompañamiento","Liderazgo multiplicador":"Liderazgo multiplicador","Gestión Institucional":"Gestión Institucional","Educador y su Fe 2":"Educador y su Fe 2","Herrameintas para la gestión del grupo scout":"Herramientas para la gestión del grupo scout"},jefe_grupo:{"Captación y gestión de adultos":"Captación y gestión de adultos","Gestión de SAAC":"Gestión de SAAC","Relaciones Institucionales":"Relaciones Institucionales"}};(evs||[]).forEach(({etapa,nombre,fecha,realizada})=>{const m=VM[etapa]?.[nombre];if(m&&e[etapa]?.[m]!==undefined)e[etapa][m]={realizada:!!realizada,fecha:fecha||""};});return e;};
 
 function seedEd(id,nombre,opts={}){
@@ -962,7 +994,39 @@ function mkEd(id,nombre,opts={}){
 }
  
 // ─── DATOS INICIALES ──────────────────────────────────────────────────
-const buildExpFrom=(exps)=>{const e=initExp();(exps||[]).forEach(({etapa,nombre,fecha,realizada})=>{const MAP={basica:{"A Salvo del Peligro SAAC":"A Salvo del Peligro","Introductoria":"Introductoria"},intermedia:{"Ap. Sistema de Equipos":"Aplicación del Sistema de Equipos en la Rama Scouts","Ap. Marco Simbolico":"Aplicación del Marco Simbólico en la Rama Scouts","Oportunidades de aprendizaje":"Oportunidades de aprendizaje en la Rama Scouts","Ciclo de Programa":"El Ciclo de Programa en la Rama Scouts","Sistema de Progresiones":"Aplicación del Sistema de Progresiones en la Rama Scouts","Org. de act. al aire libre y resp. ambiental":"Organización de actividades al aire libre y responsabilidad ambiental","Gestión de proyectos":"Gestión de proyectos en la Rama Scouts"},avanzada:{"Sistema de equipos - Liderazgo y resol. conflictos":"Sistema de Equipos: Liderazgo y resolución de conflictos","Clima educativo":"El Clima Educativo en la Rama Scouts","Análisis de contexto y adecuación del programa":"Análisis de contexto y adecuación del programa","Emergencias: Respuesta ante eventos no deseados":"Emergencias: Respuesta ante eventos no deseados","Primeros Auxilios emocionales":"Primeros auxilios emocionales"}};const m=MAP[etapa]?.[nombre];if(m&&e[etapa]?.[m]!==undefined)e[etapa][m]={realizada:!!realizada,fecha:fecha||""};});return e;};
+const EXP_MAP = {
+  basica: {
+    "A Salvo del Peligro SAAC": "A Salvo del Peligro",
+    "Introductoria": "Introductoria"
+  },
+  intermedia: {
+    "Ap. Sistema de Equipos": "Aplicación del Sistema de Equipos en la Rama Scouts",
+    "Ap. Marco Simbolico": "Aplicación del Marco Simbólico en la Rama Scouts",
+    "Oportunidades de aprendizaje": "Oportunidades de aprendizaje en la Rama Scouts",
+    "Ciclo de Programa": "El Ciclo de Programa en la Rama Scouts",
+    "Sistema de Progresiones": "Aplicación del Sistema de Progresiones en la Rama Scouts",
+    "Org. de act. al aire libre y resp. ambiental": "Organización de actividades al aire libre y responsabilidad ambiental",
+    "Gestión de proyectos": "Gestión de proyectos en la Rama Scouts"
+  },
+  avanzada: {
+    "Sistema de equipos - Liderazgo y resol. conflictos": "Sistema de Equipos: Liderazgo y resolución de conflictos",
+    "Clima educativo": "El Clima Educativo en la Rama Scouts",
+    "Análisis de contexto y adecuación del programa": "Análisis de contexto y adecuación del programa",
+    "Emergencias: Respuesta ante eventos no deseados": "Emergencias: Respuesta ante eventos no deseados",
+    "Primeros Auxilios emocionales": "Primeros auxilios emocionales"
+  }
+};
+
+const buildExpFrom = (exps) => {
+  const e = initExp();
+  (exps || []).forEach(({ etapa, nombre, fecha, realizada }) => {
+    const m = EXP_MAP[etapa]?.[nombre];
+    if (m && e[etapa]?.[m] !== undefined) {
+      e[etapa][m] = { realizada: !!realizada, fecha: fecha || "" };
+    }
+  });
+  return e;
+};
 const buildExpViejoFrom=(evs)=>{const e=initExpViejo();const VM={miembro_activo:{"Derechos Asociativos":"Derechos Asociativos"},ayudante_unidad:{"Formación Scout":"Formación Scout","Rol del Educador":"Rol del Educador","Programa de Jóvenes 1":"Programa de Jóvenes 1","Programa de Jóvenes 2":"Programa de Jóvenes 2","Planificación, desarrollo y evaluación de actividades al aire libre":"Planificación, desarrollo y evaluación de actividades al aire libre","Responsabilidades del Educador":"Responsabilidades del Educador","Toma de decisiones y resol. de conflicto":"Toma de decisiones y resolución de conflicto","Primero Auxilios":"Primeros Auxilios","Educador y su Fe 1":"Educador y su Fe 1","Clima Educativo":"Clima Educativo"},jefe_unidad:{"Involucramiento Comunitario":"Involucramiento Comunitario","Acompañamiento":"Acompañamiento","Liderazgo multiplicador":"Liderazgo multiplicador","Gestión Institucional":"Gestión Institucional","Educador y su Fe 2":"Educador y su Fe 2","Herrameintas para la gestión del grupo scout":"Herramientas para la gestión del grupo scout"},jefe_grupo:{"Captación y gestión de adultos":"Captación y gestión de adultos","Gestión de SAAC":"Gestión de SAAC","Relaciones Institucionales":"Relaciones Institucionales"}};(evs||[]).forEach(({etapa,nombre,fecha,realizada})=>{const m=VM[etapa]?.[nombre];if(m&&e[etapa]?.[m]!==undefined)e[etapa][m]={realizada:!!realizada,fecha:fecha||""};});return e;};
  
 function seedEd(id,nombre,opts={}){
