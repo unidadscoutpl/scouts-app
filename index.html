@@ -404,7 +404,7 @@ function Hdr({status,onHome,view,onChangeToken}){
       </div>
       <div style={{display:"flex",alignItems:"center",gap:8}}>
         <StatusPill status={status}/>
-        <button onClick={onChangeToken} title="Cambiar token de acceso" style={{fontSize:11,padding:"3px 8px",borderRadius:12,background:"rgba(255,255,255,0.12)",color:"white",border:"1px solid rgba(255,255,255,0.2)",cursor:"pointer"}}>🔑</button>
+        <button onClick={onChangeToken} title="Cambiar token de acceso" aria-label="Cambiar token de acceso" style={{fontSize:11,padding:"3px 8px",borderRadius:12,background:"rgba(255,255,255,0.12)",color:"white",border:"1px solid rgba(255,255,255,0.2)",cursor:"pointer"}}>🔑</button>
       </div>
     </div>
   );
@@ -509,7 +509,7 @@ function EdCard({ed,onClick,onDel}){
         </div>
         <div style={{textAlign:"right",fontSize:10,color:C.gl,marginTop:5}}>{ed.fechaIngreso?`Desde ${ed.fechaIngreso}`:""}</div>
       </div>
-      <button onClick={e=>{e.stopPropagation();onDel();}} style={{position:"absolute",top:10,right:10,background:"transparent",border:"none",cursor:"pointer",fontSize:14,color:C.gl,padding:4}} title="Eliminar">✕</button>
+      <button onClick={e=>{e.stopPropagation();onDel();}} style={{position:"absolute",top:10,right:10,background:"transparent",border:"none",cursor:"pointer",fontSize:14,color:C.gl,padding:4}} title="Eliminar" aria-label="Eliminar">✕</button>
     </div>
   );
 }
@@ -756,14 +756,14 @@ function PlanTab({ed, upd}) {
             <div style={{flex:1}}><label style={LG}>Indicador alcanzado</label>
               <input className="si" value={entry.indicador||""} onChange={e=>setLF(i,"indicador",e.target.value)} placeholder="Ej: Conoce los elementos del Método Scout…"/>
             </div>
-            {(plan.logrados||[]).length>1 && <button onClick={()=>remLogrado(i)} style={{background:"transparent",border:"none",cursor:"pointer",color:"#c0392b",fontSize:18,marginTop:18}}>✕</button>}
+            {(plan.logrados||[]).length>1 && <button onClick={()=>remLogrado(i)} aria-label="Eliminar indicador logrado" style={{background:"transparent",border:"none",cursor:"pointer",color:"#c0392b",fontSize:18,marginTop:18}}>✕</button>}
           </div>
           <label style={LG}>Logros y evidencias</label>
           {(entry.items||[]).map((item,j) =>
             <div key={j} style={{display:"flex",gap:6,marginBottom:5,alignItems:"center"}}>
               <span style={{color:"#256325",fontWeight:700,flexShrink:0}}>•</span>
               <input className="si" style={{flex:1}} value={item} onChange={e=>setLI(i,j,e.target.value)} placeholder="Logro puntual y evidencia…"/>
-              {(entry.items||[]).length>1 && <button onClick={()=>remLI(i,j)} style={{background:"transparent",border:"none",cursor:"pointer",color:"#aaa",fontSize:14}}>✕</button>}
+              {(entry.items||[]).length>1 && <button onClick={()=>remLI(i,j)} aria-label="Eliminar evidencia" style={{background:"transparent",border:"none",cursor:"pointer",color:"#aaa",fontSize:14}}>✕</button>}
             </div>
           )}
           <button onClick={()=>addLI(i)} style={{fontSize:11,color:"#256325",background:"transparent",border:"1px dashed #8fd08f",borderRadius:6,padding:"3px 10px",cursor:"pointer",marginTop:4}}>+ Evidencia</button>
@@ -778,14 +778,14 @@ function PlanTab({ed, upd}) {
             <div style={{flex:1}}><label style={LA}>Indicador a desarrollar</label>
               <input className="si" value={entry.indicador||""} onChange={e=>setAF(i,"indicador",e.target.value)} placeholder="Ej: Aplica el Ciclo de Programa…"/>
             </div>
-            {(plan.aDesarrollar||[]).length>1 && <button onClick={()=>remAD(i)} style={{background:"transparent",border:"none",cursor:"pointer",color:"#c0392b",fontSize:18,marginTop:18}}>✕</button>}
+            {(plan.aDesarrollar||[]).length>1 && <button onClick={()=>remAD(i)} aria-label="Eliminar indicador a desarrollar" style={{background:"transparent",border:"none",cursor:"pointer",color:"#c0392b",fontSize:18,marginTop:18}}>✕</button>}
           </div>
           <label style={LA}>Situación actual / acciones concretas</label>
           {(entry.items||[]).map((item,j) =>
             <div key={j} style={{display:"flex",gap:6,marginBottom:5,alignItems:"center"}}>
               <span style={{color:"#1a5276",fontWeight:700,flexShrink:0}}>•</span>
               <input className="si" style={{flex:1}} value={item} onChange={e=>setAI(i,j,e.target.value)} placeholder="Situación / acción concreta / plazo…"/>
-              {(entry.items||[]).length>1 && <button onClick={()=>remAI(i,j)} style={{background:"transparent",border:"none",cursor:"pointer",color:"#aaa",fontSize:14}}>✕</button>}
+              {(entry.items||[]).length>1 && <button onClick={()=>remAI(i,j)} aria-label="Eliminar acción" style={{background:"transparent",border:"none",cursor:"pointer",color:"#aaa",fontSize:14}}>✕</button>}
             </div>
           )}
           <button onClick={()=>addAI(i)} style={{fontSize:11,color:"#1a5276",background:"transparent",border:"1px dashed #85b7eb",borderRadius:6,padding:"3px 10px",cursor:"pointer",marginTop:4}}>+ Acción</button>
@@ -1133,7 +1133,7 @@ function Hdr({status,onHome,view,onChangeToken}){
       </div>
       <div style={{display:"flex",alignItems:"center",gap:8}}>
         <StatusPill status={status}/>
-        <button onClick={onChangeToken} title="Cambiar token de acceso" style={{fontSize:11,padding:"3px 8px",borderRadius:12,background:"rgba(255,255,255,0.12)",color:"white",border:"1px solid rgba(255,255,255,0.2)",cursor:"pointer"}}>🔑</button>
+        <button onClick={onChangeToken} title="Cambiar token de acceso" aria-label="Cambiar token de acceso" style={{fontSize:11,padding:"3px 8px",borderRadius:12,background:"rgba(255,255,255,0.12)",color:"white",border:"1px solid rgba(255,255,255,0.2)",cursor:"pointer"}}>🔑</button>
       </div>
     </div>
   );
@@ -1238,7 +1238,7 @@ function EdCard({ed,onClick,onDel}){
         </div>
         <div style={{textAlign:"right",fontSize:10,color:C.gl,marginTop:5}}>{ed.fechaIngreso?`Desde ${ed.fechaIngreso}`:""}</div>
       </div>
-      <button onClick={e=>{e.stopPropagation();onDel();}} style={{position:"absolute",top:10,right:10,background:"transparent",border:"none",cursor:"pointer",fontSize:14,color:C.gl,padding:4}} title="Eliminar">✕</button>
+      <button onClick={e=>{e.stopPropagation();onDel();}} style={{position:"absolute",top:10,right:10,background:"transparent",border:"none",cursor:"pointer",fontSize:14,color:C.gl,padding:4}} title="Eliminar" aria-label="Eliminar">✕</button>
     </div>
   );
 }
@@ -1613,14 +1613,14 @@ function PlanTab(props) {
               <label style={LBL}>Indicador de competencia alcanzado</label>
               <input className="si" value={entry.indicador||""} onChange={function(e){setLogradoField(i,"indicador",e.target.value);}} placeholder="Ej: Conoce los elementos del Método Scout…"/>
             </div>
-            {(plan.logrados||[]).length>1&&<button onClick={function(){removeLogrado(i);}} style={{background:"transparent",border:"none",cursor:"pointer",color:"#c0392b",fontSize:18,marginTop:18}}>✕</button>}
+            {(plan.logrados||[]).length>1&&<button onClick={function(){removeLogrado(i);}} aria-label="Eliminar indicador logrado" style={{background:"transparent",border:"none",cursor:"pointer",color:"#c0392b",fontSize:18,marginTop:18}}>✕</button>}
           </div>
           <label style={LBL}>Logros y evidencias</label>
           {(entry.items||[]).map(function(item,j){return(
             <div key={j} style={{display:"flex",gap:6,marginBottom:5,alignItems:"center"}}>
               <span style={{color:"#256325",fontWeight:700,flexShrink:0}}>•</span>
               <input className="si" style={{flex:1}} value={item} onChange={function(e){setLogradoItem(i,j,e.target.value);}} placeholder="Logro puntual y evidencia…"/>
-              {(entry.items||[]).length>1&&<button onClick={function(){removeLogradoItem(i,j);}} style={{background:"transparent",border:"none",cursor:"pointer",color:"#aaa",fontSize:14}}>✕</button>}
+              {(entry.items||[]).length>1&&<button onClick={function(){removeLogradoItem(i,j);}} aria-label="Eliminar evidencia" style={{background:"transparent",border:"none",cursor:"pointer",color:"#aaa",fontSize:14}}>✕</button>}
             </div>
           );})}
           <button onClick={function(){addLogradoItem(i);}} style={{fontSize:11,color:"#256325",background:"transparent",border:"1px dashed #8fd08f",borderRadius:6,padding:"3px 10px",cursor:"pointer",marginTop:4}}>+ Evidencia</button>
@@ -1637,14 +1637,14 @@ function PlanTab(props) {
               <label style={LBL2}>Indicador de competencia a desarrollar</label>
               <input className="si" value={entry.indicador||""} onChange={function(e){setADesField(i,"indicador",e.target.value);}} placeholder="Ej: Aplica el Ciclo de Programa…"/>
             </div>
-            {(plan.aDesarrollar||[]).length>1&&<button onClick={function(){removeADes(i);}} style={{background:"transparent",border:"none",cursor:"pointer",color:"#c0392b",fontSize:18,marginTop:18}}>✕</button>}
+            {(plan.aDesarrollar||[]).length>1&&<button onClick={function(){removeADes(i);}} aria-label="Eliminar indicador a desarrollar" style={{background:"transparent",border:"none",cursor:"pointer",color:"#c0392b",fontSize:18,marginTop:18}}>✕</button>}
           </div>
           <label style={LBL2}>Situación actual / acciones concretas</label>
           {(entry.items||[]).map(function(item,j){return(
             <div key={j} style={{display:"flex",gap:6,marginBottom:5,alignItems:"center"}}>
               <span style={{color:"#1a5276",fontWeight:700,flexShrink:0}}>•</span>
               <input className="si" style={{flex:1}} value={item} onChange={function(e){setADesItem(i,j,e.target.value);}} placeholder="Situación / acción concreta / plazo…"/>
-              {(entry.items||[]).length>1&&<button onClick={function(){removeADesItem(i,j);}} style={{background:"transparent",border:"none",cursor:"pointer",color:"#aaa",fontSize:14}}>✕</button>}
+              {(entry.items||[]).length>1&&<button onClick={function(){removeADesItem(i,j);}} aria-label="Eliminar acción" style={{background:"transparent",border:"none",cursor:"pointer",color:"#aaa",fontSize:14}}>✕</button>}
             </div>
           );})}
           <button onClick={function(){addADesItem(i);}} style={{fontSize:11,color:"#1a5276",background:"transparent",border:"1px dashed #85b7eb",borderRadius:6,padding:"3px 10px",cursor:"pointer",marginTop:4}}>+ Acción</button>
