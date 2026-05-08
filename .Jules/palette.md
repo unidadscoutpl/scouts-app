@@ -1,0 +1,3 @@
+## 2024-05-08 - Icon-Only Buttons Missing ARIA Labels
+**Learning:** Found multiple instances of buttons using only an '✕' character for deletion actions without `aria-label` attributes. This presents a major accessibility barrier for screen reader users who will not hear a descriptive label for these destructive actions. This is a common pattern across both sections of `index.html`.
+**Action:** Adding `aria-label` attributes to these icon-only buttons (like "Eliminar", "Eliminar indicador", "Eliminar acción") to improve keyboard navigation and screen reader accessibility while maintaining the current visual layout.
