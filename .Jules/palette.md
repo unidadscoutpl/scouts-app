@@ -1,0 +1,3 @@
+## 2026-06-12 - Ensure keyboard navigability for interactive custom elements
+**Learning:** In the `scouts-app` custom components (e.g., `EdCard`, `CRow`), interactive `div` elements commonly lack standard keyboard support and ARIA roles. While visual users can intuitively click these elements, screen reader and keyboard-only users are effectively blocked from core application flows.
+**Action:** When working on interactive React `div` elements, especially those serving as expanders or navigation cards, ensure they have `role="button"`, `tabIndex={0}`, and an `onKeyDown` handler implementing `e.preventDefault()` along with the action for the `Enter` and `Space` keys to preserve keyboard accessibility.
