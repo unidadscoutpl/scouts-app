@@ -216,6 +216,7 @@ const RUTA = {
 function initProg(){const p={};TODAS.forEach(c=>{p[c.id]={};[1,2,3].forEach(n=>{p[c.id][n]={estado:"Sin iniciar",fecha:"",comentario:""};});});return p;}
 function initExp(){const e={};Object.entries(EXPS).forEach(([k,arr])=>{e[k]={};arr.forEach(x=>{e[k][x]={realizada:false,fecha:""};});});return e;}
 function initExpViejo(){const e={};Object.entries(EXPS_VIEJO).forEach(([k,arr])=>{e[k]={};arr.forEach(x=>{e[k][x]={realizada:false,fecha:""};});});return e;}
+function initPlan(){return{organismo:"",funcion:"",periodoDesde:"",periodoHasta:"",logrados:[{indicador:"",items:[""]}],aDesarrollar:[{indicador:"",items:[""]}],acuerdos:""}}
 function aplicarNivelacion(p){const r=JSON.parse(JSON.stringify(p));TODAS.forEach(c=>[1,2].forEach(n=>{r[c.id][n]={estado:"Validado",fecha:new Date().toISOString().slice(0,10),comentario:"Validado por nivelación (esquema anterior)"};} ));return r;}
 function revertirNivelacion(p){const r=JSON.parse(JSON.stringify(p));TODAS.forEach(c=>[1,2].forEach(n=>{if(r[c.id][n].comentario==="Validado por nivelación (esquema anterior)")r[c.id][n]={estado:"Sin iniciar",fecha:"",comentario:""};} ));return r;}
 function pct(prog){let t=0,v=0;TODAS.forEach(c=>[1,2,3].forEach(n=>{t++;if(prog?.[c.id]?.[n]?.estado==="Validado")v++;}));return t?Math.round((v/t)*100):0;}
@@ -707,8 +708,6 @@ function ExpTab({ed,upd,exps,campo,etapas,nota}){
 }
 
 
-function initPlan(){return{organismo:"",funcion:"",periodoDesde:"",periodoHasta:"",logrados:[{indicador:"",items:[""]}],aDesarrollar:[{indicador:"",items:[""]}],acuerdos:""}}
-
 function PlanSecHdr({letter, title, color}) {
   return <div style={{background:color||"#252A4F",padding:"8px 14px",borderRadius:8,marginBottom:10,marginTop:16}}>
     <span style={{fontWeight:700,color:"white",fontSize:13}}>{letter} {title}</span>
@@ -944,7 +943,6 @@ const RUTA = {
 function initProg(){const p={};TODAS.forEach(c=>{p[c.id]={};[1,2,3].forEach(n=>{p[c.id][n]={estado:"Sin iniciar",fecha:"",comentario:""};});});return p;}
 function initExp(){const e={};Object.entries(EXPS).forEach(([k,arr])=>{e[k]={};arr.forEach(x=>{e[k][x]={realizada:false,fecha:""};});});return e;}
 function initExpViejo(){const e={};Object.entries(EXPS_VIEJO).forEach(([k,arr])=>{e[k]={};arr.forEach(x=>{e[k][x]={realizada:false,fecha:""};});});return e;}
-function initPlan(){return{organismo:"",funcion:"",periodoDesde:"",periodoHasta:"",logrados:[{indicador:"",items:[""]}],aDesarrollar:[{indicador:"",items:[""]}],acuerdos:""};}
 function aplicarNivelacion(p){const r=JSON.parse(JSON.stringify(p));TODAS.forEach(c=>[1,2].forEach(n=>{r[c.id][n]={estado:"Validado",fecha:new Date().toISOString().slice(0,10),comentario:"Validado por nivelación (esquema anterior)"};} ));return r;}
 function revertirNivelacion(p){const r=JSON.parse(JSON.stringify(p));TODAS.forEach(c=>[1,2].forEach(n=>{if(r[c.id][n].comentario==="Validado por nivelación (esquema anterior)")r[c.id][n]={estado:"Sin iniciar",fecha:"",comentario:""};} ));return r;}
 function pct(prog){let t=0,v=0;TODAS.forEach(c=>[1,2,3].forEach(n=>{t++;if(prog?.[c.id]?.[n]?.estado==="Validado")v++;}));return t?Math.round((v/t)*100):0;}
