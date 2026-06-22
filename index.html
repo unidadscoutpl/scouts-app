@@ -410,6 +410,12 @@ function Hdr({status,onHome,view,onChangeToken}){
   );
 }
 
+const dashHeaderStyles = {
+  container: { display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "1.25rem", flexWrap: "wrap", gap: 10 },
+  title: { fontSize: 20, fontWeight: 800, margin: "0 0 3px", color: C.v900 },
+  subtitle: { fontSize: 13, color: C.gt, margin: 0 }
+};
+
 function Dash({eds,onSel,persist,showAdd,setShowAdd}){
   const [fil,setFil]=useState("todos");
   const [form,setForm]=useState({nombre:"",fechaIngreso:"",hab:"",habNivel:"",nivelacion:"",notas:""});
@@ -428,10 +434,10 @@ function Dash({eds,onSel,persist,showAdd,setShowAdd}){
 
   return(
     <div style={{padding:"1.5rem 1.25rem"}}>
-      <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",marginBottom:"1.25rem",flexWrap:"wrap",gap:10}}>
+      <div style={dashHeaderStyles.container}>
         <div>
-          <h2 style={{fontSize:20,fontWeight:800,margin:"0 0 3px",color:C.v900}}>Equipo en formación</h2>
-          <p style={{fontSize:13,color:C.gt,margin:0}}>{eds.length} educadoras/es · Asesor US: Matías Porral</p>
+          <h2 style={dashHeaderStyles.title}>Equipo en formación</h2>
+          <p style={dashHeaderStyles.subtitle}>{eds.length} educadoras/es · Asesor US: Matías Porral</p>
         </div>
         <button className="sb sbp" onClick={()=>setShowAdd(!showAdd)}>+ Agregar educador/a</button>
       </div>
@@ -1139,6 +1145,12 @@ function Hdr({status,onHome,view,onChangeToken}){
   );
 }
  
+const dashHeaderStyles = {
+  container: { display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "1.25rem", flexWrap: "wrap", gap: 10 },
+  title: { fontSize: 20, fontWeight: 800, margin: "0 0 3px", color: C.v900 },
+  subtitle: { fontSize: 13, color: C.gt, margin: 0 }
+};
+
 function Dash({eds,onSel,persist,showAdd,setShowAdd}){
   const [fil,setFil]=useState("todos");
   const [form,setForm]=useState({nombre:"",fechaIngreso:"",hab:"",habNivel:"",nivelacion:"",notas:""});
@@ -1157,10 +1169,10 @@ function Dash({eds,onSel,persist,showAdd,setShowAdd}){
  
   return(
     <div style={{padding:"1.5rem 1.25rem"}}>
-      <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",marginBottom:"1.25rem",flexWrap:"wrap",gap:10}}>
+      <div style={dashHeaderStyles.container}>
         <div>
-          <h2 style={{fontSize:20,fontWeight:800,margin:"0 0 3px",color:C.v900}}>Equipo en formación</h2>
-          <p style={{fontSize:13,color:C.gt,margin:0}}>{eds.length} educadoras/es · Asesor US: Matías Porral</p>
+          <h2 style={dashHeaderStyles.title}>Equipo en formación</h2>
+          <p style={dashHeaderStyles.subtitle}>{eds.length} educadoras/es · Asesor US: Matías Porral</p>
         </div>
         <button className="sb sbp" onClick={()=>setShowAdd(!showAdd)}>+ Agregar educador/a</button>
       </div>
