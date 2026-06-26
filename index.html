@@ -34,6 +34,7 @@ h1,h2,h3{font-family:'Nunito',sans-serif;}
 .fi{animation:fi .18s ease;}
 select.si{cursor:pointer;}
 textarea.si{resize:vertical;line-height:1.6;}
+.kb-focus:focus-visible{outline:3px solid #3a9e3a;outline-offset:2px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -395,7 +396,7 @@ function StatusPill({status}){
 function Hdr({status,onHome,view,onChangeToken}){
   return(
     <div style={{background:C.v800,padding:"12px 20px",display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:8,position:"sticky",top:0,zIndex:100}}>
-      <div style={{display:"flex",alignItems:"center",gap:10,cursor:"pointer"}} onClick={onHome}>
+      <div role="button" tabIndex={0} aria-label="Ir al inicio" className="kb-focus" onKeyDown={e=>{if(e.key==='Enter'||e.key===' ') {e.preventDefault();onHome();}}} style={{display:"flex",alignItems:"center",gap:10,cursor:"pointer"}} onClick={onHome}>
         <span style={{fontSize:22}}>⚜️</span>
         <div>
           <div style={{fontSize:15,fontWeight:800,color:"white",fontFamily:"'Nunito',sans-serif"}}>Formación Scouts — Rama Scouts</div>
@@ -404,7 +405,7 @@ function Hdr({status,onHome,view,onChangeToken}){
       </div>
       <div style={{display:"flex",alignItems:"center",gap:8}}>
         <StatusPill status={status}/>
-        <button onClick={onChangeToken} title="Cambiar token de acceso" style={{fontSize:11,padding:"3px 8px",borderRadius:12,background:"rgba(255,255,255,0.12)",color:"white",border:"1px solid rgba(255,255,255,0.2)",cursor:"pointer"}}>🔑</button>
+        <button onClick={onChangeToken} aria-label="Cambiar token de acceso" title="Cambiar token de acceso" style={{fontSize:11,padding:"3px 8px",borderRadius:12,background:"rgba(255,255,255,0.12)",color:"white",border:"1px solid rgba(255,255,255,0.2)",cursor:"pointer"}}>🔑</button>
       </div>
     </div>
   );
@@ -486,7 +487,7 @@ function EdCard({ed,onClick,onDel}){
     <div className="sc" style={{cursor:"pointer",transition:"all .15s",position:"relative"}}
       onMouseEnter={e=>{e.currentTarget.style.borderColor=C.v400;e.currentTarget.style.boxShadow=`0 4px 14px ${C.v100}`;}}
       onMouseLeave={e=>{e.currentTarget.style.borderColor=C.v200;e.currentTarget.style.boxShadow="none";}}>
-      <div onClick={onClick}>
+      <div role="button" tabIndex={0} aria-label={`Ver perfil de ${ed.nombre}`} className="kb-focus" onKeyDown={e=>{if(e.key==='Enter'||e.key===' ') {e.preventDefault();onClick();}}} onClick={onClick} style={{outline:"none"}}>
         <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:10}}>
           <div style={{width:42,height:42,borderRadius:"50%",background:bg,color:fg,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:800,fontSize:14,flexShrink:0}}>{ini(ed.nombre)}</div>
           <div style={{flex:1,minWidth:0}}>
@@ -509,7 +510,7 @@ function EdCard({ed,onClick,onDel}){
         </div>
         <div style={{textAlign:"right",fontSize:10,color:C.gl,marginTop:5}}>{ed.fechaIngreso?`Desde ${ed.fechaIngreso}`:""}</div>
       </div>
-      <button onClick={e=>{e.stopPropagation();onDel();}} style={{position:"absolute",top:10,right:10,background:"transparent",border:"none",cursor:"pointer",fontSize:14,color:C.gl,padding:4}} title="Eliminar">✕</button>
+      <button onClick={e=>{e.stopPropagation();onDel();}} aria-label={`Eliminar educador ${ed.nombre}`} style={{position:"absolute",top:10,right:10,background:"transparent",border:"none",cursor:"pointer",fontSize:14,color:C.gl,padding:4}} title="Eliminar">✕</button>
     </div>
   );
 }
@@ -650,7 +651,7 @@ function CRow({c,nv,data,isOpen,onTog,upd}){
   const esNiv=data.comentario==="Validado por nivelación (esquema anterior)";
   return(
     <div className="crow" style={{borderColor:isOpen?C.v400:data.estado==="Validado"?C.v300:C.v200}}>
-      <div style={{display:"flex",alignItems:"center",gap:10,padding:"11px 14px",cursor:"pointer"}} onClick={onTog}>
+      <div role="button" tabIndex={0} aria-label={`${isOpen ? 'Colapsar' : 'Expandir'} ${c.n}`} aria-expanded={isOpen} className="kb-focus" onKeyDown={e=>{if(e.key==='Enter'||e.key===' ') {e.preventDefault();onTog();}}} style={{display:"flex",alignItems:"center",gap:10,padding:"11px 14px",cursor:"pointer"}} onClick={onTog}>
         <div style={{flex:1}}>
           <p style={{fontSize:14,fontWeight:600,margin:"0 0 2px",color:C.v900}}>{c.n}</p>
           {data.fecha&&<p style={{fontSize:11,color:C.gl,margin:0}}>{esNiv?"Nivelación":"Actualizado"}: {data.fecha}</p>}
@@ -841,6 +842,7 @@ h1,h2,h3{font-family:'Nunito',sans-serif;}
 .fi{animation:fi .18s ease;}
 select.si{cursor:pointer;}
 textarea.si{resize:vertical;line-height:1.6;}
+.kb-focus:focus-visible{outline:3px solid #3a9e3a;outline-offset:2px;border-radius:6px;}
 </style>
 </head>
 <body>
@@ -1124,7 +1126,7 @@ function StatusPill({status}){
 function Hdr({status,onHome,view,onChangeToken}){
   return(
     <div style={{background:C.v800,padding:"12px 20px",display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:8,position:"sticky",top:0,zIndex:100}}>
-      <div style={{display:"flex",alignItems:"center",gap:10,cursor:"pointer"}} onClick={onHome}>
+      <div role="button" tabIndex={0} aria-label="Ir al inicio" className="kb-focus" onKeyDown={e=>{if(e.key==='Enter'||e.key===' ') {e.preventDefault();onHome();}}} style={{display:"flex",alignItems:"center",gap:10,cursor:"pointer"}} onClick={onHome}>
         <span style={{fontSize:22}}>⚜️</span>
         <div>
           <div style={{fontSize:15,fontWeight:800,color:"white",fontFamily:"'Nunito',sans-serif"}}>Formación Scouts — Rama Scouts</div>
@@ -1133,7 +1135,7 @@ function Hdr({status,onHome,view,onChangeToken}){
       </div>
       <div style={{display:"flex",alignItems:"center",gap:8}}>
         <StatusPill status={status}/>
-        <button onClick={onChangeToken} title="Cambiar token de acceso" style={{fontSize:11,padding:"3px 8px",borderRadius:12,background:"rgba(255,255,255,0.12)",color:"white",border:"1px solid rgba(255,255,255,0.2)",cursor:"pointer"}}>🔑</button>
+        <button onClick={onChangeToken} aria-label="Cambiar token de acceso" title="Cambiar token de acceso" style={{fontSize:11,padding:"3px 8px",borderRadius:12,background:"rgba(255,255,255,0.12)",color:"white",border:"1px solid rgba(255,255,255,0.2)",cursor:"pointer"}}>🔑</button>
       </div>
     </div>
   );
@@ -1215,7 +1217,7 @@ function EdCard({ed,onClick,onDel}){
     <div className="sc" style={{cursor:"pointer",transition:"all .15s",position:"relative"}}
       onMouseEnter={e=>{e.currentTarget.style.borderColor=C.v400;e.currentTarget.style.boxShadow=`0 4px 14px ${C.v100}`;}}
       onMouseLeave={e=>{e.currentTarget.style.borderColor=C.v200;e.currentTarget.style.boxShadow="none";}}>
-      <div onClick={onClick}>
+      <div role="button" tabIndex={0} aria-label={`Ver perfil de ${ed.nombre}`} className="kb-focus" onKeyDown={e=>{if(e.key==='Enter'||e.key===' ') {e.preventDefault();onClick();}}} onClick={onClick} style={{outline:"none"}}>
         <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:10}}>
           <div style={{width:42,height:42,borderRadius:"50%",background:bg,color:fg,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:800,fontSize:14,flexShrink:0}}>{ini(ed.nombre)}</div>
           <div style={{flex:1,minWidth:0}}>
@@ -1238,7 +1240,7 @@ function EdCard({ed,onClick,onDel}){
         </div>
         <div style={{textAlign:"right",fontSize:10,color:C.gl,marginTop:5}}>{ed.fechaIngreso?`Desde ${ed.fechaIngreso}`:""}</div>
       </div>
-      <button onClick={e=>{e.stopPropagation();onDel();}} style={{position:"absolute",top:10,right:10,background:"transparent",border:"none",cursor:"pointer",fontSize:14,color:C.gl,padding:4}} title="Eliminar">✕</button>
+      <button onClick={e=>{e.stopPropagation();onDel();}} aria-label={`Eliminar educador ${ed.nombre}`} style={{position:"absolute",top:10,right:10,background:"transparent",border:"none",cursor:"pointer",fontSize:14,color:C.gl,padding:4}} title="Eliminar">✕</button>
     </div>
   );
 }
@@ -1379,7 +1381,7 @@ function CRow({c,nv,data,isOpen,onTog,upd}){
   const esNiv=data.comentario==="Validado por nivelación (esquema anterior)";
   return(
     <div className="crow" style={{borderColor:isOpen?C.v400:data.estado==="Validado"?C.v300:C.v200}}>
-      <div style={{display:"flex",alignItems:"center",gap:10,padding:"11px 14px",cursor:"pointer"}} onClick={onTog}>
+      <div role="button" tabIndex={0} aria-label={`${isOpen ? 'Colapsar' : 'Expandir'} ${c.n}`} aria-expanded={isOpen} className="kb-focus" onKeyDown={e=>{if(e.key==='Enter'||e.key===' ') {e.preventDefault();onTog();}}} style={{display:"flex",alignItems:"center",gap:10,padding:"11px 14px",cursor:"pointer"}} onClick={onTog}>
         <div style={{flex:1}}>
           <p style={{fontSize:14,fontWeight:600,margin:"0 0 2px",color:C.v900}}>{c.n}</p>
           {data.fecha&&<p style={{fontSize:11,color:C.gl,margin:0}}>{esNiv?"Nivelación":"Actualizado"}: {data.fecha}</p>}

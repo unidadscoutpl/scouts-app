@@ -1,0 +1,3 @@
+## 2026-06-25 - Custom Interactive Div Accessibility Pattern
+**Learning:** Custom interactive components (like cards or accordions using `div` tags with `onClick` handlers) are frequently missing keyboard and screen reader accessibility support in React dashboard structures.
+**Action:** When working on interactive React components using non-semantic elements (like `div`), always explicitly implement keyboard accessibility by combining `role="button"`, `tabIndex={0}`, an `onKeyDown` handler (listening for Enter/Space), and clear `:focus-visible` CSS rules. Also ensure dynamic `aria-label`s and `aria-expanded` attributes are used to provide screen reader context.
