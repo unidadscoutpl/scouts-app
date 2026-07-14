@@ -423,7 +423,7 @@ function Dash({eds,onSel,persist,showAdd,setShowAdd}){
     setForm({nombre:"",fechaIngreso:"",hab:"",habNivel:"",nivelacion:"",notas:""});setShowAdd(false);
   };
   const del=id=>{if(window.confirm("¿Eliminás a este educador/a?"))persist(eds.filter(e=>e.id!==id));};
-  const tv=eds.reduce((a,ed)=>{let v=0;TODAS.forEach(c=>[1,2,3].forEach(n=>{if(ed.progress?.[c.id]?.[n]?.estado==="Validado")v++;}));return a+v;},0);
+  const stats=eds.reduce((a,ed)=>{const nOk=nivelOk(ed.progress);if(nOk>=1)a.n1++;if(nOk>=2)a.n2++;TODAS.forEach(c=>[1,2,3].forEach(n=>{if(ed.progress?.[c.id]?.[n]?.estado==="Validado")a.tv++;}));return a;},{n1:0,n2:0,tv:0});
   const filtered=fil==="todos"?eds:eds.filter(e=>nivelOk(e.progress)===+fil);
 
   return(
@@ -437,7 +437,7 @@ function Dash({eds,onSel,persist,showAdd,setShowAdd}){
       </div>
 
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(130px,1fr))",gap:10,marginBottom:"1.5rem"}}>
-        {[{l:"En formación",v:eds.length},{l:"Nivel 1 completo",v:eds.filter(e=>nivelOk(e.progress)>=1).length},{l:"Nivel 2 completo",v:eds.filter(e=>nivelOk(e.progress)>=2).length},{l:"Comp. validadas",v:tv}].map(m=>(
+        {[{l:"En formación",v:eds.length},{l:"Nivel 1 completo",v:stats.n1},{l:"Nivel 2 completo",v:stats.n2},{l:"Comp. validadas",v:stats.tv}].map(m=>(
           <div key={m.l} className="mc">
             <p style={{fontSize:10,color:C.v600,margin:"0 0 4px",fontWeight:700,textTransform:"uppercase",letterSpacing:".05em"}}>{m.l}</p>
             <p style={{fontSize:26,fontWeight:800,margin:0,color:C.v800,fontFamily:"'Nunito',sans-serif"}}>{m.v}</p>
@@ -1152,7 +1152,7 @@ function Dash({eds,onSel,persist,showAdd,setShowAdd}){
     setForm({nombre:"",fechaIngreso:"",hab:"",habNivel:"",nivelacion:"",notas:""});setShowAdd(false);
   };
   const del=id=>{if(window.confirm("¿Eliminás a este educador/a?"))persist(eds.filter(e=>e.id!==id));};
-  const tv=eds.reduce((a,ed)=>{let v=0;TODAS.forEach(c=>[1,2,3].forEach(n=>{if(ed.progress?.[c.id]?.[n]?.estado==="Validado")v++;}));return a+v;},0);
+  const stats=eds.reduce((a,ed)=>{const nOk=nivelOk(ed.progress);if(nOk>=1)a.n1++;if(nOk>=2)a.n2++;TODAS.forEach(c=>[1,2,3].forEach(n=>{if(ed.progress?.[c.id]?.[n]?.estado==="Validado")a.tv++;}));return a;},{n1:0,n2:0,tv:0});
   const filtered=fil==="todos"?eds:eds.filter(e=>nivelOk(e.progress)===+fil);
  
   return(
@@ -1166,7 +1166,7 @@ function Dash({eds,onSel,persist,showAdd,setShowAdd}){
       </div>
  
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(130px,1fr))",gap:10,marginBottom:"1.5rem"}}>
-        {[{l:"En formación",v:eds.length},{l:"Nivel 1 completo",v:eds.filter(e=>nivelOk(e.progress)>=1).length},{l:"Nivel 2 completo",v:eds.filter(e=>nivelOk(e.progress)>=2).length},{l:"Comp. validadas",v:tv}].map(m=>(
+        {[{l:"En formación",v:eds.length},{l:"Nivel 1 completo",v:stats.n1},{l:"Nivel 2 completo",v:stats.n2},{l:"Comp. validadas",v:stats.tv}].map(m=>(
           <div key={m.l} className="mc">
             <p style={{fontSize:10,color:C.v600,margin:"0 0 4px",fontWeight:700,textTransform:"uppercase",letterSpacing:".05em"}}>{m.l}</p>
             <p style={{fontSize:26,fontWeight:800,margin:0,color:C.v800,fontFamily:"'Nunito',sans-serif"}}>{m.v}</p>
